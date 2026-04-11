@@ -6,31 +6,39 @@ import "./globals.css"
 
 import { WhatsAppFloat } from "@/components/whatsapp-float"
 
-import { Geist, Geist_Mono, Geist as V0_Font_Geist, Geist_Mono as V0_Font_Geist_Mono, Source_Serif_4 as V0_Font_Source_Serif_4 } from 'next/font/google'
+import { DM_Sans, Hind_Siliguri } from 'next/font/google'
 
-// Initialize fonts
-const _geist = V0_Font_Geist({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700","800","900"] })
-const _geistMono = V0_Font_Geist_Mono({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700","800","900"] })
-const _sourceSerif_4 = V0_Font_Source_Serif_4({ subsets: ['latin'], weight: ["200","300","400","500","600","700","800","900"] })
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ["400", "500", "600", "700"],
+  variable: '--font-sans',
+  display: 'swap',
+})
+
+const hindSiliguri = Hind_Siliguri({
+  subsets: ['latin', 'bengali'],
+  weight: ["400", "500", "600", "700"],
+  variable: '--font-bengali',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: "Guide - Your Trusted Companion Service in Dhaka | Safe & Reliable",
+  title: "Guide - Safe Travel Companion Service in Dhaka",
   description:
-    "Professional companion services in Dhaka, Bangladesh. Uniformed staff, ID verification, live tracking. Airport pickup, medical assistance, intercity travel & more. Your safety is our guarantee.",
+    "Professional companion services in Dhaka, Bangladesh. Background-checked, uniformed guides for airport pickups, medical assistance, intercity travel, and terminal escorts. Live WhatsApp tracking.",
   keywords: [
     "companion service Dhaka",
     "airport pickup Dhaka",
     "medical assistance Bangladesh",
     "travel companion",
-    "uniformed staff",
     "safe travel Dhaka",
     "elderly care transport",
+    "Sadarghat escort",
   ],
-  generator: "v0.app",
   openGraph: {
-    title: "Guide - Your Trusted Companion Service in Dhaka",
+    title: "Guide - Safe Travel Companion Service in Dhaka",
     description:
-      "Professional companion services with uniformed staff, ID verification, and live tracking. Safe, reliable, and trustworthy.",
+      "Background-checked, uniformed guides for safe travel across Dhaka. Airport pickups, medical assistance, terminal escorts with live WhatsApp tracking.",
     type: "website",
     locale: "en_US",
   },
@@ -60,7 +68,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>
+      <body className={`${dmSans.variable} ${hindSiliguri.variable} font-sans antialiased`}>
         {children}
         <WhatsAppFloat />
         <Analytics />

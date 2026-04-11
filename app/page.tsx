@@ -1,5 +1,3 @@
-"use client"
-
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Header } from "@/components/header"
@@ -9,19 +7,13 @@ import {
   Phone,
   CheckCircle2,
   MapPin,
-  Users,
   Plane,
   ArrowLeftRight,
   HomeIcon,
   Hospital,
-  FileText,
   Ship,
-  Train,
-  Bus,
   Car,
-  Ambulance,
-  Clock,
-  Home,
+  Users,
 } from "lucide-react"
 
 export default function HomePage() {
@@ -31,324 +23,217 @@ export default function HomePage() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative min-h-[90vh] flex items-center">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100 -z-10" />
-
-          <div className="container mx-auto px-4 lg:px-8 py-20">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-              <div className="space-y-10 max-w-2xl">
-                <div className="inline-block">
-                  <div className="text-sm font-semibold tracking-wider uppercase text-slate-700 mb-3">
-                    নিরাপত্তাই আমাদের প্রতিশ্রুতি
-                  </div>
-                  <div className="h-1 w-16 bg-slate-900" />
-                </div>
-
-                <h1 className="text-[clamp(2.5rem,8vw,5.5rem)] font-bold leading-[0.95] tracking-tight text-slate-900">
-                  Your trusted
-                  <br />
-                  companion in
-                  <br />
-                  <span className="text-slate-600">every journey</span>
-                </h1>
-
-                <p className="text-xl text-slate-600 max-w-lg leading-relaxed">
-                  Professional companion services across Dhaka with uniformed staff, complete verification, and live
-                  tracking.
-                </p>
-
-                <div className="flex flex-wrap gap-4">
-                  <Button
-                    size="lg"
-                    className="h-14 px-8 text-base rounded-full bg-slate-900 hover:bg-slate-800"
-                    asChild
-                  >
-                    <Link href="/contact">Get started</Link>
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="ghost"
-                    className="h-14 px-8 text-base rounded-full border-2 border-slate-900 hover:bg-slate-900 hover:text-white"
-                    asChild
-                  >
-                    <a href="tel:+8801309204120">+880 1309 204120</a>
-                  </Button>
-                </div>
-
-                <div className="grid grid-cols-3 gap-8 pt-8">
-                  <div>
-                    <div className="text-5xl font-bold tracking-tight text-slate-900">500+</div>
-                    <div className="text-sm text-slate-600 mt-1">Trusted clients</div>
-                  </div>
-                  <div>
-                    <div className="text-5xl font-bold tracking-tight text-slate-900">24/7</div>
-                    <div className="text-sm text-slate-600 mt-1">Available</div>
-                  </div>
-                  <div>
-                    <div className="text-5xl font-bold tracking-tight text-slate-900">100%</div>
-                    <div className="text-sm text-slate-600 mt-1">Verified</div>
-                  </div>
-                </div>
+        <section className="py-16 lg:py-24 bg-background">
+          <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center lg:text-left">
+            <div className="inline-block mb-6">
+              <div className="text-sm font-semibold tracking-wider text-muted-foreground font-[family-name:var(--font-bengali)]">
+                নিরাপত্তাই আমাদের প্রতিশ্রুতি
               </div>
+              <div className="h-1 w-12 bg-primary mt-2 mx-auto lg:mx-0" />
+            </div>
 
-              <div className="relative lg:h-[600px]">
-                <div className="absolute inset-0 bg-slate-200 rounded-3xl -rotate-6" />
-                <img
-                  src="/professional-uniformed-guide-helping-elderly-perso.jpg"
-                  alt="Professional Guide staff"
-                  className="relative w-full h-full object-cover rounded-3xl shadow-2xl"
-                />
+            <h1 className="text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-tight tracking-tight text-foreground mb-3">
+              Safe travel companions across Dhaka
+            </h1>
 
-                <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl max-w-xs border border-slate-200">
-                  <div className="flex gap-4">
-                    <div className="w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Shield className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-bold text-lg mb-1 text-slate-900">100% Verified</div>
-                      <div className="text-sm text-slate-600">All staff ID-checked</div>
-                    </div>
-                  </div>
-                </div>
+            <p className="font-[family-name:var(--font-bengali)] text-lg text-muted-foreground mb-4">
+              আপনার পরিবারের নিরাপদ যাত্রার সঙ্গী
+            </p>
+
+            <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8">
+              Background-checked, uniformed guides who escort your family from terminals, share live
+              location via WhatsApp, and ensure they reach home safely.
+            </p>
+
+            <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-10">
+              <Button
+                size="lg"
+                className="h-12 px-8 rounded-lg bg-primary hover:bg-primary/90"
+                asChild
+              >
+                <Link href="/contact">Book Now</Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-12 px-8 rounded-lg border border-border"
+                asChild
+              >
+                <a href="tel:+8801309204120">+880 1309 204120</a>
+              </Button>
+            </div>
+
+            <div className="flex flex-wrap gap-6 justify-center lg:justify-start text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <Shield className="w-4 h-4 text-primary" />
+                <span>Uniformed Staff</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-primary" />
+                <span>Live WhatsApp Tracking</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-primary" />
+                <span>Background Verified</span>
               </div>
             </div>
           </div>
         </section>
 
         {/* Services Section */}
-        <section className="py-32 bg-white">
+        <section className="py-16 lg:py-20 bg-card">
           <div className="container mx-auto px-4 lg:px-8">
-            <div className="max-w-3xl mb-20">
-              <h2 className="text-[clamp(2rem,6vw,4rem)] font-bold leading-tight mb-6 text-slate-900">Our services</h2>
-              <p className="text-xl text-slate-600">
-                Six specialized packages designed for every travel and assistance need in Dhaka.
+            <div className="mb-10">
+              <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-2">Our services</h2>
+              <p className="text-muted-foreground">
+                Specialized companion packages for every travel and assistance need in Dhaka.
               </p>
             </div>
 
-            <div className="space-y-8">
-              <div className="group relative bg-gradient-to-br from-blue-900 via-slate-900 to-slate-800 text-white p-12 lg:p-20 rounded-3xl overflow-hidden hover:scale-[1.01] transition-transform">
-                <div className="absolute inset-0 bg-[url('/water-waves-pattern.png')] opacity-5 bg-cover bg-center"></div>
-                <div className="relative z-10">
-                  <div className="flex items-start gap-6 mb-8">
-                    <div className="w-24 h-24 bg-white/10 backdrop-blur-xl rounded-3xl flex items-center justify-center flex-shrink-0 border border-white/20">
-                      <Ship className="w-12 h-12" />
-                    </div>
-                    <div>
-                      <div className="inline-block px-4 py-1.5 bg-blue-500/20 backdrop-blur border border-blue-400/30 rounded-full text-sm font-semibold uppercase tracking-wider text-blue-200 mb-4">
-                        Featured Service
-                      </div>
-                      <h3 className="text-5xl lg:text-6xl font-bold mb-2">Launch Ghat Service</h3>
-                      <p className="text-xl text-slate-300">Safe escort from Sadarghat to your home destination</p>
-                    </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-6 mt-10">
-                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-2xl">
-                      <div className="flex items-center gap-3 mb-3">
-                        <Ship className="w-6 h-6 text-blue-300" />
-                        <h4 className="text-lg font-bold">From Launch Ghat to Home</h4>
-                      </div>
-                      <p className="text-slate-300 leading-relaxed">
-                        Our professional guide meets your family at Sadarghat Launch Terminal, assists with luggage,
-                        arranges safe transportation, and ensures they reach home safely.
-                      </p>
-                    </div>
-
-                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-2xl">
-                      <div className="flex items-center gap-3 mb-3">
-                        <Home className="w-6 h-6 text-blue-300" />
-                        <h4 className="text-lg font-bold">From Home to Launch Ghat</h4>
-                      </div>
-                      <p className="text-slate-300 leading-relaxed">
-                        Pick up from home, escort to Sadarghat Launch Terminal, help with ticketing and boarding
-                        procedures, and ensure safe departure.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="mt-8 flex flex-wrap gap-4">
-                    <div className="flex items-center gap-2 text-sm text-slate-300">
-                      <CheckCircle2 className="w-5 h-5 text-green-400" />
-                      <span>Luggage Handling</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-300">
-                      <CheckCircle2 className="w-5 h-5 text-green-400" />
-                      <span>Transport Arrangement</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-300">
-                      <CheckCircle2 className="w-5 h-5 text-green-400" />
-                      <span>Live Location Tracking</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-300">
-                      <CheckCircle2 className="w-5 h-5 text-green-400" />
-                      <span>24/7 Support</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Package 1 - Airport Services */}
-              <div className="group bg-slate-900 text-white p-10 lg:p-16 rounded-3xl hover:scale-[1.01] transition-transform">
-                <div className="grid lg:grid-cols-[auto_1fr] gap-8 items-center">
-                  <div className="w-20 h-20 bg-white/10 backdrop-blur rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <Plane className="w-10 h-10" />
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Launch Ghat Service — Featured */}
+              <div className="md:col-span-2 bg-primary/5 border-2 border-primary/20 rounded-xl p-8">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Ship className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-3">Package 1</div>
-                    <h3 className="text-4xl lg:text-5xl font-bold mb-4">Airport Arrival & Departure</h3>
-                    <p className="text-xl text-slate-300 leading-relaxed max-w-3xl mb-6">
-                      Complete airport assistance from arrival to home delivery, or from home to boarding gate. Our
-                      professional guide handles all aspects of airport travel with care and efficiency.
-                    </p>
-                    <div className="flex flex-wrap gap-3">
-                      <span className="px-3 py-1.5 bg-white/10 rounded-full text-sm">Airport to Home</span>
-                      <span className="px-3 py-1.5 bg-white/10 rounded-full text-sm">Home to Airport</span>
-                      <span className="px-3 py-1.5 bg-white/10 rounded-full text-sm">Check-in Assistance</span>
-                    </div>
+                    <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded font-medium">
+                      Featured
+                    </span>
+                    <h3 className="text-xl font-bold text-foreground mt-2">Launch Ghat Service</h3>
                   </div>
+                </div>
+
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                  Safe escort from Sadarghat Launch Terminal. Our professional guide meets your
+                  family, assists with luggage, arranges safe transportation, and ensures they reach
+                  home safely.
+                </p>
+
+                <div className="grid sm:grid-cols-2 gap-4 mb-5">
+                  <div className="flex items-center gap-2 text-sm text-foreground">
+                    <Ship className="w-4 h-4 text-primary" />
+                    <span>Ghat to Home</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-foreground">
+                    <HomeIcon className="w-4 h-4 text-primary" />
+                    <span>Home to Ghat</span>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {["Luggage Handling", "Transport Arrangement", "Live Tracking"].map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
 
-              {/* Package 1 - Train & Bus Stations - Side by side */}
-              <div className="grid lg:grid-cols-2 gap-8">
-                <div className="bg-slate-700 text-white p-10 rounded-3xl hover:scale-[1.02] transition-transform">
-                  <div className="w-16 h-16 bg-white/10 backdrop-blur rounded-2xl flex items-center justify-center mb-6">
-                    <Train className="w-8 h-8" />
-                  </div>
-                  <div className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-3">Package 1</div>
-                  <h3 className="text-3xl font-bold mb-4">Train Station Services</h3>
-                  <p className="text-lg text-slate-300 leading-relaxed mb-4">
-                    Escort services from Kamalapur Station to home or from home to station. Complete assistance with
-                    ticketing, luggage, and safe travel.
-                  </p>
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-sm text-slate-300">
-                      <MapPin className="w-4 h-4" />
-                      <span>Kamalapur Station</span>
-                    </div>
-                  </div>
+              {/* Terminal Pickup & Drop-off */}
+              <div className="bg-card border border-border rounded-xl p-6 hover:border-primary/30 transition-colors">
+                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <Plane className="w-5 h-5 text-primary" />
                 </div>
-
-                <div className="bg-slate-600 text-white p-10 rounded-3xl hover:scale-[1.02] transition-transform">
-                  <div className="w-16 h-16 bg-white/10 backdrop-blur rounded-2xl flex items-center justify-center mb-6">
-                    <Bus className="w-8 h-8" />
-                  </div>
-                  <div className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-3">Package 1</div>
-                  <h3 className="text-3xl font-bold mb-4">Bus Terminal Services</h3>
-                  <p className="text-lg text-slate-300 leading-relaxed mb-4">
-                    Comprehensive assistance at major bus terminals including Gabtoli, Saydabad, and Abdullahpur. Safe
-                    escort from terminal to home and vice versa.
-                  </p>
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-sm text-slate-300">
-                      <MapPin className="w-4 h-4" />
-                      <span>Gabtoli, Saydabad, Abdullahpur</span>
-                    </div>
-                  </div>
+                <h3 className="text-lg font-semibold text-foreground mb-2">
+                  Terminal Pickup & Drop-off
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  Complete assistance at airports, train stations, and bus terminals. Our guide
+                  handles arrival, departure, luggage, and safe transport home.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["Airport", "Kamalapur Station", "Gabtoli", "Saydabad"].map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
 
-              {/* Package 2 - Transport Transfers */}
-              <div className="bg-gradient-to-br from-slate-800 to-slate-700 text-white p-10 lg:p-14 rounded-3xl hover:scale-[1.01] transition-transform">
-                <div className="flex items-start gap-8">
-                  <div className="w-20 h-20 bg-white/10 backdrop-blur rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <ArrowLeftRight className="w-10 h-10" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-3">Package 2</div>
-                    <h3 className="text-4xl font-bold mb-4">Transport Transfers</h3>
-                    <p className="text-xl text-slate-300 leading-relaxed max-w-3xl mb-6">
-                      Quick transfer services from launch terminals, train stations, and bus stands to local transport
-                      options like CNG, Uber, or bus services within Dhaka.
-                    </p>
-                    <div className="flex flex-wrap gap-3">
-                      <span className="px-4 py-2 bg-white/10 rounded-full text-sm">Launch to Transport</span>
-                      <span className="px-4 py-2 bg-white/10 rounded-full text-sm">Kamalapur to Transport</span>
-                      <span className="px-4 py-2 bg-white/10 rounded-full text-sm">Bus Stand to Transport</span>
-                    </div>
-                  </div>
+              {/* Transport Transfers */}
+              <div className="bg-card border border-border rounded-xl p-6 hover:border-primary/30 transition-colors">
+                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <ArrowLeftRight className="w-5 h-5 text-primary" />
                 </div>
+                <h3 className="text-lg font-semibold text-foreground mb-2">Transport Transfers</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Quick transfers from launch terminals, train stations, and bus stands to local
+                  transport options like CNG, rideshare, or bus services within Dhaka.
+                </p>
               </div>
 
-              {/* Package 3 & 4 - Intercity and Village */}
-              <div className="grid lg:grid-cols-2 gap-8">
-                <div className="bg-slate-800 text-white p-10 rounded-3xl hover:scale-[1.02] transition-transform">
-                  <div className="w-16 h-16 bg-white/10 backdrop-blur rounded-2xl flex items-center justify-center mb-6">
-                    <Car className="w-8 h-8" />
-                  </div>
-                  <div className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-3">Package 3</div>
-                  <h3 className="text-3xl font-bold mb-4">Intercity Travel</h3>
-                  <p className="text-lg text-slate-300 leading-relaxed">
-                    Safe companionship for travel within Dhaka city from one home to another. Perfect for elderly
-                    travelers or those who need assistance during city journeys.
-                  </p>
+              {/* Intercity Travel */}
+              <div className="bg-card border border-border rounded-xl p-6 hover:border-primary/30 transition-colors">
+                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <Car className="w-5 h-5 text-primary" />
                 </div>
-
-                <div className="bg-slate-100 text-slate-900 p-10 rounded-3xl border-2 border-slate-200 hover:border-slate-900 transition-colors">
-                  <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mb-6">
-                    <HomeIcon className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="text-sm font-semibold uppercase tracking-wider text-slate-600 mb-3">Package 4</div>
-                  <h3 className="text-3xl font-bold mb-4">Exclusive Village Companion</h3>
-                  <p className="text-lg text-slate-600 leading-relaxed">
-                    24-hour comprehensive assistance for village visits. Full-day companionship ensuring safety and
-                    support from Dhaka to village and back.
-                  </p>
-                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-2">Intercity Travel</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Safe companionship for travel within Dhaka city. Perfect for elderly travelers or
+                  those who need assistance during city journeys.
+                </p>
               </div>
 
-              {/* Package 5 & 6 - Medical services */}
-              <div className="grid lg:grid-cols-2 gap-8">
-                <div className="bg-slate-800 text-white p-10 rounded-3xl hover:scale-[1.02] transition-transform">
-                  <div className="w-16 h-16 bg-white/10 backdrop-blur rounded-2xl flex items-center justify-center mb-6">
-                    <Hospital className="w-8 h-8" />
-                  </div>
-                  <div className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-3">Package 5</div>
-                  <h3 className="text-3xl font-bold mb-4">Medical All-Day Assistance</h3>
-                  <p className="text-lg text-slate-300 leading-relaxed mb-4">
-                    Full-day hospital companionship from launch/train/bus terminal. Our guide accompanies through entire
-                    medical consultation, takes notes, and provides digital reports to family members abroad.
-                  </p>
-                  <div className="flex items-center gap-2 text-sm text-slate-400">
-                    <Ambulance className="w-4 h-4" />
-                    <span>Ambulance arrangement available</span>
-                  </div>
+              {/* Village Companion */}
+              <div className="bg-card border border-border rounded-xl p-6 hover:border-primary/30 transition-colors">
+                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <HomeIcon className="w-5 h-5 text-primary" />
                 </div>
+                <h3 className="text-lg font-semibold text-foreground mb-2">Village Companion</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  24-hour comprehensive assistance for village visits. Full-day companionship
+                  ensuring safety and support from Dhaka to village and back.
+                </p>
+              </div>
 
-                <div className="bg-slate-700 text-white p-10 rounded-3xl hover:scale-[1.02] transition-transform">
-                  <div className="w-16 h-16 bg-white/10 backdrop-blur rounded-2xl flex items-center justify-center mb-6">
-                    <FileText className="w-8 h-8" />
-                  </div>
-                  <div className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-3">Package 6</div>
-                  <h3 className="text-3xl font-bold mb-4">Medical Wait & Report Collection</h3>
-                  <p className="text-lg text-slate-300 leading-relaxed mb-4">
-                    From home to hospital assistance with wait service. Our guide stays throughout the doctor's visit,
-                    takes prescription notes, and sends digital reports to family members.
-                  </p>
-                  <div className="flex items-center gap-2 text-sm text-slate-400">
-                    <Clock className="w-4 h-4" />
-                    <span>Perfect for working families</span>
-                  </div>
+              {/* Medical Assistance */}
+              <div className="md:col-span-2 bg-card border border-border rounded-xl p-6 hover:border-primary/30 transition-colors">
+                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <Hospital className="w-5 h-5 text-primary" />
                 </div>
+                <h3 className="text-lg font-semibold text-foreground mb-2">Medical Assistance</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Full-day hospital companionship from terminal or home. Our guide accompanies
+                  through the entire medical visit, collects reports, takes prescription notes, and
+                  sends digital reports to family members abroad.
+                </p>
               </div>
             </div>
 
             {/* Service Locations */}
-            <div className="mt-20 bg-slate-50 p-12 rounded-3xl border border-slate-200">
-              <div className="flex items-start gap-6 mb-8">
-                <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-8 h-8 text-white" />
+            <div className="bg-muted p-8 rounded-xl border border-border mt-8">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-3xl font-bold mb-3 text-slate-900">7+ Service Locations</h3>
-                  <p className="text-lg text-slate-600">We serve major areas across Dhaka</p>
+                  <h3 className="text-lg font-semibold text-foreground">Service Locations</h3>
+                  <p className="text-sm text-muted-foreground">
+                    We serve major areas across Dhaka
+                  </p>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-3">
-                {["Gulshan", "Banani", "Dhanmondi", "Uttara", "Mirpur", "Mohammadpur", "Shahbagh"].map((location) => (
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "Gulshan",
+                  "Banani",
+                  "Dhanmondi",
+                  "Uttara",
+                  "Mirpur",
+                  "Mohammadpur",
+                  "Shahbagh",
+                ].map((location) => (
                   <span
                     key={location}
-                    className="px-6 py-3 bg-white border-2 border-slate-900 rounded-full text-base font-semibold text-slate-900 hover:bg-slate-900 hover:text-white transition-colors cursor-default"
+                    className="px-3 py-1.5 border border-primary/30 rounded-full text-sm text-primary"
                   >
                     {location}
                   </span>
@@ -359,50 +244,60 @@ export default function HomePage() {
         </section>
 
         {/* How It Works Section */}
-        <section className="py-32 bg-slate-50">
+        <section className="py-16 lg:py-20 bg-muted">
           <div className="container mx-auto px-4 lg:px-8">
-            <div className="max-w-2xl mb-20">
-              <h2 className="text-[clamp(2rem,6vw,4rem)] font-bold leading-tight mb-6 text-slate-900">How it works</h2>
-              <p className="text-xl text-slate-600">Simple, transparent, and secure from booking to completion.</p>
+            <div className="mb-10">
+              <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-2">How it works</h2>
+              <p className="text-muted-foreground">
+                Simple, transparent, and secure from booking to completion.
+              </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
                   number: "01",
                   icon: Phone,
                   title: "Contact us",
-                  description: "Reach out via phone, email, or WhatsApp with your requirements",
+                  description:
+                    "Reach out via phone or WhatsApp with your travel requirements",
                 },
                 {
                   number: "02",
                   icon: CheckCircle2,
                   title: "Verification call",
-                  description: "Receive confirmation call with guide details and uniform photo",
+                  description:
+                    "Receive confirmation call with guide details and uniform photo",
                 },
                 {
                   number: "03",
                   icon: Users,
                   title: "Meet your guide",
-                  description: "Our uniformed, ID-verified staff meets you at the designated location",
+                  description:
+                    "Our uniformed, ID-verified staff meets you at the designated location",
                 },
                 {
                   number: "04",
                   icon: MapPin,
                   title: "Safe journey",
-                  description: "Live tracking via WhatsApp ensures complete peace of mind",
+                  description:
+                    "Live tracking via WhatsApp ensures complete peace of mind",
                 },
               ].map((step, index) => (
                 <div key={index} className="relative">
-                  <div className="bg-white p-8 rounded-2xl border border-slate-200 h-full">
-                    <div className="text-6xl font-bold text-slate-200 mb-4">{step.number}</div>
-                    <div className="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center mb-6">
-                      <step.icon className="w-6 h-6 text-white" />
+                  <div className="bg-card p-6 rounded-xl border border-border h-full">
+                    <div className="text-3xl font-bold text-primary/20 mb-3">{step.number}</div>
+                    <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mb-4">
+                      <step.icon className="w-5 h-5 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold mb-3 text-slate-900">{step.title}</h3>
-                    <p className="text-slate-600 leading-relaxed">{step.description}</p>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">{step.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {step.description}
+                    </p>
                   </div>
-                  {index < 3 && <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-slate-300" />}
+                  {index < 3 && (
+                    <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-px bg-border" />
+                  )}
                 </div>
               ))}
             </div>
@@ -410,126 +305,115 @@ export default function HomePage() {
         </section>
 
         {/* Safety Section */}
-        <section className="py-32 bg-slate-900 text-white">
+        <section className="py-16 lg:py-20 bg-card border-t border-border">
           <div className="container mx-auto px-4 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-20 items-center mb-32">
-              <div>
-                <h2 className="text-[clamp(2rem,6vw,4rem)] font-bold leading-tight mb-8">
-                  Safety built into every interaction
-                </h2>
-                <p className="text-xl text-slate-400 mb-12">
-                  Multiple layers of verification and real-time tracking ensure complete peace of mind.
-                </p>
-              </div>
-              <div className="relative">
-                <img
-                  src="/uniformed-professional-staff-with-id-badge-showing.jpg"
-                  alt="Verified staff"
-                  className="w-full aspect-[4/3] object-cover rounded-2xl"
-                />
-              </div>
+            <div className="mb-10">
+              <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-2">
+                Safety built into every step
+              </h2>
+              <p className="text-muted-foreground">
+                Multiple layers of verification and real-time tracking ensure complete peace of mind.
+              </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
                   icon: Shield,
                   title: "Professional uniforms",
-                  description: "Standardized uniform for immediate identification",
+                  description:
+                    "Standardized uniform for immediate identification and trust",
                 },
                 {
                   icon: CheckCircle2,
-                  title: "Complete verification",
-                  description: "Thorough background checks for every team member",
+                  title: "Background verification",
+                  description:
+                    "Thorough background checks for every team member",
                 },
                 {
                   icon: Phone,
-                  title: "Pre-service confirmation",
-                  description: "Receive guide photo before service begins",
+                  title: "Pre-service photo confirmation",
+                  description:
+                    "Receive your guide's photo before service begins",
                 },
                 {
                   icon: MapPin,
-                  title: "Live tracking",
-                  description: "Real-time WhatsApp location sharing",
+                  title: "Live WhatsApp tracking",
+                  description:
+                    "Real-time location sharing throughout the entire journey",
                 },
               ].map((feature, index) => (
-                <div key={index} className="bg-white/5 backdrop-blur p-8 rounded-xl border border-white/10">
-                  <feature.icon className="w-12 h-12 mb-6 text-slate-300" />
-                  <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{feature.description}</p>
+                <div key={index} className="bg-muted p-6 rounded-xl border border-border">
+                  <feature.icon className="w-10 h-10 text-primary mb-4" />
+                  <h3 className="text-base font-semibold text-foreground mb-2">{feature.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section className="py-32 bg-white overflow-hidden">
-          <div className="container mx-auto px-4 lg:px-8 mb-16">
-            <div className="max-w-3xl">
-              <h2 className="text-[clamp(2rem,6vw,4rem)] font-bold leading-tight mb-6 text-slate-900">
-                Trusted by families across Dhaka
-              </h2>
-              <p className="text-xl text-slate-600">Real experiences from people who rely on Guide.</p>
+        {/* Our Promise Section */}
+        <section className="py-16 lg:py-20 bg-background">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="mb-10">
+              <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-1">Our promise</h2>
+              <p className="font-[family-name:var(--font-bengali)] text-muted-foreground">
+                আমাদের প্রতিশ্রুতি
+              </p>
             </div>
-          </div>
 
-          <div className="flex gap-8 px-4 lg:px-8 overflow-x-auto pb-8 snap-x snap-mandatory no-scrollbar">
-            {[
-              {
-                name: "Farhan Ahmed",
-                role: "Business Executive",
-                content:
-                  "Guide made my mother's airport pickup seamless. The uniformed staff was professional and the live tracking gave us complete peace of mind.",
-              },
-              {
-                name: "Tasneem Rahman",
-                role: "Healthcare Professional",
-                content:
-                  "Excellent medical assistance service. The guide waited patiently throughout the day and helped collect all reports.",
-              },
-              {
-                name: "Imran Hossain",
-                role: "Engineer",
-                content:
-                  "Used their intercity service for my elderly father's village visit. The verification process and safety measures are outstanding.",
-              },
-            ].map((testimonial, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-[90vw] md:w-[500px] bg-slate-50 p-12 rounded-2xl snap-start border border-slate-200"
-              >
-                <div className="flex gap-2 mb-8">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <div key={i} className="w-2 h-2 bg-slate-900 rounded-full" />
-                  ))}
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: Shield,
+                  title: "Verified & uniformed",
+                  description:
+                    "Every guide wears a uniform and carries a verified ID badge",
+                },
+                {
+                  icon: Phone,
+                  title: "Photo before service",
+                  description:
+                    "You receive your guide's photo and details before the journey begins",
+                },
+                {
+                  icon: MapPin,
+                  title: "Live location sharing",
+                  description:
+                    "Real-time WhatsApp location tracking throughout the entire trip",
+                },
+              ].map((promise, index) => (
+                <div
+                  key={index}
+                  className="bg-card p-6 rounded-xl border-l-4 border-l-primary border border-border"
+                >
+                  <promise.icon className="w-8 h-8 text-primary mb-3" />
+                  <h3 className="text-base font-semibold text-foreground mb-2">{promise.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {promise.description}
+                  </p>
                 </div>
-                <p className="text-2xl leading-relaxed mb-12 font-medium text-slate-900">{testimonial.content}</p>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 bg-slate-900 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                    {testimonial.name.charAt(0)}
-                  </div>
-                  <div>
-                    <div className="font-bold text-lg text-slate-900">{testimonial.name}</div>
-                    <div className="text-slate-600">{testimonial.role}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
 
         {/* FAQ Section */}
-        <section className="py-32 bg-slate-50">
+        <section className="py-16 lg:py-20 bg-muted">
           <div className="container mx-auto px-4 lg:px-8">
-            <div className="max-w-3xl mb-20">
-              <h2 className="text-[clamp(2rem,6vw,4rem)] font-bold leading-tight mb-6 text-slate-900">
-                Frequently asked questions
+            <div className="mb-10">
+              <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-2">
+                Common questions
               </h2>
-              <p className="text-xl text-slate-600">Everything you need to know about our services.</p>
+              <p className="text-muted-foreground">
+                Everything you need to know about our services.
+              </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8 max-w-6xl">
+            <div className="grid lg:grid-cols-2 gap-6">
               {[
                 {
                   question: "How is pricing determined?",
@@ -549,12 +433,12 @@ export default function HomePage() {
                 {
                   question: "Which areas do you serve?",
                   answer:
-                    "We serve 7+ locations across Dhaka including Gulshan, Banani, Dhanmondi, Uttara, Mirpur, Mohammadpur, and Shahbagh. We're continuously expanding to more areas.",
+                    "We serve locations across Dhaka including Gulshan, Banani, Dhanmondi, Uttara, Mirpur, Mohammadpur, and Shahbagh. We're continuously expanding to more areas.",
                 },
                 {
                   question: "How do I book a service?",
                   answer:
-                    "Simply contact us via phone, WhatsApp, or our contact form. Our team will discuss your requirements and arrange everything for you.",
+                    "Simply contact us via phone or WhatsApp. Our team will discuss your requirements and arrange everything for you.",
                 },
                 {
                   question: "Can I track my companion in real-time?",
@@ -562,9 +446,9 @@ export default function HomePage() {
                     "Yes! We provide live location sharing via WhatsApp throughout the entire journey for complete transparency and peace of mind.",
                 },
               ].map((faq, index) => (
-                <div key={index} className="bg-white p-8 rounded-2xl border border-slate-200">
-                  <h3 className="text-xl font-bold mb-4 text-slate-900">{faq.question}</h3>
-                  <p className="text-slate-600 leading-relaxed">{faq.answer}</p>
+                <div key={index} className="bg-card p-6 rounded-xl border border-border">
+                  <h3 className="text-base font-semibold text-foreground mb-2">{faq.question}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{faq.answer}</p>
                 </div>
               ))}
             </div>
@@ -572,37 +456,33 @@ export default function HomePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-40 bg-slate-900 text-white relative overflow-hidden">
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl" />
-          </div>
-
-          <div className="container mx-auto px-4 lg:px-8 relative">
-            <div className="max-w-5xl mx-auto text-center space-y-12">
-              <h2 className="text-[clamp(2.5rem,8vw,6rem)] font-bold leading-[0.95]">
-                Ready to experience trusted companionship?
-              </h2>
-              <p className="text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                Contact us today for a personalized quote based on your specific needs.
+        <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="max-w-2xl mx-auto text-center space-y-6">
+              <h2 className="text-2xl lg:text-3xl font-bold">Ready to book?</h2>
+              <p className="font-[family-name:var(--font-bengali)] text-primary-foreground/80">
+                এখনই যোগাযোগ করুন
               </p>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
+              <p className="text-primary-foreground/80">
+                Contact us for a personalized quote based on your needs.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Button
                   size="lg"
-                  className="h-16 px-12 text-lg rounded-full bg-white text-slate-900 hover:bg-slate-100 shadow-2xl"
+                  className="h-12 px-8 rounded-lg bg-white text-primary hover:bg-white/90"
                   asChild
                 >
-                  <Link href="/contact">Get in touch</Link>
+                  <Link href="/contact">Book Now</Link>
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="h-16 px-12 text-lg rounded-full border-2 border-white text-white hover:bg-white hover:text-slate-900 bg-transparent"
+                  className="h-12 px-8 rounded-lg border border-white/30 text-white hover:bg-white/10 bg-transparent"
                   asChild
                 >
-                  <a href="tel:+8801309204120" className="flex items-center gap-3">
-                    <Phone className="w-6 h-6" />
-                    Call now
+                  <a href="tel:+8801309204120" className="flex items-center gap-2">
+                    <Phone className="w-5 h-5" />
+                    Call Now
                   </a>
                 </Button>
               </div>
@@ -612,16 +492,6 @@ export default function HomePage() {
       </main>
 
       <Footer />
-
-      <style jsx global>{`
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
     </div>
   )
 }

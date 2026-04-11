@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Phone, Mail, Globe, MapPin, Clock } from "lucide-react"
+import { Phone, MessageCircle, MapPin, Clock } from "lucide-react"
 import { useState } from "react"
 
 export default function ContactPage() {
@@ -66,18 +66,18 @@ Please contact me to discuss this booking.`
       <Header />
 
       <main>
-        <section className="py-32 bg-gradient-to-b from-slate-50 to-white">
+        <section className="py-16 lg:py-20 bg-gradient-to-b from-muted to-background">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-20">
+              <div className="text-center mb-12">
                 <div className="inline-block mb-8">
-                  <div className="text-sm font-semibold tracking-wider uppercase text-slate-700 mb-3">Get in touch</div>
-                  <div className="h-1 w-16 bg-slate-900 mx-auto" />
+                  <div className="text-sm font-semibold tracking-wider uppercase text-muted-foreground mb-3">Get in touch</div>
+                  <div className="h-1 w-16 bg-primary mx-auto" />
                 </div>
-                <h1 className="text-[clamp(2.5rem,8vw,5rem)] font-bold leading-tight mb-6 text-slate-900">
+                <h1 className="text-3xl lg:text-4xl font-bold leading-tight mb-6 text-foreground">
                   Book your companion service
                 </h1>
-                <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                   Fill out the form below and our team will contact you via WhatsApp to confirm your booking.
                 </p>
               </div>
@@ -87,11 +87,11 @@ Please contact me to discuss this booking.`
                 <div className="lg:col-span-3">
                   <form
                     onSubmit={handleSubmit}
-                    className="space-y-8 bg-white p-10 rounded-2xl border border-slate-200 shadow-sm"
+                    className="space-y-8 bg-card p-10 rounded-xl border border-border shadow-sm"
                   >
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="name" className="text-base font-semibold text-slate-900">
+                        <Label htmlFor="name" className="text-base font-semibold text-foreground">
                           Full Name *
                         </Label>
                         <Input
@@ -100,12 +100,12 @@ Please contact me to discuss this booking.`
                           required
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          className="h-12 rounded-xl border-slate-300 focus:border-slate-900"
+                          className="h-12 rounded-xl border-input focus:border-primary"
                         />
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="phone" className="text-base font-semibold text-slate-900">
+                        <Label htmlFor="phone" className="text-base font-semibold text-foreground">
                           Phone Number *
                         </Label>
                         <Input
@@ -115,13 +115,13 @@ Please contact me to discuss this booking.`
                           required
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="h-12 rounded-xl border-slate-300 focus:border-slate-900"
+                          className="h-12 rounded-xl border-input focus:border-primary"
                         />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="email" className="text-base font-semibold text-slate-900">
+                      <Label htmlFor="email" className="text-base font-semibold text-foreground">
                         Email Address
                       </Label>
                       <Input
@@ -130,12 +130,12 @@ Please contact me to discuss this booking.`
                         placeholder="your.email@example.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="h-12 rounded-xl border-slate-300 focus:border-slate-900"
+                        className="h-12 rounded-xl border-input focus:border-primary"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="package" className="text-base font-semibold text-slate-900">
+                      <Label htmlFor="package" className="text-base font-semibold text-foreground">
                         Select Package *
                       </Label>
                       <Select
@@ -143,25 +143,23 @@ Please contact me to discuss this booking.`
                         value={formData.package}
                         onValueChange={(value) => setFormData({ ...formData, package: value })}
                       >
-                        <SelectTrigger className="h-12 rounded-xl border-slate-300 focus:border-slate-900">
+                        <SelectTrigger className="h-12 rounded-xl border-input focus:border-primary">
                           <SelectValue placeholder="Choose a service package" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="arrival-to-home">Package 1: Arrival to Home</SelectItem>
-                          <SelectItem value="departure-services">Package 2: Departure Services</SelectItem>
-                          <SelectItem value="intercity">Package 3: Intercity Travel</SelectItem>
-                          <SelectItem value="exclusive-village">Package 4: Exclusive Village Companion</SelectItem>
-                          <SelectItem value="medical-all-day">Package 5: Medical All-Day Assistance</SelectItem>
-                          <SelectItem value="medical-wait-report">
-                            Package 6: Medical Wait & Report Collection
-                          </SelectItem>
+                          <SelectItem value="launch-ghat">Launch Ghat Service</SelectItem>
+                          <SelectItem value="terminal-pickup">Terminal Pickup & Drop-off</SelectItem>
+                          <SelectItem value="transport-transfer">Transport Transfers</SelectItem>
+                          <SelectItem value="intercity">Intercity Travel</SelectItem>
+                          <SelectItem value="village-companion">Village Companion (24-hour)</SelectItem>
+                          <SelectItem value="medical-assistance">Medical Assistance</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="location" className="text-base font-semibold text-slate-900">
+                        <Label htmlFor="location" className="text-base font-semibold text-foreground">
                           Pickup Location *
                         </Label>
                         <Input
@@ -170,12 +168,12 @@ Please contact me to discuss this booking.`
                           required
                           value={formData.location}
                           onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                          className="h-12 rounded-xl border-slate-300 focus:border-slate-900"
+                          className="h-12 rounded-xl border-input focus:border-primary"
                         />
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="date" className="text-base font-semibold text-slate-900">
+                        <Label htmlFor="date" className="text-base font-semibold text-foreground">
                           Service Date *
                         </Label>
                         <Input
@@ -184,13 +182,13 @@ Please contact me to discuss this booking.`
                           required
                           value={formData.date}
                           onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                          className="h-12 rounded-xl border-slate-300 focus:border-slate-900"
+                          className="h-12 rounded-xl border-input focus:border-primary"
                         />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message" className="text-base font-semibold text-slate-900">
+                      <Label htmlFor="message" className="text-base font-semibold text-foreground">
                         Additional Details
                       </Label>
                       <Textarea
@@ -199,7 +197,7 @@ Please contact me to discuss this booking.`
                         rows={6}
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="rounded-xl border-slate-300 focus:border-slate-900"
+                        className="rounded-xl border-input focus:border-primary"
                       />
                     </div>
 
@@ -207,12 +205,12 @@ Please contact me to discuss this booking.`
                       type="submit"
                       size="lg"
                       disabled={isSubmitting}
-                      className="w-full h-14 text-base rounded-xl bg-slate-900 hover:bg-slate-800"
+                      className="w-full h-14 text-base rounded-xl bg-primary hover:bg-primary/90"
                     >
-                      {isSubmitting ? "Processing..." : "Submit Booking Request"}
+                      {isSubmitting ? "Processing..." : "Send via WhatsApp"}
                     </Button>
 
-                    <p className="text-sm text-slate-500 text-center">
+                    <p className="text-sm text-muted-foreground text-center">
                       By submitting, you agree to be contacted via WhatsApp for booking confirmation
                     </p>
                   </form>
@@ -220,75 +218,55 @@ Please contact me to discuss this booking.`
 
                 {/* Contact Information */}
                 <div className="lg:col-span-2 space-y-8">
-                  <div className="bg-slate-900 text-white p-10 rounded-2xl">
+                  <div className="bg-primary text-white p-10 rounded-2xl">
                     <h3 className="text-2xl font-bold mb-8">Contact Information</h3>
                     <div className="space-y-6">
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <div className="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center flex-shrink-0">
                           <Phone className="w-5 h-5" />
                         </div>
                         <div>
                           <div className="font-semibold mb-1">Phone</div>
-                          <a href="tel:+8801309204120" className="text-slate-300 hover:text-white transition-colors">
+                          <a href="tel:+8801309204120" className="text-primary-foreground/70 hover:text-white transition-colors">
                             +880 1309 204120
                           </a>
                         </div>
                       </div>
 
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                          <Mail className="w-5 h-5" />
+                        <div className="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center flex-shrink-0">
+                          <MessageCircle className="w-5 h-5" />
                         </div>
                         <div>
-                          <div className="font-semibold mb-1">Email</div>
-                          <a
-                            href="mailto:guide@gmail.com"
-                            className="text-slate-300 hover:text-white transition-colors break-all"
-                          >
-                            guide@gmail.com
+                          <div className="font-semibold mb-1">WhatsApp</div>
+                          <a href="https://wa.me/8801309204120" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/70 hover:text-white transition-colors">
+                            Message us
                           </a>
                         </div>
                       </div>
 
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                          <Globe className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <div className="font-semibold mb-1">Website</div>
-                          <a
-                            href="https://www.guide.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-slate-300 hover:text-white transition-colors"
-                          >
-                            www.guide.com
-                          </a>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <div className="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center flex-shrink-0">
                           <Clock className="w-5 h-5" />
                         </div>
                         <div>
                           <div className="font-semibold mb-1">Availability</div>
-                          <p className="text-slate-300">24/7 Service</p>
+                          <p className="text-primary-foreground/70">24/7 Service</p>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="bg-slate-50 p-10 rounded-2xl border border-slate-200">
-                    <h3 className="text-xl font-bold mb-6 text-slate-900">Service Locations</h3>
+                  <div className="bg-muted p-10 rounded-2xl border border-border">
+                    <h3 className="text-xl font-bold mb-6 text-foreground">Service Locations</h3>
                     <div className="flex items-start gap-4 mb-6">
-                      <MapPin className="w-5 h-5 text-slate-600 flex-shrink-0 mt-1" />
+                      <MapPin className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-1" />
                       <div className="flex flex-wrap gap-2">
                         {["Gulshan", "Banani", "Dhanmondi", "Uttara", "Mirpur", "Mohammadpur", "Shahbagh"].map(
                           (location) => (
                             <span
                               key={location}
-                              className="px-3 py-1 bg-white border border-slate-200 rounded-full text-sm font-medium text-slate-700"
+                              className="px-3 py-1 bg-white border border-border rounded-full text-sm font-medium text-foreground"
                             >
                               {location}
                             </span>
@@ -296,12 +274,12 @@ Please contact me to discuss this booking.`
                         )}
                       </div>
                     </div>
-                    <p className="text-sm text-slate-600">Serving Dhaka, Bangladesh with expansion to more areas</p>
+                    <p className="text-sm text-muted-foreground">Serving Dhaka, Bangladesh with expansion to more areas</p>
                   </div>
 
-                  <div className="bg-slate-50 p-8 rounded-2xl border border-slate-200">
-                    <h3 className="text-lg font-bold mb-4 text-slate-900">Quick Response Time</h3>
-                    <p className="text-slate-600 text-sm leading-relaxed">
+                  <div className="bg-muted p-8 rounded-2xl border border-border">
+                    <h3 className="text-lg font-bold mb-4 text-foreground">Quick Response Time</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
                       We typically respond within 30 minutes during business hours and within 2 hours for overnight
                       inquiries.
                     </p>

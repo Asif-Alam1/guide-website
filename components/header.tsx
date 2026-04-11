@@ -16,7 +16,7 @@ export function Header() {
   ]
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200">
+    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <nav className="container mx-auto px-4 lg:px-8" aria-label="Global">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center group">
@@ -35,7 +35,7 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-base font-medium text-slate-700 hover:text-slate-900 transition-colors"
+                className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.name}
               </Link>
@@ -43,20 +43,20 @@ export function Header() {
           </div>
 
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" size="sm" className="rounded-full text-slate-700" asChild>
+            <Button variant="ghost" size="sm" className="rounded-full text-muted-foreground" asChild>
               <a href="tel:+8801309204120" className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
                 Call Now
               </a>
             </Button>
-            <Button className="rounded-full bg-slate-900 hover:bg-slate-800 text-white" asChild>
-              <Link href="/contact">Get Started</Link>
+            <Button className="rounded-full bg-primary hover:bg-primary/90 text-white" asChild>
+              <Link href="/contact">Book Now</Link>
             </Button>
           </div>
 
           <button
             type="button"
-            className="md:hidden p-2 rounded-xl text-slate-900 hover:bg-slate-100"
+            className="md:hidden p-2 rounded-xl text-foreground hover:bg-muted"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <span className="sr-only">Toggle menu</span>
@@ -65,28 +65,28 @@ export function Header() {
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-slate-200 py-6">
+          <div className="md:hidden border-t border-border py-6">
             <div className="flex flex-col gap-6">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-lg font-medium text-slate-700 hover:text-slate-900"
+                  className="text-lg font-medium text-muted-foreground hover:text-foreground"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
-              <div className="flex flex-col gap-3 pt-6 border-t border-slate-200">
-                <Button variant="outline" className="w-full rounded-full bg-transparent" asChild>
+              <div className="flex flex-col gap-3 pt-6 border-t border-border">
+                <Button variant="outline" className="w-full rounded-full" asChild>
                   <a href="tel:+8801309204120" className="flex items-center justify-center gap-2">
                     <Phone className="w-4 h-4" />
                     Call Now
                   </a>
                 </Button>
-                <Button className="w-full rounded-full bg-slate-900 hover:bg-slate-800" asChild>
+                <Button className="w-full rounded-full bg-primary hover:bg-primary/90" asChild>
                   <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                    Get Started
+                    Book Now
                   </Link>
                 </Button>
               </div>
