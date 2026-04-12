@@ -1,28 +1,22 @@
 import Link from "next/link"
-import Image from "next/image"
-import { Phone, MessageCircle, MapPin } from "lucide-react"
+import { Phone, MessageCircle, MapPin, Shield } from "lucide-react"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
     <footer className="bg-[oklch(0.18_0.01_50)] text-white">
-      <div className="container mx-auto px-4 lg:px-8 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-16">
-          <div className="space-y-6">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/guide-logo.png"
-                alt="Guide - নিরাপদ যাত্রার নিশ্চয়তা"
-                width={200}
-                height={67}
-                className="h-14 w-auto brightness-0 invert"
-              />
+      <div className="container mx-auto px-4 lg:px-8 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-12">
+          <div className="space-y-4">
+            <Link href="/" className="inline-flex items-center gap-2">
+              <Shield className="w-6 h-6 text-primary" />
+              <span className="text-xl font-bold">Guide</span>
             </Link>
-            <p className="text-lg text-white/60 leading-relaxed max-w-md">
-              Your trusted companion service in Dhaka. Safety is our guarantee.
+            <p className="text-sm text-white/50 leading-relaxed max-w-sm">
+              Your trusted companion service in Dhaka. Safe, reliable travel assistance for your family.
             </p>
-            <p className="text-lg font-semibold text-primary">নিরাপত্তাই আমাদের প্রতিশ্রুতি</p>
+            <p className="text-sm font-medium text-primary font-[family-name:var(--font-bengali)]">নিরাপত্তাই আমাদের প্রতিশ্রুতি</p>
           </div>
 
           <div className="grid grid-cols-2 gap-8">

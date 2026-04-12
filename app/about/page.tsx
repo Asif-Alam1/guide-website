@@ -13,22 +13,27 @@ export default function AboutPage() {
       <Header />
 
       <main>
-        {/* Hero */}
-        <section className="py-16 lg:py-20 bg-muted">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="max-w-3xl">
-              <div className="inline-block mb-6">
-                <div className="text-sm font-semibold tracking-wider uppercase text-muted-foreground font-[family-name:var(--font-bengali)] mb-2">
-                  নিরাপত্তাই আমাদের প্রতিশ্রুতি
-                </div>
-                <div className="h-1 w-16 bg-primary" />
-              </div>
+        {/* Hero — Bold dark teal with grain */}
+        <section className="grain relative overflow-hidden bg-[oklch(0.22_0.06_175)] text-white">
+          {/* Large decorative Bengali text */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute right-[8%] lg:right-[15%] top-1/2 -translate-y-1/2 font-[family-name:var(--font-bengali)] text-[clamp(5rem,14vw,10rem)] font-bold leading-none text-white/[0.04] select-none"
+          >
+            বিশ্বাস
+            <br />
+            সেবা
+          </div>
 
-              <h1 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+          <div className="relative z-10 container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+            <div className="max-w-3xl">
+              <p className="text-sm font-medium tracking-wider uppercase text-accent mb-8">About us</p>
+
+              <h1 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                 About Guide
               </h1>
 
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+              <p className="text-lg text-white/60 leading-relaxed max-w-2xl">
                 Your trusted companion service, committed to ensuring safety and peace of mind for every journey across
                 Dhaka.
               </p>
@@ -36,11 +41,12 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Mission */}
-        <section className="py-16 lg:py-20 bg-card">
+        {/* Mission — Light section */}
+        <section className="py-20 lg:py-28 bg-card">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="max-w-3xl">
-              <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-6">
+              <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">Our mission</p>
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
                 Providing safe, reliable companionship
               </h2>
 
@@ -57,15 +63,15 @@ export default function AboutPage() {
 
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
                 {[
-                  { icon: Shield, label: "Uniformed Staff" },
-                  { icon: CheckCircle2, label: "Background Checks" },
-                  { icon: MapPin, label: "Live Tracking" },
-                  { icon: Phone, label: "Photo Confirmation" },
+                  { icon: Shield, label: "Uniformed Staff", accent: "border-l-primary" },
+                  { icon: CheckCircle2, label: "Background Checks", accent: "border-l-secondary" },
+                  { icon: MapPin, label: "Live Tracking", accent: "border-l-accent" },
+                  { icon: Phone, label: "Photo Confirmation", accent: "border-l-primary" },
                 ].map((item, index) => {
                   const Icon = item.icon
                   return (
-                    <div key={index} className="bg-muted p-4 rounded-xl text-center">
-                      <Icon className="w-6 h-6 text-primary mb-2 mx-auto" />
+                    <div key={index} className={`bg-card border border-border border-l-4 ${item.accent} rounded-xl p-4`}>
+                      <Icon className="w-6 h-6 text-primary mb-2" />
                       <div className="text-sm font-medium">{item.label}</div>
                     </div>
                   )
@@ -75,12 +81,13 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Core Values */}
-        <section className="py-16 lg:py-20 bg-primary text-primary-foreground">
-          <div className="container mx-auto px-4 lg:px-8">
+        {/* Core Values — Dark teal with grain */}
+        <section className="grain relative overflow-hidden bg-[oklch(0.22_0.06_175)] text-white">
+          <div className="relative z-10 container mx-auto px-4 lg:px-8 py-20 lg:py-28">
             <div className="max-w-3xl mb-12">
-              <h2 className="text-2xl lg:text-3xl font-bold mb-4">Our core values</h2>
-              <p className="text-base text-primary-foreground/70">The principles that guide every service we provide</p>
+              <p className="text-sm font-semibold text-accent uppercase tracking-wider mb-2">What drives us</p>
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4">Our core values</h2>
+              <p className="text-base text-white/60">The principles that guide every service we provide</p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -114,11 +121,13 @@ export default function AboutPage() {
                 return (
                   <div
                     key={index}
-                    className="bg-white/10 border border-white/15 rounded-xl p-8"
+                    className="bg-white/5 border border-white/8 rounded-xl p-8"
                   >
-                    <Icon className="w-10 h-10 mb-4 text-primary-foreground" />
+                    <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4">
+                      <Icon className="w-6 h-6 text-accent" />
+                    </div>
                     <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
-                    <p className="text-sm text-primary-foreground/70 leading-relaxed">{value.description}</p>
+                    <p className="text-sm text-white/60 leading-relaxed">{value.description}</p>
                   </div>
                 )
               })}
@@ -126,11 +135,12 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Why Families Trust Guide */}
-        <section className="py-16 lg:py-20 bg-card">
+        {/* Why Families Trust Guide — Light */}
+        <section className="py-20 lg:py-28 bg-card">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="max-w-3xl mb-12">
-              <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">Why families trust Guide</h2>
+              <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">Our difference</p>
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Why families trust Guide</h2>
               <p className="text-base text-muted-foreground">What sets us apart from other companion services</p>
             </div>
 
@@ -167,8 +177,8 @@ export default function AboutPage() {
                     "We understand you're entrusting us with your loved ones. Our team treats every client with the care they deserve.",
                 },
               ].map((item, index) => (
-                <div key={index} className="flex gap-6 items-start border-b border-border pb-8 last:border-0">
-                  <div className="text-4xl font-bold text-primary/20 flex-shrink-0">{item.number}</div>
+                <div key={index} className="flex gap-6 items-start border-l-2 border-l-primary/20 pl-6">
+                  <div className="text-5xl font-bold text-primary/15 flex-shrink-0">{item.number}</div>
                   <div>
                     <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
@@ -179,18 +189,19 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Service Locations */}
-        <section className="py-16 lg:py-20 bg-muted">
+        {/* Service Locations — Muted bg */}
+        <section className="py-20 lg:py-28 bg-muted">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="max-w-3xl">
-              <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-8">Serving Dhaka with pride</h2>
+              <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">Coverage</p>
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-8">Serving Dhaka with pride</h2>
 
               <div className="flex flex-wrap gap-3 mb-8">
                 {["Gulshan", "Banani", "Dhanmondi", "Uttara", "Mirpur", "Mohammadpur", "Shahbagh", "Expanding..."].map(
                   (location, index) => (
                     <div
                       key={index}
-                      className="px-4 py-2 border border-primary/30 rounded-full text-sm text-primary"
+                      className="px-4 py-2 bg-card border border-border hover:border-primary/30 transition-colors rounded-full text-sm text-foreground"
                     >
                       {location}
                     </div>

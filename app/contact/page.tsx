@@ -66,28 +66,31 @@ Please contact me to discuss this booking.`
       <Header />
 
       <main>
-        <section className="py-16 lg:py-20 bg-gradient-to-b from-muted to-background">
+        <section className="grain relative overflow-hidden bg-[oklch(0.22_0.06_175)] text-white py-16 lg:py-20">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <div className="inline-block mb-8">
-                  <div className="text-sm font-semibold tracking-wider uppercase text-muted-foreground mb-3">Get in touch</div>
-                  <div className="h-1 w-16 bg-primary mx-auto" />
-                </div>
-                <h1 className="text-3xl lg:text-4xl font-bold leading-tight mb-6 text-foreground">
+              <div className="text-center">
+                <p className="text-sm font-medium tracking-wider uppercase text-accent mb-6">Get in touch</p>
+                <h1 className="text-3xl lg:text-4xl font-bold leading-tight mb-6 text-white">
                   Book your companion service
                 </h1>
-                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                <p className="text-xl text-white/60 max-w-2xl mx-auto">
                   Fill out the form below and our team will contact you via WhatsApp to confirm your booking.
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
 
+        <section className="py-16 lg:py-20 bg-background">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="max-w-6xl mx-auto">
               <div className="grid lg:grid-cols-5 gap-12">
                 {/* Contact Form */}
                 <div className="lg:col-span-3">
                   <form
                     onSubmit={handleSubmit}
-                    className="space-y-8 bg-card p-10 rounded-xl border border-border shadow-sm"
+                    className="space-y-8 bg-card p-8 lg:p-10 rounded-xl border border-border shadow-sm"
                   >
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
@@ -205,7 +208,7 @@ Please contact me to discuss this booking.`
                       type="submit"
                       size="lg"
                       disabled={isSubmitting}
-                      className="w-full h-14 text-base rounded-xl bg-primary hover:bg-primary/90"
+                      className="w-full h-14 text-base rounded-xl bg-accent text-accent-foreground hover:bg-accent/90"
                     >
                       {isSubmitting ? "Processing..." : "Send via WhatsApp"}
                     </Button>
@@ -218,7 +221,7 @@ Please contact me to discuss this booking.`
 
                 {/* Contact Information */}
                 <div className="lg:col-span-2 space-y-8">
-                  <div className="bg-primary text-white p-10 rounded-2xl">
+                  <div className="grain relative overflow-hidden bg-[oklch(0.22_0.06_175)] text-white p-10 rounded-xl">
                     <h3 className="text-2xl font-bold mb-8">Contact Information</h3>
                     <div className="space-y-6">
                       <div className="flex items-start gap-4">
@@ -257,7 +260,7 @@ Please contact me to discuss this booking.`
                     </div>
                   </div>
 
-                  <div className="bg-muted p-10 rounded-2xl border border-border">
+                  <div className="bg-muted p-10 rounded-xl border border-border">
                     <h3 className="text-xl font-bold mb-6 text-foreground">Service Locations</h3>
                     <div className="flex items-start gap-4 mb-6">
                       <MapPin className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-1" />
@@ -266,7 +269,7 @@ Please contact me to discuss this booking.`
                           (location) => (
                             <span
                               key={location}
-                              className="px-3 py-1 bg-white border border-border rounded-full text-sm font-medium text-foreground"
+                              className="px-3 py-1 bg-card border border-border rounded-full text-sm font-medium text-foreground"
                             >
                               {location}
                             </span>
@@ -277,7 +280,7 @@ Please contact me to discuss this booking.`
                     <p className="text-sm text-muted-foreground">Serving Dhaka, Bangladesh with expansion to more areas</p>
                   </div>
 
-                  <div className="bg-muted p-8 rounded-2xl border border-border">
+                  <div className="bg-muted p-8 rounded-xl border border-border">
                     <h3 className="text-lg font-bold mb-4 text-foreground">Quick Response Time</h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">
                       We typically respond within 30 minutes during business hours and within 2 hours for overnight
