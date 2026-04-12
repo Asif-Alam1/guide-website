@@ -72,10 +72,10 @@ Please contact me to discuss this booking.`
               <div className="text-center">
                 <p className="text-sm font-medium tracking-wider uppercase text-accent mb-6">Get in touch</p>
                 <h1 className="text-3xl lg:text-4xl font-bold leading-tight mb-6 text-white">
-                  Book your companion service
+                  Book your medical companion
                 </h1>
                 <p className="text-xl text-white/60 max-w-2xl mx-auto">
-                  Fill out the form below and our team will contact you via WhatsApp to confirm your booking.
+                  Fill out the form and our team will contact you via WhatsApp to confirm your booking and discuss your needs.
                 </p>
               </div>
             </div>
@@ -150,12 +150,12 @@ Please contact me to discuss this booking.`
                           <SelectValue placeholder="Choose a service package" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="launch-ghat">Launch Ghat Service</SelectItem>
-                          <SelectItem value="terminal-pickup">Terminal Pickup & Drop-off</SelectItem>
-                          <SelectItem value="transport-transfer">Transport Transfers</SelectItem>
-                          <SelectItem value="intercity">Intercity Travel</SelectItem>
-                          <SelectItem value="village-companion">Village Companion (24-hour)</SelectItem>
-                          <SelectItem value="medical-assistance">Medical Assistance</SelectItem>
+                          <SelectItem value="hospital-companion">Hospital Companion</SelectItem>
+                          <SelectItem value="hospital-attendant">Hospital Attendant (Overnight/24hr)</SelectItem>
+                          <SelectItem value="report-medicine">Report & Medicine Collection</SelectItem>
+                          <SelectItem value="launch-ghat">Launch Ghat Escort</SelectItem>
+                          <SelectItem value="airport-terminal">Airport & Terminal Pickup</SelectItem>
+                          <SelectItem value="intercity-village">Intercity & Village Companion</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -204,6 +204,21 @@ Please contact me to discuss this booking.`
                       />
                     </div>
 
+                    <div className="flex items-start gap-3">
+                      <input
+                        type="checkbox"
+                        id="terms"
+                        required
+                        className="mt-1 h-4 w-4 rounded border-input accent-primary"
+                      />
+                      <Label htmlFor="terms" className="text-sm text-muted-foreground font-normal leading-relaxed">
+                        I have read and agree to the{" "}
+                        <a href="/terms" target="_blank" className="text-primary font-medium hover:underline">
+                          Terms & Conditions
+                        </a>
+                      </Label>
+                    </div>
+
                     <Button
                       type="submit"
                       size="lg"
@@ -222,7 +237,7 @@ Please contact me to discuss this booking.`
                 {/* Contact Information */}
                 <div className="lg:col-span-2 space-y-8">
                   <div className="grain relative overflow-hidden bg-[oklch(0.22_0.06_175)] text-white p-10 rounded-xl">
-                    <h3 className="text-2xl font-bold mb-8">Contact Information</h3>
+                    <h3 className="text-2xl font-bold mb-8">Get in Touch</h3>
                     <div className="space-y-6">
                       <div className="flex items-start gap-4">
                         <div className="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center flex-shrink-0">

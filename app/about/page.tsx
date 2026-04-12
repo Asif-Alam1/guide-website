@@ -1,10 +1,10 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { Shield, Heart, Users, Award, CheckCircle2, MapPin, Phone } from "lucide-react"
+import { Shield, Heart, Users, Award, CheckCircle2, MapPin, Phone, Stethoscope } from "lucide-react"
 
 export const metadata = {
   title: "About Guide - Our Mission & Values | Trusted Companion Service",
-  description: "Learn about Guide's mission to provide safe, reliable companion services in Dhaka.",
+  description: "Learn about Guide's mission to provide safe, reliable medical companion services in Dhaka.",
 }
 
 export default function AboutPage() {
@@ -34,8 +34,7 @@ export default function AboutPage() {
               </h1>
 
               <p className="text-lg text-white/60 leading-relaxed max-w-2xl">
-                Your trusted companion service, committed to ensuring safety and peace of mind for every journey across
-                Dhaka.
+                Dhaka&apos;s dedicated medical companion service — ensuring your family receives safe, reliable assistance for every hospital visit.
               </p>
             </div>
           </div>
@@ -47,23 +46,21 @@ export default function AboutPage() {
             <div className="max-w-3xl">
               <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">Our mission</p>
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
-                Providing safe, reliable companionship
+                Providing safe, reliable medical companionship
               </h2>
 
               <div className="space-y-4 text-base text-muted-foreground leading-relaxed">
                 <p>
-                  Guide was founded with a simple yet powerful mission: to ensure that everyone in Dhaka can travel
-                  safely and confidently, knowing they have a trusted companion by their side.
+                  Guide was founded with a simple yet powerful mission: to ensure that families in Dhaka never have to worry when a loved one needs to visit the hospital. We provide a trusted companion who handles the entire medical visit — from escort to consultation notes to report collection.
                 </p>
                 <p>
-                  We understand the concerns families face when their loved ones need to travel. That&apos;s why we&apos;ve
-                  built a service based on trust, transparency, and unwavering commitment to safety.
+                  Whether it&apos;s an elderly parent needing a hospital checkup or collecting test reports on behalf of family abroad, we handle the logistics so you don&apos;t have to worry.
                 </p>
               </div>
 
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
                 {[
-                  { icon: Shield, label: "Uniformed Staff", accent: "border-l-primary" },
+                  { icon: Stethoscope, label: "Medical Visit Support", accent: "border-l-primary" },
                   { icon: CheckCircle2, label: "Background Checks", accent: "border-l-secondary" },
                   { icon: MapPin, label: "Live Tracking", accent: "border-l-accent" },
                   { icon: Phone, label: "Photo Confirmation", accent: "border-l-primary" },
@@ -160,15 +157,15 @@ export default function AboutPage() {
                 },
                 {
                   number: "03",
-                  title: "Comprehensive service coverage",
+                  title: "Complete medical visit support",
                   description:
-                    "From airport pickups to medical assistance, intercity travel to village visits, we offer six specialized packages.",
+                    "From escorting to the hospital, sitting through consultations, taking doctor's notes, purchasing medicines, to collecting reports — we handle every step.",
                 },
                 {
                   number: "04",
-                  title: "Strategic service locations",
+                  title: "Digital reports for family abroad",
                   description:
-                    "With pickup points across Dhaka including Gulshan, Banani, Dhanmondi, Uttara, we're always nearby.",
+                    "Test results, prescriptions, and doctor's notes digitized and sent to family members overseas so they stay informed.",
                 },
                 {
                   number: "05",
