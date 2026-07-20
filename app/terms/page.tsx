@@ -1,9 +1,15 @@
+import type React from "react"
+import type { Metadata } from "next"
+
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { WhatsAppIcon } from "@/components/whatsapp-icon"
+import { PREFILL, waLink } from "@/lib/site"
 
-export const metadata = {
-  title: "Terms & Conditions - Guide Medical Companion Service",
-  description: "Terms and conditions for Guide's medical companion and escort services in Dhaka, Bangladesh.",
+export const metadata: Metadata = {
+  title: "Terms & Conditions",
+  description:
+    "The full terms and conditions for Guide's medical companion and escort services in Dhaka, Bangladesh — published in plain sight.",
 }
 
 const clauses = [
@@ -84,57 +90,71 @@ export default function TermsPage() {
     <div className="min-h-screen">
       <Header />
 
-      <main>
-        {/* Hero */}
-        <section className="grain relative overflow-hidden bg-[oklch(0.22_0.06_175)] text-white">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute right-[8%] lg:right-[15%] top-1/2 -translate-y-1/2 font-[family-name:var(--font-bengali)] text-[clamp(5rem,14vw,10rem)] font-bold leading-none text-white/[0.04] select-none"
-          >
-            শর্তাবলী
-          </div>
-
-          <div className="relative z-10 container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+      <main id="main">
+        <section className="bg-background" aria-labelledby="terms-heading">
+          <div className="container mx-auto px-4 lg:px-8 pt-16 pb-12 lg:pt-24 lg:pb-16">
             <div className="max-w-3xl">
-              <p className="text-sm font-medium tracking-wider uppercase text-accent mb-8">Legal</p>
-
-              <h1 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-                Terms & Conditions
+              <p lang="bn" className="waymark mb-4 enter" style={{ "--enter": 0 } as React.CSSProperties}>
+                শর্তাবলী
+              </p>
+              <h1
+                id="terms-heading"
+                className="enter-display text-[clamp(2.25rem,1.3rem+3.8vw,4rem)] font-bold leading-[1.05] tracking-[-0.02em] text-foreground"
+                style={{ "--enter": 1 } as React.CSSProperties}
+              >
+                Terms &amp; Conditions
               </h1>
-
-              <p className="text-lg text-white/60 leading-relaxed max-w-2xl">
-                Please read before booking
+              <p
+                className="enter mt-6 max-w-[58ch] text-[length:var(--text-lead)] leading-relaxed text-muted-foreground"
+                style={{ "--enter": 2 } as React.CSSProperties}
+              >
+                Fourteen clauses, published in full. Please read them before booking — they define
+                exactly what we do, what we don&apos;t, and what we ask of you.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Clauses */}
-        <section className="bg-background py-16 lg:py-20">
+        <section className="pb-20 lg:pb-28 bg-background">
           <div className="container mx-auto px-4 lg:px-8">
-            <div className="max-w-3xl mx-auto space-y-4">
+            <ol className="max-w-3xl">
               {clauses.map((clause, index) => (
-                <div
-                  key={index}
-                  className="bg-card border border-border rounded-xl p-6"
+                <li
+                  key={clause.title}
+                  className="grid gap-2 border-t border-border py-7 sm:grid-cols-[64px_1fr] sm:gap-6"
                 >
-                  <p className="text-sm font-semibold text-primary mb-1">
+                  <span
+                    className="font-display text-[1.5rem] font-bold leading-none text-primary/50"
+                    aria-hidden="true"
+                  >
                     {String(index + 1).padStart(2, "0")}
-                  </p>
-                  <h3 className="text-base font-semibold text-foreground mb-2">
-                    {clause.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {clause.description}
-                  </p>
-                </div>
+                  </span>
+                  <div>
+                    <h2 className="font-display text-[1.15rem] font-semibold text-foreground">
+                      {clause.title}
+                    </h2>
+                    <p className="mt-2 max-w-[62ch] leading-relaxed text-muted-foreground">
+                      {clause.description}
+                    </p>
+                  </div>
+                </li>
               ))}
+            </ol>
 
-              <div className="bg-primary/5 border border-primary/20 rounded-xl p-6">
-                <p className="text-sm text-foreground leading-relaxed">
-                  By availing the services of Guide, you confirm that you have read, understood, and fully consented to all the terms and conditions mentioned above.
-                </p>
-              </div>
+            <div className="mt-10 max-w-3xl rounded-xl bg-muted p-7">
+              <p className="leading-relaxed text-foreground/85 max-w-[62ch]">
+                By availing the services of Guide, you confirm that you have read, understood, and
+                fully consented to all the terms and conditions mentioned above.
+              </p>
+              <a
+                href={waLink("Hi Guide, I have a question about your terms and conditions.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-2 font-display font-medium text-primary hover:underline underline-offset-4"
+              >
+                <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
+                Question about a clause? Ask us
+              </a>
             </div>
           </div>
         </section>

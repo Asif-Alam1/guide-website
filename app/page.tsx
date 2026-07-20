@@ -1,407 +1,582 @@
+import type React from "react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { Phone, ArrowRight, Check } from "lucide-react"
+
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import {
-  Shield,
-  Phone,
-  CheckCircle2,
-  MapPin,
-  Hospital,
-  Ship,
-  Users,
-  MessageCircle,
-  FileText,
-  Stethoscope,
-  Clock,
-  CreditCard,
-  AlertCircle,
-  ArrowRight,
-  Pill,
-} from "lucide-react"
+import { WhatsAppIcon } from "@/components/whatsapp-icon"
+import { AREAS, PHONE_DISPLAY, PHONE_TEL, PREFILL, SERVICES, waLink } from "@/lib/site"
+
+const ROUTE_STEPS = [
+  {
+    title: "We arrive at their door",
+    body: "A uniformed, ID-verified Guide — whose photo you received in advance — arrives at your family member's home, on time.",
+  },
+  {
+    title: "They travel together",
+    body: "Uber, CNG, or ambulance arranged to your preference. Live location is shared on WhatsApp from the first minute.",
+  },
+  {
+    title: "Inside the consultation",
+    body: "Your Guide sits through the appointment and writes down everything the doctor says — advice, dosage, follow-ups.",
+  },
+  {
+    title: "Pharmacy & report desk",
+    body: "Prescribed medicines purchased, tests done, reports collected — or picked up later and delivered home.",
+  },
+  {
+    title: "Safely home again",
+    body: "Escorted back through the door, settled in. The journey isn't over until they're home.",
+  },
+  {
+    title: "You get the full record",
+    body: "Doctor's notes, prescriptions, and reports arrive on your WhatsApp — whether you're in Dhanmondi or Toronto.",
+  },
+]
+
+const KEY_TERMS = [
+  {
+    term: "50% advance",
+    detail: "Half the service fee is paid upfront; the balance after the visit is complete.",
+  },
+  {
+    term: "Book 3–4 hours ahead",
+    detail: "Advance notice guarantees a confirmed Guide. Emergencies are taken on availability.",
+  },
+  {
+    term: "Transport is on you",
+    detail: "Your Guide arranges the Uber, CNG, or ambulance — the fare is paid by the client.",
+  },
+  {
+    term: "Tell us the full condition",
+    detail: "The patient's exact condition and any infectious illness must be disclosed at booking.",
+  },
+  {
+    term: "Waiting beyond 2 hours",
+    detail: "Long consultations beyond two hours may carry an additional hourly charge.",
+  },
+  {
+    term: "Cancellation",
+    detail: "Cancel 2+ hours ahead for a 10% charge; later than that, the advance is forfeited.",
+  },
+]
+
+const FAQS = [
+  {
+    question: "What exactly does the Hospital Companion service include?",
+    answer:
+      "Your Guide escorts the patient from home to the hospital, sits through the doctor's consultation, writes down the medical advice, purchases prescribed medicines, collects test reports, and brings the patient safely home. Digital copies of everything go to family members — including those abroad.",
+  },
+  {
+    question: "I live abroad. How does this work for my parents in Dhaka?",
+    answer:
+      "Most of our bookings come from family members overseas. You book and coordinate everything over WhatsApp in English or Bengali, receive your Guide's photo and ID before the visit, watch the live location during it, and get the doctor's notes and reports as soon as the visit ends.",
+  },
+  {
+    question: "How do I know I can trust the person you send?",
+    answer:
+      "Every Guide is background-checked and identity-verified before joining, wears a uniform and ID badge on every visit, and their photo is sent to you before service begins. Live WhatsApp location sharing runs for the entire route.",
+  },
+  {
+    question: "How far in advance should I book?",
+    answer:
+      "At least 3–4 hours ahead for a confirmed Guide. For emergencies, message us anyway — we'll do our best based on availability.",
+  },
+  {
+    question: "What are the payment terms?",
+    answer:
+      "50% of the service fee in advance, the rest after completion. Hospital bills, medicine costs, and transport fares are paid directly by the client. We'll confirm payment options with you on WhatsApp when you book.",
+  },
+  {
+    question: "Does the Guide give medical advice?",
+    answer:
+      "No — and that's deliberate. Guides handle logistics: escorting, note-taking, queueing, collecting. Medical decisions stay with the doctor and your family.",
+  },
+]
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
+}
+
+const featured = SERVICES[0]
+const otherServices = SERVICES.slice(1)
 
 export default function HomePage() {
   return (
     <div className="min-h-screen">
       <Header />
 
-      <main>
-        {/* Hero — Medical-first messaging */}
-        <section className="grain relative overflow-hidden bg-[oklch(0.22_0.06_175)] text-white">
-          <div
+      <main id="main">
+        {/* ---------- Hero: typography-led, light ground ---------- */}
+        <section className="relative overflow-hidden bg-background" aria-label="Introduction">
+          {/* Journey line arcing across the hero */}
+          <svg
             aria-hidden="true"
-            className="pointer-events-none absolute right-[5%] lg:right-[10%] top-1/2 -translate-y-1/2 font-[family-name:var(--font-bengali)] text-[clamp(6rem,18vw,14rem)] font-bold leading-none text-white/[0.04] select-none"
+            viewBox="0 0 1440 720"
+            fill="none"
+            preserveAspectRatio="xMidYMax slice"
+            className="pointer-events-none absolute inset-0 h-full w-full"
           >
-            নিরাপদ
-            <br />
-            সেবা
-          </div>
+            <path
+              d="M-60 660 C 320 640, 420 430, 760 420 S 1240 250, 1500 130"
+              pathLength="1"
+              stroke="oklch(0.87 0.035 165)"
+              strokeWidth="2.5"
+              strokeDasharray="6 10"
+              className="hero-fade"
+            />
+            <circle cx="760" cy="420" r="7" fill="oklch(0.87 0.035 165)" className="enter" style={{ "--enter": 8 } as React.CSSProperties} />
+            <circle cx="1236" cy="253" r="10" fill="oklch(0.78 0.14 78)" className="enter" style={{ "--enter": 10 } as React.CSSProperties} />
+          </svg>
 
-          <div className="relative z-10 container mx-auto px-4 lg:px-8 py-20 lg:py-32">
-            <div className="max-w-3xl">
-              <p className="animate-fade-up text-sm font-medium tracking-wider uppercase text-accent mb-8">
-                Companion Service in Dhaka
+          <div className="relative container mx-auto px-4 lg:px-8 pt-16 pb-24 lg:pt-28 lg:pb-36">
+            <div className="max-w-4xl">
+              <p
+                lang="bn"
+                className="enter font-bengali text-lg font-semibold text-primary mb-6"
+                style={{ "--enter": 0 } as React.CSSProperties}
+              >
+                আপনার হয়ে, আপনার প্রিয়জনের পাশে
               </p>
 
-              <h1 className="animate-fade-up delay-100 text-[clamp(2.25rem,5.5vw,4rem)] font-bold leading-[1.05] tracking-tight mb-4">
-                Your trusted
+              <h1
+                className="enter-display text-[length:var(--text-hero)] font-bold leading-[1.02] tracking-[-0.025em] text-foreground"
+                style={{ "--enter": 1 } as React.CSSProperties}
+              >
+                When you can&apos;t be there,
                 <br />
-                companion for
-                <span className="text-accent"> medical &amp; travel</span>
+                <span className="text-primary">a Guide is.</span>
               </h1>
 
-              <p className="animate-fade-up delay-200 font-[family-name:var(--font-bengali)] text-xl text-white/50 mb-6">
-                আপনার পরিবারের নিরাপদ যাত্রা ও চিকিৎসা সেবার সঙ্গী
+              <p
+                className="enter mt-8 max-w-[58ch] text-[length:var(--text-lead)] leading-relaxed text-muted-foreground"
+                style={{ "--enter": 3 } as React.CSSProperties}
+              >
+                Guide sends a background-checked, uniformed companion with your family member in
+                Dhaka — to the hospital and back, through consultations, pharmacies, and report
+                desks — with live updates on WhatsApp to you, anywhere in the world.
               </p>
 
-              <p className="animate-fade-up delay-200 text-lg text-white/70 leading-relaxed max-w-xl mb-10">
-                From hospital visits and doctor&apos;s appointments to airport
-                pickups and launch ghat escorts — uniformed, background-checked
-                guides with live WhatsApp tracking.
-              </p>
-
-              <div className="animate-fade-up delay-300 flex flex-wrap gap-4 mb-14">
-                <Button
-                  size="lg"
-                  className="h-13 px-8 rounded-lg bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-base"
-                  asChild
-                >
-                  <Link href="/contact">Book Now</Link>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="h-13 px-8 rounded-lg border-white/20 text-white hover:bg-white/10 bg-transparent font-semibold text-base"
-                  asChild
-                >
-                  <a href="https://wa.me/8801309204120" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                    <MessageCircle className="w-4 h-4" />
-                    WhatsApp
+              <div
+                className="enter mt-10 flex flex-wrap items-center gap-4"
+                style={{ "--enter": 4 } as React.CSSProperties}
+              >
+                <div className="flex flex-col gap-1.5">
+                  <a
+                    href={waLink(PREFILL.hero)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-accent text-[1.05rem] !px-8 !min-h-[3.25rem]"
+                  >
+                    <WhatsAppIcon className="w-5 h-5" />
+                    Message us on WhatsApp
                   </a>
-                </Button>
+                  <span className="font-display text-sm text-muted-foreground pl-1">
+                    Replies within ~30 min, 9am–9pm Dhaka time
+                  </span>
+                </div>
+                <a href={`tel:${PHONE_TEL}`} className="btn btn-outline !min-h-[3.25rem] mb-6">
+                  <Phone className="w-4 h-4" aria-hidden="true" />
+                  {PHONE_DISPLAY}
+                </a>
               </div>
 
-              <div className="animate-fade-up delay-400 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-white/40">
-                <span className="flex items-center gap-2"><Shield className="w-3.5 h-3.5 text-white/30" />Uniformed &amp; ID-Verified</span>
-                <span className="hidden sm:inline text-white/15">|</span>
-                <span className="flex items-center gap-2"><MapPin className="w-3.5 h-3.5 text-white/30" />Live WhatsApp Tracking</span>
-                <span className="hidden sm:inline text-white/15">|</span>
-                <span className="flex items-center gap-2"><FileText className="w-3.5 h-3.5 text-white/30" />Digital Reports to Family</span>
+              <ul
+                className="enter mt-12 flex flex-wrap items-center gap-x-7 gap-y-3 font-display text-[0.95rem] text-muted-foreground"
+                style={{ "--enter": 5 } as React.CSSProperties}
+              >
+                {[
+                  "Uniformed & ID-verified",
+                  "Live location on WhatsApp",
+                  "Reports sent to family abroad",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-primary" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* ---------- The route: how one visit works ---------- */}
+        <section
+          id="how-it-works"
+          className="py-20 lg:py-28 bg-muted"
+          aria-labelledby="how-heading"
+        >
+          <div className="container mx-auto px-4 lg:px-8 grid gap-14 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
+            <div className="lg:sticky lg:top-28 lg:self-start max-w-xl">
+              <p lang="bn" className="waymark mb-3">
+                যাত্রা
+              </p>
+              <h2 id="how-heading" className="text-[length:var(--text-h2)] font-bold leading-[1.08] tracking-tight text-foreground">
+                One hospital visit, door to door
+              </h2>
+              <p className="mt-5 text-[1.05rem] leading-relaxed text-muted-foreground">
+                This is the route every Hospital Companion booking follows. No steps skipped, no
+                surprises — and you can watch it happen live.
+              </p>
+              <div className="mt-8 hidden lg:flex flex-col items-start gap-3">
+                <a
+                  href={waLink(PREFILL.hospitalCompanion)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                >
+                  <WhatsAppIcon className="w-4 h-4" />
+                  Book a hospital companion
+                </a>
+                <p className="font-display text-sm text-muted-foreground">
+                  Book at least 3–4 hours ahead ·{" "}
+                  <Link href="/terms" className="underline underline-offset-4 hover:text-foreground">
+                    see all terms
+                  </Link>
+                </p>
+              </div>
+            </div>
+
+            <div className="relative max-w-3xl">
+              {/* The journey line, drawn by scroll */}
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 2 100"
+                preserveAspectRatio="none"
+                fill="none"
+                className="absolute left-[1.19rem] top-3 h-[calc(100%-2.5rem)] w-[2px]"
+              >
+                <path
+                  d="M1 0 V100"
+                  pathLength="1"
+                  stroke="oklch(0.55 0.08 165)"
+                  strokeWidth="2"
+                  className="path-draw"
+                />
+              </svg>
+
+              <ol className="space-y-12 lg:space-y-14">
+                {ROUTE_STEPS.map((step, index) => (
+                  <li key={step.title} className="reveal relative flex gap-6 lg:gap-8">
+                    <span
+                      className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent font-display text-[1.05rem] font-bold text-accent-foreground ring-4 ring-muted"
+                      aria-hidden="true"
+                    >
+                      {index + 1}
+                    </span>
+                    <div className="pt-1">
+                      <h3 className="font-display text-[length:var(--text-h3)] font-semibold leading-snug text-foreground">
+                        {step.title}
+                      </h3>
+                      <p className="mt-2 max-w-[52ch] leading-relaxed text-muted-foreground">
+                        {step.body}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+
+              <div className="reveal mt-14 flex flex-wrap items-center gap-4 lg:hidden">
+                <a
+                  href={waLink(PREFILL.hospitalCompanion)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                >
+                  <WhatsAppIcon className="w-4 h-4" />
+                  Book a hospital companion
+                </a>
+                <p className="font-display text-sm text-muted-foreground">
+                  Book at least 3–4 hours ahead ·{" "}
+                  <Link href="/terms" className="underline underline-offset-4 hover:text-foreground">
+                    see all terms
+                  </Link>
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Services — Medical-first */}
-        <section className="py-20 lg:py-28 bg-background">
+        {/* ---------- Services: featured block + editorial ledger ---------- */}
+        <section id="services" className="py-20 lg:py-28 bg-background" aria-labelledby="services-heading">
           <div className="container mx-auto px-4 lg:px-8">
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-14">
-              <div>
-                <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">What we offer</p>
-                <h2 className="text-3xl lg:text-4xl font-bold text-foreground">Our services</h2>
-              </div>
-              <p className="text-muted-foreground max-w-md">
-                Specialized medical and travel companion services for families in Dhaka.
+            <div className="max-w-2xl mb-14">
+              <p lang="bn" className="waymark mb-3">
+                সেবা
               </p>
+              <h2 id="services-heading" className="text-[length:var(--text-h2)] font-bold leading-[1.08] tracking-tight text-foreground">
+                What we can take off your plate
+              </h2>
             </div>
 
             {/* Featured: Hospital Companion */}
-            <div className="grain relative overflow-hidden bg-[oklch(0.22_0.06_175)] text-white rounded-2xl p-8 lg:p-12 mb-6">
-              <div className="relative z-10">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
-                    <Stethoscope className="w-6 h-6 text-accent" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-accent">Primary Service</span>
-                    <h3 className="text-2xl font-bold mt-1">Hospital Companion</h3>
+            <div className="reveal grain on-deep relative overflow-hidden rounded-xl bg-brand-deep text-white">
+              <div className="relative z-10 grid gap-10 p-8 lg:grid-cols-[1.3fr_1fr] lg:p-14">
+                <div>
+                  <p lang="bn" className="waymark mb-2">
+                    {featured.nameBn}
+                  </p>
+                  <h3 className="font-display text-[clamp(1.75rem,1.2rem+2.2vw,2.6rem)] font-bold leading-tight">
+                    {featured.nameEn}
+                  </h3>
+                  <p className="mt-5 max-w-[56ch] text-[1.05rem] leading-relaxed text-white/70">
+                    {featured.description}
+                  </p>
+                  <div className="mt-8 flex flex-wrap gap-4">
+                    <a
+                      href={waLink(featured.prefill)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-accent"
+                    >
+                      <WhatsAppIcon className="w-4 h-4" />
+                      Book this service
+                    </a>
+                    <a href="#how-it-works" className="btn btn-outline-dark">
+                      See how a visit works
+                      <ArrowRight className="btn-arrow w-4 h-4" aria-hidden="true" />
+                    </a>
                   </div>
                 </div>
+                <ul className="flex flex-col justify-center gap-4 lg:border-l lg:border-white/15 lg:pl-10">
+                  {featured.includes.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <Check className="mt-1 w-4 h-4 shrink-0 text-accent" aria-hidden="true" />
+                      <span className="font-display text-[1.02rem] text-white/85">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
 
-                <p className="text-white/60 leading-relaxed max-w-2xl mb-6">
-                  Complete medical visit assistance — from escorting your family member to the
-                  hospital, sitting through the consultation, taking doctor&apos;s notes, purchasing
-                  prescribed medicines, to collecting test reports and ensuring a safe return home.
-                  Digital reports sent to family abroad.
+            {/* Ledger of remaining services */}
+            <ul className="mt-4">
+              {otherServices.map((service) => (
+                <li
+                  key={service.id}
+                  className="reveal grid gap-4 border-b border-border py-8 lg:grid-cols-[minmax(220px,1fr)_2fr_auto] lg:gap-10 lg:py-10"
+                >
+                  <div>
+                    <p lang="bn" className="waymark !text-[1rem] mb-1">
+                      {service.nameBn}
+                    </p>
+                    <h3 className="font-display text-[1.35rem] font-semibold leading-snug text-foreground">
+                      {service.nameEn}
+                    </h3>
+                  </div>
+                  <p className="max-w-[58ch] leading-relaxed text-muted-foreground self-center">
+                    {service.description}
+                  </p>
+                  <div className="self-center">
+                    <a
+                      href={waLink(service.prefill)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-outline whitespace-nowrap !min-h-[2.75rem]"
+                    >
+                      <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
+                      Ask about this
+                    </a>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-8 font-display text-[0.95rem] text-muted-foreground">
+              Serving {AREAS.join(" · ")} <span className="text-primary font-medium">+ expanding across Dhaka</span>
+            </p>
+          </div>
+        </section>
+
+        {/* ---------- Safety: the artifact your family receives ---------- */}
+        <section
+          className="grain on-deep relative overflow-hidden bg-brand-deep py-20 text-white lg:py-28"
+          aria-labelledby="safety-heading"
+        >
+          <div className="relative z-10 container mx-auto px-4 lg:px-8">
+            <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
+              <div>
+                <p lang="bn" className="waymark mb-3">
+                  নিরাপত্তা
+                </p>
+                <h2 id="safety-heading" className="text-[length:var(--text-h2)] font-bold leading-[1.08] tracking-tight">
+                  Know exactly who is with them
+                </h2>
+                <p className="mt-5 max-w-[54ch] text-[1.05rem] leading-relaxed text-white/70">
+                  Trust shouldn&apos;t be asked for — it should be shown, message by message. Before
+                  and during every visit, this is what arrives on your WhatsApp.
                 </p>
 
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
+                <dl className="mt-10 space-y-6">
                   {[
-                    "Home → Hospital → Home",
-                    "Doctor's notes & prescriptions",
-                    "Test report collection",
-                    "Digital reports to family",
+                    {
+                      term: "Verified before they join",
+                      detail: "Every Guide passes a background check and identity verification before their first assignment.",
+                    },
+                    {
+                      term: "Recognizable at the door",
+                      detail: "Uniform and ID badge on every visit — your family knows who they're opening the door to.",
+                    },
+                    {
+                      term: "Photo before, location during",
+                      detail: "You receive your Guide's photo before service begins, and live WhatsApp location for the whole route.",
+                    },
                   ].map((item) => (
-                    <div key={item} className="flex items-start gap-2 text-sm text-white/50">
-                      <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
-                      <span>{item}</span>
+                    <div key={item.term} className="reveal">
+                      <dt className="font-display text-[1.1rem] font-semibold text-accent">
+                        {item.term}
+                      </dt>
+                      <dd className="mt-1 max-w-[52ch] leading-relaxed text-white/65">
+                        {item.detail}
+                      </dd>
                     </div>
                   ))}
-                </div>
-
-                <Button
-                  className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-lg h-11 px-6"
-                  asChild
-                >
-                  <Link href="/contact">Book this service</Link>
-                </Button>
-              </div>
-            </div>
-
-            {/* Medical services row */}
-            <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-3 mt-2">Medical Services</p>
-            <div className="grid md:grid-cols-3 gap-4 mb-10">
-              <div className="bg-card border border-border border-l-4 border-l-primary rounded-xl p-6 hover:shadow-md transition-shadow">
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Clock className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-base font-semibold text-foreground mb-2">Hospital Attendant</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Overnight or 24-hour supervision for admitted patients. A reliable Guide stays
-                  with your family member when you can&apos;t be at the hospital.
-                </p>
+                </dl>
               </div>
 
-              <div className="bg-card border border-border border-l-4 border-l-primary rounded-xl p-6 hover:shadow-md transition-shadow">
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Pill className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-base font-semibold text-foreground mb-2">Report &amp; Medicine Collection</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Pickup and delivery of test reports and prescribed medicines from hospitals and
-                  pharmacies on your behalf. Digital copies sent to family abroad.
-                </p>
-              </div>
-
-              <div className="bg-card border border-border border-l-4 border-l-primary rounded-xl p-6 hover:shadow-md transition-shadow">
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Hospital className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-base font-semibold text-foreground mb-2">Emergency Ambulance</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Ambulance arrangement based on the patient&apos;s condition. Our Guide coordinates
-                  logistics while a family member accompanies the patient.
-                </p>
-              </div>
-            </div>
-
-            {/* Travel & Escort services row */}
-            <p className="text-xs font-semibold text-secondary uppercase tracking-wider mb-3">Travel &amp; Escort Services</p>
-            <div className="grid md:grid-cols-3 gap-4">
-              <div className="bg-card border border-border border-l-4 border-l-accent rounded-xl p-6 hover:shadow-md transition-shadow">
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Ship className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-base font-semibold text-foreground mb-2">Launch Ghat Escort</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Safe escort from Sadarghat Launch Terminal to home or home to terminal.
-                  Luggage handling, transport arrangement, and live tracking.
-                </p>
-              </div>
-
-              <div className="bg-card border border-border border-l-4 border-l-accent rounded-xl p-6 hover:shadow-md transition-shadow">
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <MapPin className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-base font-semibold text-foreground mb-2">Airport &amp; Terminal Pickup</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Assistance at airports, train stations, and bus terminals. Arrival pickup,
-                  departure drop-off, luggage help, and safe transport home.
-                </p>
-              </div>
-
-              <div className="bg-card border border-border border-l-4 border-l-accent rounded-xl p-6 hover:shadow-md transition-shadow">
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Users className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-base font-semibold text-foreground mb-2">Intercity &amp; Village Companion</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Safe companionship for city travel or full-day village visits. Ideal for elderly
-                  travelers who need a trusted companion for the journey.
-                </p>
-              </div>
-            </div>
-
-            {/* Locations strip */}
-            <div className="mt-10 flex flex-wrap items-center gap-3">
-              <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
-                <MapPin className="w-4 h-4 text-primary" />
-                Serving:
-              </div>
-              {["Gulshan", "Banani", "Dhanmondi", "Uttara", "Mirpur", "Mohammadpur", "Shahbagh"].map((loc) => (
-                <span key={loc} className="text-sm text-muted-foreground">{loc}</span>
-              ))}
-              <span className="text-sm text-primary font-medium">+ expanding</span>
-            </div>
-          </div>
-        </section>
-
-        {/* How It Works — Medical flow */}
-        <section className="py-20 lg:py-28 bg-muted">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="mb-14">
-              <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">Simple process</p>
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground">How it works</h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden">
-              {[
-                { number: "01", icon: Phone, title: "Book ahead", description: "Contact us via WhatsApp or phone at least 3-4 hours before your appointment" },
-                { number: "02", icon: FileText, title: "Share details", description: "Tell us the patient's condition, hospital name, and appointment time" },
-                { number: "03", icon: Users, title: "Guide arrives", description: "Our uniformed, ID-verified Guide arrives at your home on time" },
-                { number: "04", icon: MapPin, title: "Full assistance", description: "Escort, consultation support, report collection, and safe return home" },
-              ].map((step) => (
-                <div key={step.number} className="bg-card p-8 relative">
-                  <span className="text-6xl font-bold text-primary/10 leading-none">{step.number}</span>
-                  <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mt-4 mb-4">
-                    <step.icon className="w-5 h-5 text-white" />
+              {/* WhatsApp conversation artifact — what a visit looks like from abroad */}
+              <figure className="reveal mx-auto w-full max-w-sm">
+                <div className="overflow-hidden rounded-xl bg-white shadow-2xl">
+                  <div className="flex items-center gap-3 bg-brand-deeper px-4 py-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accent font-display text-sm font-bold text-accent-foreground">
+                      G
+                    </div>
+                    <div className="leading-tight">
+                      <p className="font-display text-sm font-semibold text-white">Guide</p>
+                      <p className="font-display text-xs text-white/55">online · live location active</p>
+                    </div>
                   </div>
-                  <h3 className="text-base font-semibold text-foreground mb-1">{step.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
+                  <div className="space-y-2.5 bg-[oklch(0.95_0.01_120)] p-4 font-display text-[0.85rem]">
+                    <div className="max-w-[85%] rounded-lg rounded-tl-sm bg-white p-3 shadow-sm">
+                      <p className="text-foreground">
+                        Your Guide for today&apos;s visit — photo &amp; ID badge attached ✓
+                      </p>
+                      <div className="mt-2 flex items-center gap-2.5 rounded-md bg-muted p-2.5">
+                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-deep text-xs font-bold text-white" aria-hidden="true">
+                          ID
+                        </div>
+                        <p className="text-xs leading-snug text-muted-foreground">
+                          Photo · Name · Badge number
+                          <br />
+                          <span className="text-primary font-semibold">Identity verified</span>
+                        </p>
+                      </div>
+                      <p className="mt-1.5 text-right text-[0.7rem] text-muted-foreground">9:12 AM</p>
+                    </div>
+                    <div className="max-w-[85%] rounded-lg rounded-tl-sm bg-white p-3 shadow-sm">
+                      <p className="text-foreground">📍 Live location shared — on the way to the hospital</p>
+                      <p className="mt-1.5 text-right text-[0.7rem] text-muted-foreground">10:02 AM</p>
+                    </div>
+                    <div className="max-w-[85%] rounded-lg rounded-tl-sm bg-white p-3 shadow-sm">
+                      <p className="text-foreground">
+                        Consultation done. Doctor&apos;s notes &amp; prescription 📄
+                      </p>
+                      <p className="mt-1.5 text-right text-[0.7rem] text-muted-foreground">12:15 PM</p>
+                    </div>
+                    <div className="max-w-[85%] rounded-lg rounded-tl-sm bg-white p-3 shadow-sm">
+                      <p lang="bn" className="text-foreground">
+                        রিপোর্ট সংগ্রহ শেষ — উনি নিরাপদে বাসায় পৌঁছেছেন 🏠
+                      </p>
+                      <p className="mt-1.5 text-right text-[0.7rem] text-muted-foreground">1:40 PM</p>
+                    </div>
+                  </div>
                 </div>
-              ))}
+                <figcaption className="mt-3 text-center font-display text-xs text-white/60">
+                  An illustration of the updates a family receives during one visit.
+                </figcaption>
+              </figure>
             </div>
           </div>
         </section>
 
-        {/* Safety — Dark teal */}
-        <section className="grain relative overflow-hidden bg-[oklch(0.22_0.06_175)] text-white py-20 lg:py-28">
-          <div className="relative z-10 container mx-auto px-4 lg:px-8">
-            <div className="grid lg:grid-cols-[1fr_1.2fr] gap-16 items-center">
+        {/* ---------- The fine print, in plain sight ---------- */}
+        <section className="py-20 lg:py-28 bg-background" aria-labelledby="terms-heading">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="grid gap-12 lg:grid-cols-[1fr_2fr] lg:gap-20">
               <div>
-                <p className="text-sm font-semibold text-accent uppercase tracking-wider mb-2">Trust &amp; safety</p>
-                <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-                  Your family is in
-                  <br />
-                  <span className="text-accent">safe hands</span>
-                </h2>
-                <p className="text-white/60 leading-relaxed">
-                  Every Guide is background-checked, uniformed, and tracked in real-time. You know exactly who is with your family member at all times.
+                <p lang="bn" className="waymark mb-3">
+                  শর্ত
                 </p>
+                <h2 id="terms-heading" className="text-[length:var(--text-h2)] font-bold leading-[1.08] tracking-tight text-foreground">
+                  The fine print, in plain sight
+                </h2>
+                <p className="mt-5 leading-relaxed text-muted-foreground">
+                  A service you trust with your family shouldn&apos;t bury its conditions. Here are
+                  the ones that matter most, before you book.
+                </p>
+                <Link
+                  href="/terms"
+                  className="mt-6 inline-flex items-center gap-2 font-display font-medium text-primary hover:underline underline-offset-4"
+                >
+                  Read the full terms &amp; conditions
+                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                </Link>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-4">
-                {[
-                  { icon: Shield, title: "Uniformed staff", description: "Professional uniform and ID badge for immediate identification" },
-                  { icon: CheckCircle2, title: "Background verified", description: "Thorough background check on every team member" },
-                  { icon: Phone, title: "Photo confirmation", description: "Receive your Guide's photo before service begins" },
-                  { icon: MapPin, title: "Live tracking", description: "Real-time WhatsApp location sharing throughout" },
-                ].map((feature) => (
-                  <div key={feature.title} className="bg-white/5 border border-white/8 rounded-xl p-5">
-                    <feature.icon className="w-8 h-8 text-accent mb-3" />
-                    <h3 className="text-sm font-semibold mb-1">{feature.title}</h3>
-                    <p className="text-xs text-white/50 leading-relaxed">{feature.description}</p>
+              <dl className="grid gap-x-10 sm:grid-cols-2">
+                {KEY_TERMS.map((item) => (
+                  <div key={item.term} className="reveal border-t border-border py-5">
+                    <dt className="font-display text-[1.05rem] font-semibold text-foreground">
+                      {item.term}
+                    </dt>
+                    <dd className="mt-1 text-[0.95rem] leading-relaxed text-muted-foreground">
+                      {item.detail}
+                    </dd>
                   </div>
                 ))}
-              </div>
+              </dl>
             </div>
           </div>
         </section>
 
-        {/* Key Terms — Surface important T&C */}
-        <section className="py-20 lg:py-28 bg-background">
+        {/* ---------- FAQ ---------- */}
+        <section className="py-20 lg:py-28 bg-muted" aria-labelledby="faq-heading">
           <div className="container mx-auto px-4 lg:px-8">
-            <div className="text-center mb-14">
-              <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">Transparency</p>
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-2">Key things to know</h2>
-              <p className="text-muted-foreground">Important terms before you book</p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-8">
-              {[
-                { icon: CreditCard, title: "50% advance payment", description: "Half the service fee is paid upfront. Remaining balance cleared after completion." },
-                { icon: Clock, title: "Book 3-4 hours ahead", description: "Advance notice ensures a confirmed Guide. Emergencies handled based on availability." },
-                { icon: AlertCircle, title: "Disclose patient condition", description: "Share the patient's exact condition and any infectious diseases at booking." },
-                { icon: Hospital, title: "Client pays transport", description: "Vehicle costs (Uber, CNG, ambulance) are arranged by Guide but paid by client." },
-              ].map((term) => (
-                <div key={term.title} className="text-center">
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <term.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-sm font-semibold text-foreground mb-1">{term.title}</h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{term.description}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="text-center">
-              <Link
-                href="/terms"
-                className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
-              >
-                Read full Terms &amp; Conditions
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ — Medical-focused */}
-        <section className="py-20 lg:py-28 bg-muted">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="grid lg:grid-cols-[1fr_1.5fr] gap-14">
+            <div className="grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
               <div>
-                <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">FAQ</p>
-                <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Common questions</h2>
-                <p className="text-muted-foreground">
-                  Everything you need to know.{" "}
-                  <Link href="/contact" className="text-primary font-medium hover:underline">
-                    Contact us
-                  </Link>{" "}
-                  for anything else.
+                <p lang="bn" className="waymark mb-3">
+                  প্রশ্ন
+                </p>
+                <h2 id="faq-heading" className="text-[length:var(--text-h2)] font-bold leading-[1.08] tracking-tight text-foreground">
+                  Families usually ask
+                </h2>
+                <p className="mt-5 leading-relaxed text-muted-foreground">
+                  Anything else on your mind?{" "}
+                  <a
+                    href={waLink(PREFILL.float)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-display font-medium text-primary hover:underline underline-offset-4"
+                  >
+                    Ask us directly on WhatsApp
+                  </a>{" "}
+                  — no question is too small when it&apos;s about family.
                 </p>
               </div>
 
-              <div className="space-y-4">
-                {[
-                  { question: "What does the Hospital Companion service include?", answer: "Your Guide escorts the patient from home to the hospital, sits through the doctor's consultation, takes notes of medical advice, purchases prescribed medicines, collects test reports, and ensures the patient returns home safely. Digital copies of reports are sent to family members abroad." },
-                  { question: "How far in advance should I book?", answer: "We recommend booking at least 3-4 hours in advance to ensure a confirmed Guide. For emergencies, we'll do our best to accommodate based on availability." },
-                  { question: "What are the payment terms?", answer: "50% of the service fee is paid in advance, with the remaining balance cleared upon completion. Hospital bills, medicine costs, and transport fees are paid directly by the client." },
-                  { question: "What if I need to cancel?", answer: "Cancellations made 2+ hours before service incur a 10% charge. Cancellations within 2 hours result in forfeiture of the advance payment." },
-                  { question: "Does the Guide provide medical advice?", answer: "No. Our Guides assist with logistics — escorting, note-taking, report collection, and medicine pickup. They do not provide medical advice or administer medication." },
-                  { question: "What safety measures are in place?", answer: "All Guides are background-checked, uniformed, and carry verified IDs. You receive your Guide's photo before service begins, and live WhatsApp location tracking runs throughout." },
-                ].map((faq) => (
-                  <details key={faq.question} className="group bg-card border border-border rounded-xl">
-                    <summary className="cursor-pointer p-5 text-base font-semibold text-foreground flex items-center justify-between list-none">
+              <div className="divide-y divide-border border-y border-border">
+                {FAQS.map((faq) => (
+                  <details key={faq.question} className="group">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 font-display text-[1.08rem] font-semibold text-foreground [&::-webkit-details-marker]:hidden">
                       {faq.question}
-                      <span className="text-muted-foreground group-open:rotate-45 transition-transform text-xl leading-none ml-4 flex-shrink-0">+</span>
+                      <span
+                        className="shrink-0 text-2xl font-normal leading-none text-primary transition-transform duration-200 group-open:rotate-45 motion-reduce:transition-none"
+                        aria-hidden="true"
+                      >
+                        +
+                      </span>
                     </summary>
-                    <div className="px-5 pb-5 -mt-1">
-                      <p className="text-sm text-muted-foreground leading-relaxed">{faq.answer}</p>
-                    </div>
+                    <p className="max-w-[62ch] pb-6 leading-relaxed text-muted-foreground">
+                      {faq.answer}
+                    </p>
                   </details>
                 ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="grain relative overflow-hidden bg-[oklch(0.22_0.06_175)] text-white py-20 lg:py-28">
-          <div className="relative z-10 container mx-auto px-4 lg:px-8">
-            <div className="max-w-2xl mx-auto text-center">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-3">Book your companion</h2>
-              <p className="font-[family-name:var(--font-bengali)] text-xl text-white/40 mb-3">এখনই যোগাযোগ করুন</p>
-              <p className="text-white/60 mb-8">Contact us for a personalized quote based on your needs.</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  className="h-13 px-8 rounded-lg bg-accent text-accent-foreground hover:bg-accent/90 font-semibold"
-                  asChild
-                >
-                  <Link href="/contact">Book Now</Link>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="h-13 px-8 rounded-lg border-white/20 text-white hover:bg-white/10 bg-transparent"
-                  asChild
-                >
-                  <a href="https://wa.me/8801309204120" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                    <MessageCircle className="w-5 h-5" />
-                    WhatsApp
-                  </a>
-                </Button>
               </div>
             </div>
           </div>
@@ -409,6 +584,11 @@ export default function HomePage() {
       </main>
 
       <Footer />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
     </div>
   )
 }

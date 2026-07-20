@@ -5,60 +5,89 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 import { WhatsAppFloat } from "@/components/whatsapp-float"
+import { PHONE_TEL, SITE_URL, WHATSAPP_NUMBER, AREAS, SERVICES } from "@/lib/site"
 
-import { DM_Sans, Hind_Siliguri } from 'next/font/google'
+import { Anek_Latin, Anek_Bangla, Source_Serif_4 } from "next/font/google"
 
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ["400", "500", "600", "700"],
-  variable: '--font-sans',
-  display: 'swap',
+const anekLatin = Anek_Latin({
+  subsets: ["latin"],
+  variable: "--font-anek-latin",
+  display: "swap",
 })
 
-const hindSiliguri = Hind_Siliguri({
-  subsets: ['latin', 'bengali'],
-  weight: ["400", "500", "600", "700"],
-  variable: '--font-bengali',
-  display: 'swap',
+const anekBangla = Anek_Bangla({
+  subsets: ["bengali"],
+  variable: "--font-anek-bangla",
+  display: "swap",
+})
+
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  variable: "--font-source-serif",
+  axes: ["opsz"],
+  display: "swap",
 })
 
 export const metadata: Metadata = {
-  title: "Guide - Safe Travel Companion Service in Dhaka",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Guide — Medical Companion Service in Dhaka",
+    template: "%s | Guide",
+  },
   description:
-    "Professional companion services in Dhaka, Bangladesh. Background-checked, uniformed guides for airport pickups, medical assistance, intercity travel, and terminal escorts. Live WhatsApp tracking.",
+    "A background-checked, uniformed companion for your family's hospital visits in Dhaka — consultation notes, medicine purchase, report collection, and live WhatsApp updates to family anywhere in the world.",
   keywords: [
-    "companion service Dhaka",
+    "medical companion Dhaka",
+    "hospital companion Bangladesh",
+    "patient escort Dhaka",
+    "elderly care Dhaka",
+    "hospital attendant Dhaka",
     "airport pickup Dhaka",
-    "medical assistance Bangladesh",
-    "travel companion",
-    "safe travel Dhaka",
-    "elderly care transport",
     "Sadarghat escort",
+    "companion service Bangladesh",
   ],
   openGraph: {
-    title: "Guide - Safe Travel Companion Service in Dhaka",
+    title: "Guide — Medical Companion Service in Dhaka",
     description:
-      "Background-checked, uniformed guides for safe travel across Dhaka. Airport pickups, medical assistance, terminal escorts with live WhatsApp tracking.",
+      "Someone trustworthy walks the whole route with your family — hospital visits, reports, medicines, terminals — with live WhatsApp updates to you, anywhere.",
     type: "website",
     locale: "en_US",
+    siteName: "Guide",
   },
-  icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
+  twitter: {
+    card: "summary_large_image",
+    title: "Guide — Medical Companion Service in Dhaka",
+    description:
+      "Background-checked companions for hospital visits and safe journeys in Dhaka, with live WhatsApp updates to family anywhere.",
   },
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Guide",
+  slogan: "নিরাপদ যাত্রার নিশ্চয়তা",
+  description:
+    "Medical companion and escort service in Dhaka, Bangladesh. Hospital companions, attendants, report and medicine collection, and terminal escorts with live WhatsApp tracking.",
+  url: SITE_URL,
+  telephone: PHONE_TEL,
+  areaServed: AREAS.map((name) => ({ "@type": "Place", name: `${name}, Dhaka` })),
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Dhaka",
+    addressCountry: "BD",
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    opens: "00:00",
+    closes: "23:59",
+  },
+  sameAs: [`https://wa.me/${WHATSAPP_NUMBER}`],
+  makesOffer: SERVICES.map((s) => ({
+    "@type": "Offer",
+    itemOffered: { "@type": "Service", name: s.nameEn, description: s.description },
+  })),
 }
 
 export default function RootLayout({
@@ -68,10 +97,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${hindSiliguri.variable} font-sans antialiased`}>
+      <body
+        className={`${anekLatin.variable} ${anekBangla.variable} ${sourceSerif.variable} antialiased`}
+      >
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         {children}
         <WhatsAppFloat />
         <Analytics />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </body>
     </html>
   )

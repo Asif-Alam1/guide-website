@@ -4,91 +4,60 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.98 0.005 85);
-  --foreground: oklch(0.18 0.01 50);
-  --card: oklch(0.995 0.002 85);
-  --card-foreground: oklch(0.18 0.01 50);
-  --popover: oklch(0.995 0.002 85);
-  --popover-foreground: oklch(0.18 0.01 50);
-  --primary: oklch(0.35 0.08 175);
+  /* Guide palette — pure white ground, committed deep green, marigold accent */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.24 0.03 170);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.03 170);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.24 0.03 170);
+  --primary: oklch(0.4 0.09 165);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.50 0.06 175);
-  --secondary-foreground: oklch(0.99 0 0);
-  --muted: oklch(0.94 0.008 85);
-  --muted-foreground: oklch(0.42 0.01 50);
-  --accent: oklch(0.72 0.15 70);
-  --accent-foreground: oklch(0.15 0.01 50);
-  --destructive: oklch(0.58 0.2 25);
+  --secondary: oklch(0.94 0.015 168);
+  --secondary-foreground: oklch(0.3 0.06 168);
+  --muted: oklch(0.966 0.007 170);
+  --muted-foreground: oklch(0.44 0.03 170);
+  --accent: oklch(0.78 0.14 78);
+  --accent-foreground: oklch(0.25 0.04 78);
+  --destructive: oklch(0.55 0.2 25);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.88 0.008 60);
-  --input: oklch(0.88 0.008 60);
-  --ring: oklch(0.35 0.08 175);
-  --chart-1: oklch(0.35 0.08 175);
-  --chart-2: oklch(0.50 0.06 175);
-  --chart-3: oklch(0.72 0.15 70);
+  --border: oklch(0.905 0.012 170);
+  --input: oklch(0.905 0.012 170);
+  --ring: oklch(0.4 0.09 165);
+  --radius: 0.625rem;
+
+  /* Brand-only surfaces */
+  --brand-deep: oklch(0.27 0.05 168);
+  --brand-deeper: oklch(0.22 0.045 168);
+  --brand-line: oklch(0.5 0.08 165);
+
+  /* Legacy shadcn tokens (unused components reference them) */
+  --chart-1: oklch(0.4 0.09 165);
+  --chart-2: oklch(0.55 0.07 168);
+  --chart-3: oklch(0.78 0.14 78);
   --chart-4: oklch(0.5 0.1 180);
   --chart-5: oklch(0.55 0.08 140);
-  --radius: 0.75rem;
-  --sidebar: oklch(0.985 0.004 85);
-  --sidebar-foreground: oklch(0.18 0.01 50);
-  --sidebar-primary: oklch(0.35 0.08 175);
+  --sidebar: oklch(0.985 0.004 170);
+  --sidebar-foreground: oklch(0.24 0.03 170);
+  --sidebar-primary: oklch(0.4 0.09 165);
   --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.72 0.15 70);
-  --sidebar-accent-foreground: oklch(0.18 0.01 50);
-  --sidebar-border: oklch(0.90 0.005 60);
-  --sidebar-ring: oklch(0.35 0.08 175);
-  --shadow-x: 0px;
-  --shadow-y: 1px;
-  --shadow-blur: 3px;
-  --shadow-spread: 0px;
-  --shadow-opacity: 0.06;
-  --shadow-color: #2d2a26;
-}
+  --sidebar-accent: oklch(0.78 0.14 78);
+  --sidebar-accent-foreground: oklch(0.25 0.04 78);
+  --sidebar-border: oklch(0.905 0.012 170);
+  --sidebar-ring: oklch(0.4 0.09 165);
 
-.dark {
-  --background: oklch(0.14 0.01 50);
-  --foreground: oklch(0.96 0 0);
-  --card: oklch(0.18 0.01 50);
-  --card-foreground: oklch(0.96 0 0);
-  --popover: oklch(0.18 0.01 50);
-  --popover-foreground: oklch(0.96 0 0);
-  --primary: oklch(0.45 0.08 175);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.55 0.06 175);
-  --secondary-foreground: oklch(0.99 0 0);
-  --muted: oklch(0.22 0.01 50);
-  --muted-foreground: oklch(0.65 0.01 50);
-  --accent: oklch(0.75 0.15 70);
-  --accent-foreground: oklch(0.14 0.01 50);
-  --destructive: oklch(0.62 0.2 25);
-  --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.26 0.01 50);
-  --input: oklch(0.26 0.01 50);
-  --ring: oklch(0.45 0.08 175);
-  --chart-1: oklch(0.45 0.08 175);
-  --chart-2: oklch(0.55 0.06 175);
-  --chart-3: oklch(0.75 0.15 70);
-  --chart-4: oklch(0.55 0.1 180);
-  --chart-5: oklch(0.6 0.08 140);
-  --sidebar: oklch(0.14 0.01 50);
-  --sidebar-foreground: oklch(0.96 0 0);
-  --sidebar-primary: oklch(0.45 0.08 175);
-  --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.75 0.15 70);
-  --sidebar-accent-foreground: oklch(0.14 0.01 50);
-  --sidebar-border: oklch(0.26 0.01 50);
-  --sidebar-ring: oklch(0.45 0.08 175);
-  --shadow-x: 0px;
-  --shadow-y: 1px;
-  --shadow-blur: 3px;
-  --shadow-spread: 0px;
-  --shadow-opacity: 0.2;
-  --shadow-color: #000000;
+  /* Fluid type scale (≥1.25 between steps, display capped well under 6rem) */
+  --text-hero: clamp(2.625rem, 1.35rem + 5.4vw, 5.25rem);
+  --text-h2: clamp(1.9rem, 1.25rem + 2.6vw, 3.1rem);
+  --text-h3: clamp(1.3rem, 1.1rem + 0.9vw, 1.7rem);
+  --text-lead: clamp(1.1rem, 1rem + 0.5vw, 1.3rem);
 }
 
 @theme inline {
-  --font-sans: "DM Sans", "DM Sans Fallback", system-ui, sans-serif;
-  --font-mono: ui-monospace, "SFMono-Regular", monospace;
+  --font-display: var(--font-anek-latin), system-ui, sans-serif;
+  --font-body: var(--font-source-serif), Georgia, serif;
+  --font-bengali: var(--font-anek-bangla), var(--font-anek-latin), sans-serif;
+  --font-sans: var(--font-anek-latin), system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -108,15 +77,14 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-deeper: var(--brand-deeper);
+  --color-brand-line: var(--brand-line);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -125,48 +93,103 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-bengali: "Hind Siliguri", "Hind Siliguri Fallback", sans-serif;
-  --shadow-2xs: var(--shadow-x) var(--shadow-y)
-    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
-  --shadow-xs: var(--shadow-x) var(--shadow-y) var(--shadow-blur) var(--shadow-spread)
-    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
-  --shadow-sm: var(--shadow-x) var(--shadow-y) calc(var(--shadow-blur) * 1.5) var(--shadow-spread)
-    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
-  --shadow-md: calc(var(--shadow-x) * 2) calc(var(--shadow-y) * 2) calc(var(--shadow-blur) * 3)
-    calc(var(--shadow-spread) - 1px)
-    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
-  --shadow-lg: calc(var(--shadow-x) * 4) calc(var(--shadow-y) * 4) calc(var(--shadow-blur) * 5)
-    calc(var(--shadow-spread) - 3px)
-    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
-  --shadow-xl: calc(var(--shadow-x) * 6) calc(var(--shadow-y) * 6) calc(var(--shadow-blur) * 7)
-    calc(var(--shadow-spread) - 5px)
-    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
-  --shadow-2xl: calc(var(--shadow-x) * 8) calc(var(--shadow-y) * 8) calc(max(0px, var(--shadow-blur) * 9 - 8px))
-    calc(var(--shadow-spread) - 12px)
-    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 250%), transparent);
-  --shadow: var(--shadow-md);
-  --color-shadow-color: var(--shadow-color);
-  --shadow-opacity: var(--shadow-opacity);
-  --shadow-spread: var(--shadow-spread);
-  --shadow-blur: var(--shadow-blur);
-  --shadow-y: var(--shadow-y);
-  --shadow-x: var(--shadow-x);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    text-rendering: optimizeLegibility;
   }
 
-  html {
-    scroll-behavior: smooth;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  button,
+  input,
+  select,
+  textarea,
+  label {
+    font-family: var(--font-display);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Bengali runs visually smaller with taller conjuncts/descenders than Latin
+     at equal size — compensate, and never let line boxes clip the matra. */
+  :lang(bn) {
+    font-family: var(--font-bengali);
+    font-size: 1.06em;
+    line-height: 1.65;
+  }
+
+  h1:lang(bn),
+  h2:lang(bn),
+  h3:lang(bn),
+  .bn-display:lang(bn) {
+    line-height: 1.35;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 }
 
-/* Subtle noise texture for dark sections */
+/* ---------- Skip link ---------- */
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 60;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  background: var(--brand-deep);
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 600;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}
+
+/* ---------- Grain texture for deep-green sections ---------- */
+
 .grain::after {
   content: "";
   position: absolute;
@@ -179,11 +202,12 @@
   mix-blend-mode: overlay;
 }
 
-/* Entrance animations */
-@keyframes fade-up {
+/* ---------- Hero entrance (page-load choreography) ---------- */
+
+@keyframes rise-in {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(1.5rem);
   }
   to {
     opacity: 1;
@@ -191,21 +215,187 @@
   }
 }
 
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes rise-in-blur {
+  from {
+    opacity: 0;
+    transform: translateY(1.75rem);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
-.animate-fade-up {
-  animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+@media (prefers-reduced-motion: no-preference) {
+  .enter {
+    animation: rise-in 0.7s cubic-bezier(0.19, 1, 0.22, 1) both;
+    animation-delay: calc(var(--enter, 0) * 90ms);
+  }
+
+  .enter-display {
+    animation: rise-in-blur 0.9s cubic-bezier(0.19, 1, 0.22, 1) both;
+    animation-delay: calc(var(--enter, 0) * 90ms);
+  }
 }
 
-.animate-fade-in {
-  animation: fade-in 0.5s ease-out both;
+/* Hero route line: dashed map-path fading in after the headline */
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-fade {
+    animation: hero-fade 1.2s ease-out 0.5s both;
+  }
+}
+
+/* ---------- Scroll-driven reveals (progressive enhancement) ----------
+   Content is fully visible by default; only browsers that support
+   scroll-driven animations get the reveal, and only when motion is OK. */
+
+@keyframes reveal-rise {
+  from {
+    opacity: 0.001;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-rise both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 45%;
+    }
+  }
+}
+
+/* ---------- Journey line: SVG path draws as it scrolls through view ----------
+   Paths need pathLength="1". Default state is fully drawn. */
+
+@keyframes path-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .path-draw {
+      stroke-dasharray: 1;
+      animation: path-draw linear both;
+      animation-timeline: view();
+      animation-range: entry 10% exit 85%;
+    }
+  }
+}
+
+/* ---------- Bengali waymark: the one named kicker system ----------
+   A Bengali word marks each chapter of the page, marigold, set in Anek Bangla.
+   This is brand wayfinding, not the generic uppercase eyebrow. */
+
+.waymark {
+  font-family: var(--font-bengali);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: oklch(0.52 0.115 70);
+  line-height: 1.4;
+}
+
+.on-deep .waymark,
+.waymark-light {
+  color: var(--accent);
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: calc(var(--radius) + 2px);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.2;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.btn-accent:hover {
+  background: oklch(0.82 0.14 80);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.btn-primary:hover {
+  background: oklch(0.35 0.085 165);
+}
+
+.btn-outline-dark {
+  border: 1px solid oklch(1 0 0 / 0.25);
+  color: white;
+}
+
+.btn-outline-dark:hover {
+  background: oklch(1 0 0 / 0.1);
+}
+
+.btn-outline {
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  background: var(--background);
+}
+
+.btn-outline:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Arrow nudge on hover — micro-interaction, transform only */
+.btn .btn-arrow {
+  transition: transform 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .btn .btn-arrow {
+    transition: none;
+  }
+}

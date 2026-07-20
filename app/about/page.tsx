@@ -1,212 +1,214 @@
+import type React from "react"
+import type { Metadata } from "next"
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
+
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { Shield, Heart, Users, Award, CheckCircle2, MapPin, Phone, Stethoscope } from "lucide-react"
+import { WhatsAppIcon } from "@/components/whatsapp-icon"
+import { AREAS, PREFILL, waLink } from "@/lib/site"
 
-export const metadata = {
-  title: "About Guide - Our Mission & Values | Trusted Companion Service",
-  description: "Learn about Guide's mission to provide safe, reliable medical companion services in Dhaka.",
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Why Guide exists: a medical companion service built for families who can't always be there — in Dhaka or abroad. How we vet, train, and hold ourselves accountable.",
 }
+
+const VALUES = [
+  {
+    bn: "নিরাপত্তা",
+    en: "Safety before schedule",
+    body: "A visit that runs late but ends safely is a success. A rushed one that cuts corners is not. Every protocol — verification, uniforms, live tracking — exists so that the safest option is also the default one.",
+  },
+  {
+    bn: "মমতা",
+    en: "Care like family",
+    body: "The people we accompany are somebody's mother, father, grandmother. Our Guides are trained to slow down, hold a hand at the stairs, and wait without checking the clock.",
+  },
+  {
+    bn: "স্বচ্ছতা",
+    en: "Nothing to hide",
+    body: "Our terms are published in full, our prices are quoted before you commit, and the doctor's words reach you exactly as they were said — in writing.",
+  },
+  {
+    bn: "পেশাদারিত্ব",
+    en: "Professional, every visit",
+    body: "Uniform, ID badge, punctuality, and a written record. The same standard whether it's a routine checkup in Dhanmondi or a 3am emergency.",
+  },
+]
+
+const NOT_LIST = [
+  {
+    title: "We are not doctors",
+    body: "Guides take notes, ask the questions you send, and collect prescriptions — but they never give medical advice or administer medication. Medical decisions stay with the doctor and your family.",
+  },
+  {
+    title: "We are not a transport company",
+    body: "Your Guide arranges the Uber, CNG, or ambulance and rides along — but the transport itself, and its cost, stays in your name and under your choice.",
+  },
+  {
+    title: "We are not a marketplace",
+    body: "No gig workers, no strangers from an app pool. Every Guide is vetted, trained, and accountable to us — and we are accountable to you.",
+  },
+]
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen">
       <Header />
 
-      <main>
-        {/* Hero — Bold dark teal with grain */}
-        <section className="grain relative overflow-hidden bg-[oklch(0.22_0.06_175)] text-white">
-          {/* Large decorative Bengali text */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute right-[8%] lg:right-[15%] top-1/2 -translate-y-1/2 font-[family-name:var(--font-bengali)] text-[clamp(5rem,14vw,10rem)] font-bold leading-none text-white/[0.04] select-none"
-          >
-            বিশ্বাস
-            <br />
-            সেবা
-          </div>
-
-          <div className="relative z-10 container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+      <main id="main">
+        {/* Story-led opening */}
+        <section className="bg-background" aria-labelledby="about-heading">
+          <div className="container mx-auto px-4 lg:px-8 pt-16 pb-20 lg:pt-24 lg:pb-28">
             <div className="max-w-3xl">
-              <p className="text-sm font-medium tracking-wider uppercase text-accent mb-8">About us</p>
-
-              <h1 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-                About Guide
+              <p lang="bn" className="waymark mb-4 enter" style={{ "--enter": 0 } as React.CSSProperties}>
+                আমাদের কথা
+              </p>
+              <h1
+                id="about-heading"
+                className="enter-display text-[clamp(2.25rem,1.3rem+3.8vw,4rem)] font-bold leading-[1.05] tracking-[-0.02em] text-foreground"
+                style={{ "--enter": 1 } as React.CSSProperties}
+              >
+                Built for the family member who can&apos;t be there
               </h1>
 
-              <p className="text-lg text-white/60 leading-relaxed max-w-2xl">
-                Dhaka&apos;s dedicated medical companion service — ensuring your family receives safe, reliable assistance for every hospital visit.
+              <div
+                className="enter mt-10 space-y-6 text-[1.1rem] leading-[1.8] text-foreground/85 max-w-[62ch]"
+                style={{ "--enter": 3 } as React.CSSProperties}
+              >
+                <p>
+                  Every family in Dhaka knows the phone call. Ma has a doctor&apos;s appointment on
+                  Thursday. Someone has to take the day off work, brave the traffic, sit in the
+                  waiting room, remember what the doctor said, find the pharmacy, queue for the
+                  reports. And if the family is abroad — as millions of Bangladeshi families now
+                  are — the call ends with the hardest sentence:{" "}
+                  <em>&ldquo;we&apos;ll manage somehow.&rdquo;</em>
+                </p>
+                <p>
+                  Guide exists so that nobody has to manage <em>somehow</em>. We send a
+                  background-checked, uniformed companion who walks the entire route with your
+                  family member — door to door — and writes everything down, so that being far away
+                  no longer means being in the dark.
+                </p>
+                <p>
+                  We are a new, small team in Dhaka, and we&apos;d rather be honest about that than
+                  invent a track record: no fake testimonials, no inflated numbers. What we offer
+                  instead is published terms, verified people, and a live window into every visit —
+                  so trust can be earned one journey at a time.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Values — bilingual ledger */}
+        <section className="py-20 lg:py-28 bg-muted" aria-labelledby="values-heading">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="max-w-2xl mb-12">
+              <p lang="bn" className="waymark mb-3">
+                মূল্যবোধ
+              </p>
+              <h2 id="values-heading" className="text-[length:var(--text-h2)] font-bold leading-[1.08] tracking-tight text-foreground">
+                What we hold ourselves to
+              </h2>
+            </div>
+
+            <dl className="max-w-3xl">
+              {VALUES.map((value) => (
+                <div
+                  key={value.en}
+                  className="reveal grid gap-2 border-t border-border py-8 sm:grid-cols-[200px_1fr] sm:gap-10"
+                >
+                  <dt>
+                    <span lang="bn" className="waymark block !text-[1.3rem]">
+                      {value.bn}
+                    </span>
+                    <span className="font-display text-[1.1rem] font-semibold text-foreground">
+                      {value.en}
+                    </span>
+                  </dt>
+                  <dd className="leading-relaxed text-muted-foreground max-w-[56ch]">{value.body}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+
+        {/* Honesty: what we are not */}
+        <section
+          className="grain on-deep relative overflow-hidden bg-brand-deep py-20 text-white lg:py-28"
+          aria-labelledby="not-heading"
+        >
+          <div className="relative z-10 container mx-auto px-4 lg:px-8">
+            <div className="max-w-2xl mb-12">
+              <h2 id="not-heading" className="text-[length:var(--text-h2)] font-bold leading-[1.08] tracking-tight">
+                Just as important: what we are <span className="text-accent">not</span>
+              </h2>
+              <p className="mt-5 text-[1.05rem] leading-relaxed text-white/70">
+                Clear boundaries are part of a safe service. Knowing where our role ends tells you
+                exactly what you&apos;re booking.
               </p>
             </div>
-          </div>
-        </section>
 
-        {/* Mission — Light section */}
-        <section className="py-20 lg:py-28 bg-card">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="max-w-3xl">
-              <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">Our mission</p>
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
-                Providing safe, reliable medical companionship
-              </h2>
-
-              <div className="space-y-4 text-base text-muted-foreground leading-relaxed">
-                <p>
-                  Guide was founded with a simple yet powerful mission: to ensure that families in Dhaka never have to worry when a loved one needs to visit the hospital. We provide a trusted companion who handles the entire medical visit — from escort to consultation notes to report collection.
-                </p>
-                <p>
-                  Whether it&apos;s an elderly parent needing a hospital checkup or collecting test reports on behalf of family abroad, we handle the logistics so you don&apos;t have to worry.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
-                {[
-                  { icon: Stethoscope, label: "Medical Visit Support", accent: "border-l-primary" },
-                  { icon: CheckCircle2, label: "Background Checks", accent: "border-l-secondary" },
-                  { icon: MapPin, label: "Live Tracking", accent: "border-l-accent" },
-                  { icon: Phone, label: "Photo Confirmation", accent: "border-l-primary" },
-                ].map((item, index) => {
-                  const Icon = item.icon
-                  return (
-                    <div key={index} className={`bg-card border border-border border-l-4 ${item.accent} rounded-xl p-4`}>
-                      <Icon className="w-6 h-6 text-primary mb-2" />
-                      <div className="text-sm font-medium">{item.label}</div>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Core Values — Dark teal with grain */}
-        <section className="grain relative overflow-hidden bg-[oklch(0.22_0.06_175)] text-white">
-          <div className="relative z-10 container mx-auto px-4 lg:px-8 py-20 lg:py-28">
-            <div className="max-w-3xl mb-12">
-              <p className="text-sm font-semibold text-accent uppercase tracking-wider mb-2">What drives us</p>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4">Our core values</h2>
-              <p className="text-base text-white/60">The principles that guide every service we provide</p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {[
-                {
-                  icon: Shield,
-                  title: "Safety first",
-                  description:
-                    "Every decision we make prioritizes the safety and security of our clients. From background checks to real-time tracking, safety is non-negotiable.",
-                },
-                {
-                  icon: Heart,
-                  title: "Compassionate care",
-                  description:
-                    "We treat every client with the respect and care we would show our own family members. Your loved ones are our priority.",
-                },
-                {
-                  icon: Users,
-                  title: "Professional excellence",
-                  description:
-                    "Our team is trained to provide the highest standard of service with uniformed staff and consistent quality.",
-                },
-                {
-                  icon: Award,
-                  title: "Trust & transparency",
-                  description:
-                    "Complete transparency in our processes, from verification to service delivery. You always know who, what, when, and where.",
-                },
-              ].map((value, index) => {
-                const Icon = value.icon
-                return (
-                  <div
-                    key={index}
-                    className="bg-white/5 border border-white/8 rounded-xl p-8"
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4">
-                      <Icon className="w-6 h-6 text-accent" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
-                    <p className="text-sm text-white/60 leading-relaxed">{value.description}</p>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Why Families Trust Guide — Light */}
-        <section className="py-20 lg:py-28 bg-card">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="max-w-3xl mb-12">
-              <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">Our difference</p>
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Why families trust Guide</h2>
-              <p className="text-base text-muted-foreground">What sets us apart from other companion services</p>
-            </div>
-
-            <div className="space-y-8 max-w-3xl">
-              {[
-                {
-                  number: "01",
-                  title: "Verified & uniformed staff",
-                  description:
-                    "Every Guide staff member undergoes thorough background checks and ID verification. Our distinctive uniforms ensure easy identification.",
-                },
-                {
-                  number: "02",
-                  title: "Live tracking & communication",
-                  description:
-                    "Stay connected throughout the journey with real-time WhatsApp location sharing. Receive confirmation calls with complete details.",
-                },
-                {
-                  number: "03",
-                  title: "Complete medical visit support",
-                  description:
-                    "From escorting to the hospital, sitting through consultations, taking doctor's notes, purchasing medicines, to collecting reports — we handle every step.",
-                },
-                {
-                  number: "04",
-                  title: "Digital reports for family abroad",
-                  description:
-                    "Test results, prescriptions, and doctor's notes digitized and sent to family members overseas so they stay informed.",
-                },
-                {
-                  number: "05",
-                  title: "Family-centered approach",
-                  description:
-                    "We understand you're entrusting us with your loved ones. Our team treats every client with the care they deserve.",
-                },
-              ].map((item, index) => (
-                <div key={index} className="flex gap-6 items-start border-l-2 border-l-primary/20 pl-6">
-                  <div className="text-5xl font-bold text-primary/15 flex-shrink-0">{item.number}</div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-                  </div>
+            <div className="grid gap-10 lg:grid-cols-3 lg:gap-12">
+              {NOT_LIST.map((item) => (
+                <div key={item.title} className="reveal border-t border-white/15 pt-6">
+                  <h3 className="font-display text-[1.2rem] font-semibold">{item.title}</h3>
+                  <p className="mt-3 leading-relaxed text-white/65">{item.body}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Service Locations — Muted bg */}
-        <section className="py-20 lg:py-28 bg-muted">
+        {/* Coverage */}
+        <section className="py-20 lg:py-28 bg-background" aria-labelledby="coverage-heading">
           <div className="container mx-auto px-4 lg:px-8">
-            <div className="max-w-3xl">
-              <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">Coverage</p>
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-8">Serving Dhaka with pride</h2>
+            <div className="max-w-2xl">
+              <p lang="bn" className="waymark mb-3">
+                এলাকা
+              </p>
+              <h2 id="coverage-heading" className="text-[length:var(--text-h2)] font-bold leading-[1.08] tracking-tight text-foreground">
+                Where we serve
+              </h2>
+              <p className="mt-5 leading-relaxed text-muted-foreground">
+                We currently serve families across Dhaka and are expanding area by area — carefully,
+                so the standard never slips.
+              </p>
 
-              <div className="flex flex-wrap gap-3 mb-8">
-                {["Gulshan", "Banani", "Dhanmondi", "Uttara", "Mirpur", "Mohammadpur", "Shahbagh", "Expanding..."].map(
-                  (location, index) => (
-                    <div
-                      key={index}
-                      className="px-4 py-2 bg-card border border-border hover:border-primary/30 transition-colors rounded-full text-sm text-foreground"
-                    >
-                      {location}
-                    </div>
-                  ),
-                )}
+              <ul className="mt-8 flex flex-wrap gap-2.5">
+                {AREAS.map((area) => (
+                  <li
+                    key={area}
+                    className="rounded-full border border-border bg-card px-4 py-2 font-display text-[0.95rem] text-foreground"
+                  >
+                    {area}
+                  </li>
+                ))}
+                <li className="rounded-full border border-dashed border-primary/40 px-4 py-2 font-display text-[0.95rem] text-primary">
+                  + expanding
+                </li>
+              </ul>
+
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <a
+                  href={waLink(PREFILL.hero)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-accent"
+                >
+                  <WhatsAppIcon className="w-4 h-4" />
+                  Talk to us on WhatsApp
+                </a>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 font-display font-medium text-primary hover:underline underline-offset-4"
+                >
+                  Or use the booking form
+                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                </Link>
               </div>
-
-              <p className="text-base text-muted-foreground">Expanding to more areas across Dhaka to serve you better</p>
             </div>
           </div>
         </section>
