@@ -23,7 +23,7 @@ export function Logo({
         priority
         className={cn(
           "w-auto",
-          onDark ? "h-16 rounded-lg bg-white px-2.5 py-1.5" : "h-12",
+          onDark ? "h-20 rounded-lg bg-white px-3 py-2" : "h-14 lg:h-16",
         )}
       />
     </Link>
