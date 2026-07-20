@@ -42,7 +42,7 @@ export function Footer() {
 
         <div className="py-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
           <div className="space-y-4">
-            <Logo onDark withTagline />
+            <Logo onDark />
             <p className="text-[0.95rem] text-white/55 leading-relaxed max-w-sm">
               A medical companion and escort service in Dhaka. Background-checked, uniformed
               Guides for hospital visits, report collection, and safe journeys — with live

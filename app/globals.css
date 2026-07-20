@@ -502,25 +502,9 @@
 
 /* ---------- Delight micro-interactions ---------- */
 
-/* Logo mark redraws its route on hover */
 @media (prefers-reduced-motion: no-preference) {
-  .group:hover .mark-route {
-    animation: mark-redraw 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-  }
-
   input[type="checkbox"]:checked {
     animation: check-pop 0.35s cubic-bezier(0.19, 1, 0.22, 1);
-  }
-}
-
-@keyframes mark-redraw {
-  from {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-  }
-  to {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 0;
   }
 }
 
