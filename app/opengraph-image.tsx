@@ -26,7 +26,7 @@ export default async function OpenGraphImage() {
     const anekLatin = await loadGoogleFont(
       "Anek Latin",
       700,
-      HEADLINE + SUB + TAGLINE + "wa.me/8801309204120",
+      HEADLINE + SUB + TAGLINE + "wa.me/8801815558785",
     )
     fonts = [{ name: "Anek Latin", data: anekLatin, weight: 700 }]
   } catch {
@@ -80,7 +80,7 @@ export default async function OpenGraphImage() {
         </div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ fontSize: 34, color: "#cfe0d8", fontWeight: 400 }}>{SUB}</div>
-          <div style={{ fontSize: 30, color: "#8fb3a5" }}>wa.me/8801309204120</div>
+          <div style={{ fontSize: 30, color: "#8fb3a5" }}>wa.me/8801815558785</div>
         </div>
       </div>
     ),

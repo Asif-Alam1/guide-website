@@ -3,7 +3,7 @@ import { Phone } from "lucide-react"
 
 import { Logo } from "@/components/logo"
 import { WhatsAppIcon } from "@/components/whatsapp-icon"
-import { AREAS, PHONE_DISPLAY, PHONE_TEL, PREFILL, waLink } from "@/lib/site"
+import { ADDRESS, AREAS, EMAIL, PHONE_DISPLAY, PHONE_TEL, PREFILL, waLink } from "@/lib/site"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -97,8 +97,17 @@ export function Footer() {
                   WhatsApp — replies within ~30 min, 9am–9pm
                 </a>
               </li>
-              <li className="text-white/55 text-[0.95rem] leading-relaxed pt-1">
-                Serving {AREAS.slice(0, 4).join(", ")} &amp; more — Dhaka, Bangladesh
+              <li>
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="font-display text-white/70 hover:text-white transition-colors break-all"
+                >
+                  {EMAIL}
+                </a>
+              </li>
+              <li className="text-white/55 text-[0.95rem] leading-relaxed pt-1">{ADDRESS}</li>
+              <li className="text-white/55 text-[0.95rem] leading-relaxed">
+                Serving {AREAS.slice(0, 4).join(", ")} &amp; more across Dhaka
               </li>
             </ul>
           </div>

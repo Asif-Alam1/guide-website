@@ -1,10 +1,10 @@
-export const PHONE_DISPLAY = "+880 1309 204120"
-export const PHONE_TEL = "+8801309204120"
-export const WHATSAPP_NUMBER = "8801309204120"
+export const PHONE_DISPLAY = "+880 1815 558785"
+export const PHONE_TEL = "+8801815558785"
+export const WHATSAPP_NUMBER = "8801815558785"
+export const EMAIL = "info.bdguide@gmail.com"
+export const ADDRESS = "299, Free School Street, Banglamotor, Dhaka"
 
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000")
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.guide-bd.com"
 
 export function waLink(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
@@ -30,6 +30,8 @@ export const PREFILL = {
     "Hi Guide, I need a hospital companion for a family member's doctor visit. Can you share availability and pricing?",
   hospitalAttendant:
     "Hi Guide, I need an attendant to stay with an admitted patient. Can you share how overnight care works?",
+  therapy:
+    "Hi Guide, I need a companion for regular therapy or dialysis visits. Can you share how recurring bookings work?",
   reports:
     "Hi Guide, I need someone to collect medical reports/medicines on my family's behalf. Can you help?",
   terminal:
@@ -59,6 +61,7 @@ export const SERVICES: ServiceDef[] = [
       "Doctor's notes taken during consultation",
       "Prescribed medicines purchased",
       "Test reports collected & sent digitally",
+      "Help arranging the appointment itself",
     ],
     prefill: PREFILL.hospitalCompanion,
   },
@@ -70,6 +73,15 @@ export const SERVICES: ServiceDef[] = [
       "Overnight or 24-hour supervision for admitted patients. When you can't stay at the hospital, a Guide stays — keeping you informed the whole time.",
     includes: ["Overnight or 24-hour shifts", "Regular WhatsApp updates to family"],
     prefill: PREFILL.hospitalAttendant,
+  },
+  {
+    id: "therapy-dialysis",
+    nameEn: "Therapy & Dialysis Escort",
+    nameBn: "থেরাপি ও ডায়ালাইসিস",
+    description:
+      "Escort to recurring treatments — physiotherapy or rehabilitation sessions at CRP, dialysis appointments, and other regular hospital visits — with the same door-to-door care, every single time.",
+    includes: ["Recurring visits, same standard", "CRP, dialysis & rehabilitation centers"],
+    prefill: PREFILL.therapy,
   },
   {
     id: "report-medicine",
@@ -85,7 +97,7 @@ export const SERVICES: ServiceDef[] = [
     nameEn: "Airport & Terminal Escort",
     nameBn: "টার্মিনাল এসকর্ট",
     description:
-      "Safe pickup and drop-off at the airport, Sadarghat launch terminal, train stations, and bus terminals — luggage handled, transport arranged, live location shared until they're home.",
+      "Safe pickup and drop-off at the airport, Sadarghat launch terminal, train stations, and bus terminals — luggage handled, transport arranged, live location shared until they're home. We also escort family members from one home to another within the city.",
     includes: ["Arrival pickup & departure drop-off", "Luggage help & transport arrangement"],
     prefill: PREFILL.terminal,
   },
@@ -94,7 +106,7 @@ export const SERVICES: ServiceDef[] = [
     nameEn: "Intercity & Village Companion",
     nameBn: "দূরযাত্রার সঙ্গী",
     description:
-      "A trusted companion for journeys beyond Dhaka — intercity trips or full-day village visits, ideal for elderly travelers who shouldn't travel alone.",
+      "A trusted companion for journeys beyond Dhaka — intercity trips or full-day village visits — and for the reverse: bringing a family member from outside Dhaka into the city to see a doctor.",
     includes: ["Full-day accompaniment", "Ideal for elderly travelers"],
     prefill: PREFILL.intercity,
   },

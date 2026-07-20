@@ -1,12 +1,12 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Phone } from "lucide-react"
+import { Mail, Phone } from "lucide-react"
 
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingForm } from "@/components/booking-form"
 import { WhatsAppIcon } from "@/components/whatsapp-icon"
-import { AREAS, PHONE_DISPLAY, PHONE_TEL, PREFILL, waLink } from "@/lib/site"
+import { ADDRESS, AREAS, EMAIL, PHONE_DISPLAY, PHONE_TEL, PREFILL, waLink } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Book a Companion",
@@ -132,10 +132,20 @@ export default function ContactPage() {
                         {PHONE_DISPLAY}
                       </a>
                     </li>
+                    <li>
+                      <a
+                        href={`mailto:${EMAIL}`}
+                        className="flex items-center gap-3 text-foreground hover:text-primary transition-colors"
+                      >
+                        <Mail className="w-5 h-5 text-primary" aria-hidden="true" />
+                        <span className="break-all">{EMAIL}</span>
+                      </a>
+                    </li>
                   </ul>
                   <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
                     Available 24/7 for booked services. New inquiries answered 9am–9pm Dhaka time.
                   </p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{ADDRESS}</p>
                 </div>
 
                 <div className="rounded-xl bg-muted p-8">

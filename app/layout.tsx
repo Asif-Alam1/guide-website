@@ -5,7 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 import { WhatsAppFloat } from "@/components/whatsapp-float"
-import { PHONE_TEL, SITE_URL, WHATSAPP_NUMBER, AREAS, SERVICES } from "@/lib/site"
+import { ADDRESS, EMAIL, PHONE_TEL, SITE_URL, WHATSAPP_NUMBER, AREAS, SERVICES } from "@/lib/site"
 
 import { Anek_Latin, Anek_Bangla, Source_Serif_4 } from "next/font/google"
 
@@ -71,9 +71,11 @@ const jsonLd = {
     "Medical companion and escort service in Dhaka, Bangladesh. Hospital companions, attendants, report and medicine collection, and terminal escorts with live WhatsApp tracking.",
   url: SITE_URL,
   telephone: PHONE_TEL,
+  email: EMAIL,
   areaServed: AREAS.map((name) => ({ "@type": "Place", name: `${name}, Dhaka` })),
   address: {
     "@type": "PostalAddress",
+    streetAddress: "299, Free School Street, Banglamotor",
     addressLocality: "Dhaka",
     addressCountry: "BD",
   },

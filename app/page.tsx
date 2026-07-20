@@ -78,6 +78,11 @@ const FAQS = [
       "Every Guide is background-checked and identity-verified before joining, wears a uniform and ID badge on every visit, and their photo is sent to you before service begins. Live WhatsApp location sharing runs for the entire route.",
   },
   {
+    question: "Can I request a female Guide?",
+    answer:
+      "Yes. Both male and female Guides are available — many families prefer a female Guide for mothers and grandmothers. Just mention your preference when you book.",
+  },
+  {
     question: "How far in advance should I book?",
     answer:
       "At least 3–4 hours ahead for a confirmed Guide. For emergencies, message us anyway — we'll do our best based on availability.",
@@ -425,7 +430,11 @@ export default function HomePage() {
                     },
                     {
                       term: "Photo before, location during",
-                      detail: "You receive your Guide's photo before service begins, and live WhatsApp location for the whole route.",
+                      detail: "Your Guide's photo arrives before service begins, live WhatsApp location runs for the whole route, and you get a confirmation call before and after every visit.",
+                    },
+                    {
+                      term: "Your choice of Guide",
+                      detail: "Male and female Guides are available — tell us your preference when you book.",
                     },
                   ].map((item) => (
                     <div key={item.term} className="reveal">
