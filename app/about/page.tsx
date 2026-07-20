@@ -137,7 +137,7 @@ export default function AboutPage() {
 
         {/* Honesty: what we are not */}
         <section
-          className="grain on-deep relative overflow-hidden bg-brand-deep py-20 text-white lg:py-28"
+          className="grain on-deep relative bg-brand-deep py-20 text-white lg:py-28"
           aria-labelledby="not-heading"
         >
           <div className="relative z-10 container mx-auto px-4 lg:px-8">

@@ -7,6 +7,8 @@ function JourneyMark({ className }: { className?: string }) {
       <rect width="44" height="44" rx="10" className="fill-brand-deep" />
       <path
         d="M8 36 C8 22, 20 30, 24 20 S36 10, 36 10"
+        pathLength={1}
+        className="mark-route"
         stroke="white"
         strokeWidth="4"
         strokeLinecap="round"

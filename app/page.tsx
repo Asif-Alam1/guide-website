@@ -4,6 +4,7 @@ import { Phone, ArrowRight, Check } from "lucide-react"
 
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { HeroCanvas } from "@/components/hero-canvas"
 import { WhatsAppIcon } from "@/components/whatsapp-icon"
 import { AREAS, PHONE_DISPLAY, PHONE_TEL, PREFILL, SERVICES, waLink } from "@/lib/site"
 
@@ -120,6 +121,7 @@ export default function HomePage() {
       <main id="main">
         {/* ---------- Hero: typography-led, light ground ---------- */}
         <section className="relative overflow-hidden bg-background" aria-label="Introduction">
+          <HeroCanvas />
           {/* Journey line arcing across the hero */}
           <svg
             aria-hidden="true"
@@ -248,7 +250,9 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="relative max-w-3xl">
+            <div className="route-scope relative max-w-3xl">
+              {/* The Guide dot travels the route as you scroll */}
+              <div className="route-dot" aria-hidden="true" />
               {/* The journey line, drawn by scroll */}
               <svg
                 aria-hidden="true"
@@ -401,7 +405,7 @@ export default function HomePage() {
 
         {/* ---------- Safety: the artifact your family receives ---------- */}
         <section
-          className="grain on-deep relative overflow-hidden bg-brand-deep py-20 text-white lg:py-28"
+          className="grain on-deep relative bg-brand-deep py-20 text-white lg:py-28"
           aria-labelledby="safety-heading"
         >
           <div className="relative z-10 container mx-auto px-4 lg:px-8">
@@ -449,9 +453,9 @@ export default function HomePage() {
                 </dl>
               </div>
 
-              {/* WhatsApp conversation artifact — what a visit looks like from abroad */}
-              <figure className="reveal mx-auto w-full max-w-sm">
-                <div className="overflow-hidden rounded-xl bg-white shadow-2xl">
+              {/* WhatsApp conversation artifact — messages arrive as you scroll */}
+              <figure className="mx-auto w-full max-w-sm">
+                <div className="chat-scroll overflow-hidden rounded-xl bg-white shadow-2xl">
                   <div className="flex items-center gap-3 bg-brand-deeper px-4 py-3">
                     <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accent font-display text-sm font-bold text-accent-foreground">
                       G
@@ -462,7 +466,7 @@ export default function HomePage() {
                     </div>
                   </div>
                   <div className="space-y-2.5 bg-[oklch(0.95_0.01_120)] p-4 font-display text-[0.85rem]">
-                    <div className="max-w-[85%] rounded-lg rounded-tl-sm bg-white p-3 shadow-sm">
+                    <div className="chat-msg max-w-[85%] rounded-lg rounded-tl-sm bg-white p-3 shadow-sm">
                       <p className="text-foreground">
                         Your Guide for today&apos;s visit — photo &amp; ID badge attached ✓
                       </p>
@@ -478,21 +482,31 @@ export default function HomePage() {
                       </div>
                       <p className="mt-1.5 text-right text-[0.7rem] text-muted-foreground">9:12 AM</p>
                     </div>
-                    <div className="max-w-[85%] rounded-lg rounded-tl-sm bg-white p-3 shadow-sm">
-                      <p className="text-foreground">📍 Live location shared — on the way to the hospital</p>
+                    <div className="chat-msg max-w-[85%] rounded-lg rounded-tl-sm bg-white p-3 shadow-sm">
+                      <p className="text-foreground">
+                        <span className="chat-live-dot" aria-hidden="true" />
+                        Live location shared — on the way to the hospital
+                      </p>
                       <p className="mt-1.5 text-right text-[0.7rem] text-muted-foreground">10:02 AM</p>
                     </div>
-                    <div className="max-w-[85%] rounded-lg rounded-tl-sm bg-white p-3 shadow-sm">
+                    <div className="chat-msg max-w-[85%] rounded-lg rounded-tl-sm bg-white p-3 shadow-sm">
                       <p className="text-foreground">
                         Consultation done. Doctor&apos;s notes &amp; prescription 📄
                       </p>
                       <p className="mt-1.5 text-right text-[0.7rem] text-muted-foreground">12:15 PM</p>
                     </div>
-                    <div className="max-w-[85%] rounded-lg rounded-tl-sm bg-white p-3 shadow-sm">
-                      <p lang="bn" className="text-foreground">
-                        রিপোর্ট সংগ্রহ শেষ — উনি নিরাপদে বাসায় পৌঁছেছেন 🏠
-                      </p>
-                      <p className="mt-1.5 text-right text-[0.7rem] text-muted-foreground">1:40 PM</p>
+                    <div className="chat-msg relative">
+                      <div className="chat-typing" aria-hidden="true">
+                        <i />
+                        <i />
+                        <i />
+                      </div>
+                      <div className="chat-final max-w-[85%] rounded-lg rounded-tl-sm bg-white p-3 shadow-sm">
+                        <p lang="bn" className="text-foreground">
+                          রিপোর্ট সংগ্রহ শেষ — উনি নিরাপদে বাসায় পৌঁছেছেন 🏠
+                        </p>
+                        <p className="mt-1.5 text-right text-[0.7rem] text-muted-foreground">1:40 PM</p>
+                      </div>
                     </div>
                   </div>
                 </div>

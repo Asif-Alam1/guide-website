@@ -19,28 +19,36 @@ export function BookingForm() {
     date: "",
     notes: "",
   })
+  const [sent, setSent] = useState(false)
 
   const set =
     (field: keyof typeof form) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
       setForm({ ...form, [field]: e.target.value })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+  const composeMessage = () => {
     const service = SERVICES.find((s) => s.id === form.service)
     const lines = [
       `Hi Guide, I'd like to book a companion.`,
       ``,
-      `Name: ${form.name}`,
-      `Phone: ${form.phone}`,
-      `Service: ${service?.nameEn ?? form.service}`,
-      `Pickup area: ${form.area}`,
-      `Date: ${form.date}`,
+      `Name: ${form.name || "…"}`,
+      `Phone: ${form.phone || "…"}`,
+      `Service: ${service?.nameEn ?? "…"}`,
+      `Pickup area: ${form.area || "…"}`,
+      `Date: ${form.date || "…"}`,
       form.notes ? `Details: ${form.notes}` : null,
     ].filter((line): line is string => line !== null)
-
-    window.open(waLink(lines.join("\n")), "_blank", "noopener,noreferrer")
+    return lines.join("\n")
   }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    window.open(waLink(composeMessage()), "_blank", "noopener,noreferrer")
+    setSent(true)
+    window.setTimeout(() => setSent(false), 2500)
+  }
+
+  const touched = form.name || form.phone || form.service || form.area || form.date || form.notes
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -149,6 +157,15 @@ export function BookingForm() {
         </p>
       </div>
 
+      {touched && (
+        <div aria-hidden="true">
+          <p className="font-display text-[0.95rem] font-semibold text-foreground mb-2">
+            Your WhatsApp message, as we&apos;ll receive it
+          </p>
+          <div className="wa-preview">{composeMessage()}</div>
+        </div>
+      )}
+
       <label className="flex items-start gap-3 cursor-pointer">
         <input
           type="checkbox"
@@ -163,9 +180,12 @@ export function BookingForm() {
         </span>
       </label>
 
-      <button type="submit" className="btn btn-accent w-full !min-h-[3.5rem] text-[1.05rem]">
+      <button
+        type="submit"
+        className={`btn w-full !min-h-[3.5rem] text-[1.05rem] ${sent ? "btn-primary" : "btn-accent"}`}
+      >
         <WhatsAppIcon className="w-5 h-5" />
-        Send booking request on WhatsApp
+        {sent ? "Opening WhatsApp — press send there ✓" : "Send booking request on WhatsApp"}
       </button>
       <p className="text-center font-display text-sm text-muted-foreground">
         Opens WhatsApp with your details pre-filled — you press send.

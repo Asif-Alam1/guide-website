@@ -112,6 +112,11 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `console.log('%c\\u0997\\u09be\\u0987\\u09a1 \\u0986\\u099b\\u09c7 \\u0986\\u09aa\\u09a8\\u09be\\u09b0 \\u09aa\\u09be\\u09b6\\u09c7!','font-size:15px;font-weight:bold;color:#1e5445');console.log('Guide is by your side \\u2014 even in the console. Hand-built in Dhaka, no templates. wa.me/8801815558785');`,
+          }}
+        />
       </body>
     </html>
   )
