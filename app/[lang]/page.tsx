@@ -445,12 +445,20 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         <div className="container-page">
           <div className="grid gap-12 lg:grid-cols-[1fr_2fr] lg:gap-20">
             <div>
-              <p {...bnAttr} className="waymark mb-3">
-                {t.termsWaymark}
-              </p>
-              <h2 id="terms-heading" className="heading-2">
-                {t.termsTitle}
-              </h2>
+              {t.termsTitle ? (
+                <>
+                  <p {...bnAttr} className="waymark mb-3">
+                    {t.termsWaymark}
+                  </p>
+                  <h2 id="terms-heading" className="heading-2">
+                    {t.termsTitle}
+                  </h2>
+                </>
+              ) : (
+                <h2 id="terms-heading" {...bnAttr} className="waymark">
+                  {t.termsWaymark}
+                </h2>
+              )}
               <p className="mt-5 leading-relaxed text-muted-foreground">{t.termsLead}</p>
               <Link
                 href={`${home}/terms`}

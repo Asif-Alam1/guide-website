@@ -165,7 +165,9 @@ export const bn = {
     },
 
     termsWaymark: "শর্ত",
-    termsTitle: "ছোট অক্ষরের শর্তগুলো, সামনেই",
+    /* Empty on purpose: the client cut this headline. The শর্ত waymark
+       becomes the section heading instead — see app/[lang]/page.tsx. */
+    termsTitle: "",
     termsLead:
       "যে সেবার হাতে আপনি পরিবারকে তুলে দিচ্ছেন, তার শর্ত লুকিয়ে রাখা উচিত নয়। বুক করার আগে সবচেয়ে জরুরি শর্তগুলো এখানে।",
     termsCta: "সম্পূর্ণ শর্তাবলী পড়ুন",
