@@ -54,8 +54,9 @@ tell from an incoming message which button was pressed.
 
 `public/photos/` holds three photographs plus a social-card base. They are client-supplied Dhaka
 scenes, cropped to remove artifacts, feather-blurred where the source had unreadable lettering on a
-badge or a sign, and graded to one look. Before adding another photograph, read the Photography section
-of `DESIGN.md` — broken type in an image is the loudest "this is fake" signal a trust-first site can
+badge or a sign, and graded to one look. `scripts/prepare-photos.mjs` is that pipeline — point it at the original frames
+(kept by the client, not in this repo) to regenerate. Before adding another photograph, read the
+Photography section of `DESIGN.md` — broken type in an image is the loudest "this is fake" signal a trust-first site can
 send. Render photographs only through `components/figure.tsx`.
 
 ## Docs
