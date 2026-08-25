@@ -3,70 +3,70 @@ import { Phone } from "lucide-react"
 
 import { Logo } from "@/components/logo"
 import { WhatsAppIcon } from "@/components/whatsapp-icon"
-import { ADDRESS, AREAS, EMAIL, PHONE_DISPLAY, PHONE_TEL, PREFILL, waLink } from "@/lib/site"
+import { localeNumber } from "@/lib/format"
+import { getDict, type Locale } from "@/lib/i18n"
+import { EMAIL, PHONE_TEL, waLink } from "@/lib/site"
 
-export function Footer() {
-  const currentYear = new Date().getFullYear()
+export function Footer({ locale }: { locale: Locale }) {
+  const d = getDict(locale)
+  const home = `/${locale}`
+  const year = localeNumber(new Date().getFullYear(), locale)
+
+  const links = [
+    { name: d.nav.home, href: home },
+    { name: d.nav.services, href: `${home}#services` },
+    { name: d.nav.about, href: `${home}/about` },
+    { name: d.nav.contact, href: `${home}/contact` },
+    { name: d.nav.terms, href: `${home}/terms` },
+  ]
 
   return (
     <footer className="grain relative overflow-hidden bg-brand-deeper text-white">
-      <div className="relative z-10 container mx-auto px-4 lg:px-8">
-        {/* Bengali sign-off — the brand promise, given the largest type on the page */}
-        <div className="py-14 lg:py-20 border-b border-white/10">
+      <div className="container-page relative z-10">
+        {/* The brand promise, always in Bengali, given the largest type on the page */}
+        <div className="border-b border-white/10 py-14 lg:py-20">
           <p
             lang="bn"
-            className="font-bengali text-[clamp(1.75rem,1rem+3.5vw,3.5rem)] font-semibold leading-snug max-w-3xl"
+            className="max-w-3xl font-bengali text-[clamp(1.75rem,1rem+3.5vw,3.5rem)] font-semibold leading-snug"
           >
-            নিরাপদ যাত্রার <span className="text-accent">নিশ্চয়তা</span>
+            {d.footer.signOffLead} <span className="text-accent">{d.footer.signOffHighlight}</span>
           </p>
-          <p className="mt-3 text-white/60 max-w-xl text-[1.05rem] leading-relaxed">
-            The assurance of a safe journey — for every hospital visit, every homecoming, every
-            family member you can&apos;t be there for in person.
+          <p className="mt-3 max-w-xl text-[1.05rem] leading-relaxed text-white/60">
+            {d.footer.signOffBody}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href={waLink(PREFILL.cta)}
+              href={waLink(d.prefill.cta)}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-accent"
             >
-              <WhatsAppIcon className="w-4 h-4" />
-              Message us on WhatsApp
+              <WhatsAppIcon className="h-4 w-4" />
+              {d.common.whatsapp}
             </a>
             <a href={`tel:${PHONE_TEL}`} className="btn btn-outline-dark">
-              <Phone className="w-4 h-4" aria-hidden="true" />
-              {PHONE_DISPLAY}
+              <Phone className="h-4 w-4" aria-hidden="true" />
+              <span dir="ltr">{d.common.phone}</span>
             </a>
           </div>
         </div>
 
-        <div className="py-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
+        <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
           <div className="space-y-4">
-            <Logo onDark />
-            <p className="text-[0.95rem] text-white/55 leading-relaxed max-w-sm">
-              A medical companion and escort service in Dhaka. Background-checked, uniformed
-              Guides for hospital visits, report collection, and safe journeys — with live
-              WhatsApp updates to family anywhere in the world.
+            <Logo locale={locale} onDark />
+            <p className="max-w-sm text-[0.95rem] leading-relaxed text-white/55">
+              {d.footer.about}
             </p>
           </div>
 
-          <nav aria-label="Footer">
-            <h3 className="font-display text-sm font-semibold uppercase tracking-wide text-white/40 mb-4">
-              Pages
-            </h3>
+          <nav aria-label={d.footer.pages}>
+            <h2 className="mb-4 font-display text-sm font-semibold uppercase tracking-wide text-white/55">
+              {d.footer.pages}
+            </h2>
             <ul className="space-y-3 font-display">
-              {[
-                { name: "Home", href: "/" },
-                { name: "Services", href: "/#services" },
-                { name: "About", href: "/about" },
-                { name: "Contact", href: "/contact" },
-                { name: "Terms & Conditions", href: "/terms" },
-              ].map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-white/70 hover:text-white transition-colors"
-                  >
+              {links.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-white/70 transition-colors hover:text-white">
                     {link.name}
                   </Link>
                 </li>
@@ -75,47 +75,50 @@ export function Footer() {
           </nav>
 
           <div>
-            <h3 className="font-display text-sm font-semibold uppercase tracking-wide text-white/40 mb-4">
-              Contact
-            </h3>
+            <h2 className="mb-4 font-display text-sm font-semibold uppercase tracking-wide text-white/55">
+              {d.footer.contact}
+            </h2>
             <ul className="space-y-3">
               <li>
                 <a
                   href={`tel:${PHONE_TEL}`}
-                  className="font-display text-white/70 hover:text-white transition-colors"
+                  dir="ltr"
+                  className="font-display text-white/70 transition-colors hover:text-white"
                 >
-                  {PHONE_DISPLAY}
+                  {d.common.phone}
                 </a>
               </li>
               <li>
                 <a
-                  href={waLink(PREFILL.float)}
+                  href={waLink(d.prefill.float)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-display text-white/70 hover:text-white transition-colors"
+                  className="font-display text-white/70 transition-colors hover:text-white"
                 >
-                  WhatsApp — replies within ~30 min, 9am–9pm
+                  {d.footer.whatsappLine}
                 </a>
               </li>
               <li>
                 <a
                   href={`mailto:${EMAIL}`}
-                  className="font-display text-white/70 hover:text-white transition-colors break-all"
+                  className="break-all font-display text-white/70 transition-colors hover:text-white"
                 >
                   {EMAIL}
                 </a>
               </li>
-              <li className="text-white/55 text-[0.95rem] leading-relaxed pt-1">{ADDRESS}</li>
-              <li className="text-white/55 text-[0.95rem] leading-relaxed">
-                Serving {AREAS.slice(0, 4).join(", ")} &amp; more across Dhaka
+              <li className="pt-1 text-[0.95rem] leading-relaxed text-white/55">
+                {d.footer.address}
+              </li>
+              <li className="text-[0.95rem] leading-relaxed text-white/55">
+                {d.footer.servingPrefix} {d.areas.slice(0, 4).join(", ")} {d.footer.servingSuffix}
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="py-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-sm text-white/60">
-          <p>© {currentYear} Guide. All rights reserved.</p>
-          <p className="font-display">Available 24/7 · Dhaka, Bangladesh</p>
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 py-6 text-sm text-white/60">
+          <p>© {year} Guide. {d.footer.rights}</p>
+          <p className="font-display">{d.common.available}</p>
         </div>
       </div>
     </footer>

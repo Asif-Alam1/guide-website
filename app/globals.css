@@ -1,26 +1,19 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Guide palette — pure white ground, committed deep green, marigold accent */
+  color-scheme: light;
+
+  /* Guide palette — pure white ground, one committed deep green, marigold accent */
   --background: oklch(1 0 0);
   --foreground: oklch(0.24 0.03 170);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.24 0.03 170);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.24 0.03 170);
   --primary: oklch(0.4 0.09 165);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.94 0.015 168);
-  --secondary-foreground: oklch(0.3 0.06 168);
   --muted: oklch(0.966 0.007 170);
   --muted-foreground: oklch(0.44 0.03 170);
   --accent: oklch(0.78 0.14 78);
   --accent-foreground: oklch(0.25 0.04 78);
   --destructive: oklch(0.55 0.2 25);
-  --destructive-foreground: oklch(0.99 0 0);
   --border: oklch(0.905 0.012 170);
   --input: oklch(0.905 0.012 170);
   --ring: oklch(0.4 0.09 165);
@@ -29,70 +22,49 @@
   /* Brand-only surfaces */
   --brand-deep: oklch(0.27 0.05 168);
   --brand-deeper: oklch(0.22 0.045 168);
-  --brand-line: oklch(0.5 0.08 165);
 
-  /* Legacy shadcn tokens (unused components reference them) */
-  --chart-1: oklch(0.4 0.09 165);
-  --chart-2: oklch(0.55 0.07 168);
-  --chart-3: oklch(0.78 0.14 78);
-  --chart-4: oklch(0.5 0.1 180);
-  --chart-5: oklch(0.55 0.08 140);
-  --sidebar: oklch(0.985 0.004 170);
-  --sidebar-foreground: oklch(0.24 0.03 170);
-  --sidebar-primary: oklch(0.4 0.09 165);
-  --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.78 0.14 78);
-  --sidebar-accent-foreground: oklch(0.25 0.04 78);
-  --sidebar-border: oklch(0.905 0.012 170);
-  --sidebar-ring: oklch(0.4 0.09 165);
+  /* Fluid type scale — Latin default */
+  --text-hero: clamp(2.5rem, 1.35rem + 4.9vw, 4.75rem);
+  --text-h1: clamp(2.25rem, 1.3rem + 3.8vw, 3.85rem);
+  --text-h2: clamp(1.9rem, 1.25rem + 2.6vw, 3rem);
+  --text-h3: clamp(1.25rem, 1.1rem + 0.8vw, 1.6rem);
+  --text-lead: clamp(1.08rem, 1rem + 0.5vw, 1.28rem);
 
-  /* Fluid type scale (≥1.25 between steps, display capped well under 6rem) */
-  --text-hero: clamp(2.625rem, 1.35rem + 5.4vw, 5.25rem);
-  --text-h2: clamp(1.9rem, 1.25rem + 2.6vw, 3.1rem);
-  --text-h3: clamp(1.3rem, 1.1rem + 0.9vw, 1.7rem);
-  --text-lead: clamp(1.1rem, 1rem + 0.5vw, 1.3rem);
+  --tracking-display: -0.02em;
+  --leading-display: 1.06;
+}
+
+/* Bengali sets wider and taller than Latin at the same size: less negative
+   tracking, more leading, and a display size that stays readable at speed. */
+html[lang^="bn"] {
+  --text-hero: clamp(2rem, 1.15rem + 3.6vw, 3.75rem);
+  --text-h1: clamp(1.85rem, 1.2rem + 2.9vw, 3.1rem);
+  --text-h2: clamp(1.6rem, 1.15rem + 1.9vw, 2.5rem);
+  --text-h3: clamp(1.2rem, 1.08rem + 0.7vw, 1.5rem);
+  --tracking-display: 0;
+  --leading-display: 1.3;
 }
 
 @theme inline {
   --font-display: var(--font-anek-latin), system-ui, sans-serif;
   --font-body: var(--font-source-serif), Georgia, serif;
-  --font-bengali: var(--font-anek-bangla), var(--font-anek-latin), sans-serif;
+  --font-bengali: var(--font-anek-bangla), var(--font-anek-latin), system-ui, sans-serif;
   --font-sans: var(--font-anek-latin), system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-brand-deep: var(--brand-deep);
   --color-brand-deeper: var(--brand-deeper);
-  --color-brand-line: var(--brand-line);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -110,6 +82,14 @@
     text-rendering: optimizeLegibility;
   }
 
+  /* On the Bangla site the Bengali family carries body copy too — one family,
+     hierarchy from weight and size. It also means one less font to download. */
+  html[lang^="bn"] body {
+    font-family: var(--font-bengali);
+    font-size: 1.02rem;
+    line-height: 1.75;
+  }
+
   h1,
   h2,
   h3,
@@ -120,6 +100,10 @@
     text-wrap: balance;
   }
 
+  html[lang^="bn"] :is(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--font-bengali);
+  }
+
   button,
   input,
   select,
@@ -128,23 +112,23 @@
     font-family: var(--font-display);
   }
 
+  html[lang^="bn"] :is(button, input, select, textarea, label) {
+    font-family: var(--font-bengali);
+  }
+
   p {
     text-wrap: pretty;
   }
 
-  /* Bengali runs visually smaller with taller conjuncts/descenders than Latin
-     at equal size — compensate, and never let line boxes clip the matra. */
-  :lang(bn) {
+  /* Bengali fragments inside an English page — attribute selector only, so the
+     size bump can never compound down a subtree. */
+  [lang="bn"] {
     font-family: var(--font-bengali);
-    font-size: 1.06em;
-    line-height: 1.65;
   }
 
-  h1:lang(bn),
-  h2:lang(bn),
-  h3:lang(bn),
-  .bn-display:lang(bn) {
-    line-height: 1.35;
+  html[lang="en"] [lang="bn"] {
+    font-size: 1.04em;
+    line-height: 1.6;
   }
 
   ::selection {
@@ -158,7 +142,7 @@
   }
 
   [id] {
-    scroll-margin-top: 5.5rem;
+    scroll-margin-top: 5.75rem;
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -166,6 +150,72 @@
       scroll-behavior: smooth;
     }
   }
+}
+
+/* ---------- Layout & type utilities ---------- */
+
+.container-page {
+  width: 100%;
+  max-width: 84rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .container-page {
+    padding-inline: 2rem;
+  }
+}
+
+.heading-hero,
+.heading-1,
+.heading-2 {
+  font-weight: 700;
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+}
+
+.heading-hero {
+  font-size: var(--text-hero);
+}
+
+.heading-1 {
+  font-size: var(--text-h1);
+}
+
+.heading-2 {
+  font-size: var(--text-h2);
+  line-height: calc(var(--leading-display) + 0.04);
+}
+
+.heading-3 {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+html[lang^="bn"] .heading-3 {
+  font-family: var(--font-bengali);
+}
+
+.form-label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+html[lang^="bn"] .form-label {
+  font-family: var(--font-bengali);
+}
+
+/* Tailwind's @theme inline bakes --font-display into the utility, so the Bangla
+   override has to re-point the utility itself. Latin runs inside Bengali text
+   still fall through to Anek Latin, the same superfamily. */
+html[lang^="bn"] :is(.font-display, .font-sans, .font-body) {
+  font-family: var(--font-bengali);
 }
 
 /* ---------- Skip link ---------- */
@@ -200,6 +250,62 @@
   background-repeat: repeat;
   background-size: 256px 256px;
   mix-blend-mode: overlay;
+}
+
+/* ---------- Hero ground: one soft warm wash, painted by CSS ---------- */
+
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60rem 32rem at 78% -10%, oklch(0.94 0.05 82 / 0.55), transparent 70%),
+    radial-gradient(48rem 30rem at 0% 8%, oklch(0.95 0.03 168 / 0.5), transparent 70%);
+}
+
+/* ---------- Photography ---------- */
+
+.photo-frame {
+  overflow: hidden;
+  border-radius: calc(var(--radius) + 4px);
+  background: var(--muted);
+  box-shadow:
+    0 1px 2px oklch(0.24 0.03 170 / 0.06),
+    0 12px 32px -12px oklch(0.24 0.03 170 / 0.18);
+}
+
+.photo-frame img {
+  display: block;
+}
+
+.photo-caption {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  margin-top: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+html[lang^="bn"] .photo-caption {
+  font-family: var(--font-bengali);
+  font-size: 0.9rem;
+}
+
+.photo-caption::before {
+  content: "";
+  flex: none;
+  width: 1.1rem;
+  height: 2px;
+  margin-top: 0.5em;
+  background: var(--accent);
+}
+
+/* Dashed route rule above the hero's proof list */
+.journey-list {
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--border);
 }
 
 /* ---------- Hero entrance (page-load choreography) ---------- */
@@ -240,22 +346,6 @@
   }
 }
 
-/* Hero route line: dashed map-path fading in after the headline */
-@keyframes hero-fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .hero-fade {
-    animation: hero-fade 1.2s ease-out 0.5s both;
-  }
-}
-
 /* ---------- Scroll-driven reveals (progressive enhancement) ----------
    Content is fully visible by default; only browsers that support
    scroll-driven animations get the reveal, and only when motion is OK. */
@@ -281,7 +371,7 @@
   }
 }
 
-/* ---------- Journey line: SVG path draws as it scrolls through view ----------
+/* ---------- Journey line: SVG path drawn by scroll ----------
    Paths need pathLength="1". Default state is fully drawn. */
 
 @keyframes path-draw {
@@ -313,27 +403,14 @@
   font-weight: 600;
   font-size: 1.15rem;
   color: oklch(0.52 0.115 70);
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
-.on-deep .waymark,
-.waymark-light {
+.on-deep .waymark {
   color: var(--accent);
 }
 
-/* ---------- Hero ambient canvas ---------- */
-
-.hero-canvas {
-  opacity: 0;
-}
-
-.hero-canvas-live {
-  opacity: 1;
-  transition: opacity 1.6s ease-out;
-}
-
-/* ---------- The traveling Guide dot (route timeline) ----------
-   A marigold dot rides the journey line as the timeline scrolls. */
+/* ---------- The traveling Guide dot (route timeline) ---------- */
 
 .route-dot {
   display: none;
@@ -405,10 +482,17 @@
       animation-timeline: --chat;
     }
 
-    .chat-msg:nth-child(1) { animation-range: entry 30% entry 70%; }
-    .chat-msg:nth-child(2) { animation-range: entry 70% cover 26%; }
-    .chat-msg:nth-child(3) { animation-range: cover 28% cover 38%; }
-    .chat-msg:nth-child(4) .chat-final { animation-range: cover 58% cover 68%; }
+    .chat-msg:nth-child(1) {
+      animation-range: entry 30% entry 70%;
+    }
+
+    .chat-msg:nth-child(2) {
+      animation-range: entry 70% cover 26%;
+    }
+
+    .chat-msg:nth-child(3) {
+      animation-range: cover 28% cover 38%;
+    }
 
     .chat-msg:nth-child(4) {
       animation: none;
@@ -417,6 +501,7 @@
     .chat-final {
       animation: chat-pop cubic-bezier(0.19, 1, 0.22, 1) both;
       animation-timeline: --chat;
+      animation-range: cover 58% cover 68%;
     }
 
     .chat-scroll .chat-typing {
@@ -448,11 +533,16 @@
   height: 6px;
   border-radius: 50%;
   background: oklch(0.6 0.02 170);
-  animation: typing-bounce 1.1s ease-in-out infinite;
+  animation: typing-pulse 1.1s cubic-bezier(0.19, 1, 0.22, 1) infinite;
 }
 
-.chat-typing i:nth-child(2) { animation-delay: 0.15s; }
-.chat-typing i:nth-child(3) { animation-delay: 0.3s; }
+.chat-typing i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.chat-typing i:nth-child(3) {
+  animation-delay: 0.3s;
+}
 
 @keyframes chat-pop {
   from {
@@ -466,15 +556,29 @@
 }
 
 @keyframes chat-typing-swap {
-  0% { opacity: 0; }
-  15% { opacity: 1; }
-  75% { opacity: 1; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
-@keyframes typing-bounce {
-  0%, 60%, 100% { transform: translateY(0); }
-  30% { transform: translateY(-4px); }
+@keyframes typing-pulse {
+  0%,
+  70%,
+  100% {
+    opacity: 0.35;
+  }
+  35% {
+    opacity: 1;
+  }
 }
 
 /* Pulsing "live" dot inside the location bubble */
@@ -500,7 +604,23 @@
   }
 }
 
-/* ---------- Delight micro-interactions ---------- */
+/* ---------- Forms ---------- */
+
+.select-chevron {
+  appearance: none;
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23617871' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+}
+
+form label {
+  transition: color 0.2s ease;
+}
+
+form div:focus-within > label {
+  color: var(--primary);
+}
 
 @media (prefers-reduced-motion: no-preference) {
   input[type="checkbox"]:checked {
@@ -514,12 +634,30 @@
   }
 }
 
-/* Field label warms up while its input has focus */
-form label {
+/* Live WhatsApp preview bubble in the booking form */
+.wa-preview {
+  position: relative;
+  border-radius: 0.625rem;
+  border-top-right-radius: 0.125rem;
+  background: oklch(0.93 0.05 140);
+  padding: 0.85rem 1rem;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: oklch(0.25 0.03 160);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+html[lang^="bn"] .wa-preview {
+  font-family: var(--font-bengali);
+}
+
+details > summary {
   transition: color 0.2s ease;
 }
 
-form div:focus-within > label {
+details > summary:hover {
   color: var(--primary);
 }
 
@@ -544,21 +682,6 @@ form div:focus-within > label {
   }
 }
 
-/* Live WhatsApp preview bubble in the booking form */
-.wa-preview {
-  position: relative;
-  border-radius: 0.625rem;
-  border-top-right-radius: 0.125rem;
-  background: oklch(0.93 0.05 140);
-  padding: 0.85rem 1rem;
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  line-height: 1.55;
-  color: oklch(0.25 0.03 160);
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-
 /* ---------- Buttons ---------- */
 
 .btn {
@@ -573,11 +696,16 @@ form div:focus-within > label {
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.2;
+  text-align: center;
   transition:
     background-color 0.2s ease,
     color 0.2s ease,
     border-color 0.2s ease,
     transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+html[lang^="bn"] .btn {
+  font-family: var(--font-bengali);
 }
 
 .btn:active {
@@ -635,5 +763,20 @@ form div:focus-within > label {
   .btn,
   .btn .btn-arrow {
     transition: none;
+  }
+}
+
+/* ---------- Print: the terms page is the one people actually print ---------- */
+
+@media print {
+  .skip-link,
+  header,
+  footer,
+  .hero-glow {
+    display: none !important;
+  }
+
+  body {
+    background: white;
   }
 }

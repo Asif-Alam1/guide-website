@@ -5,12 +5,21 @@ import Link from "next/link"
 import { useState } from "react"
 
 import { WhatsAppIcon } from "@/components/whatsapp-icon"
-import { SERVICES, waLink } from "@/lib/site"
+import type { Dict } from "@/lib/content/bn"
+import { waLink } from "@/lib/site"
 
 const inputClass =
-  "w-full h-12 rounded-lg border border-input bg-card px-3.5 font-display text-[0.98rem] text-foreground placeholder:text-muted-foreground/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/30"
+  "w-full h-12 rounded-lg border border-input bg-card px-3.5 font-display text-[0.98rem] text-foreground placeholder:text-muted-foreground/85 focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/30"
 
-export function BookingForm() {
+export function BookingForm({
+  t,
+  services,
+  termsHref,
+}: {
+  t: Dict["form"]
+  services: { id: string; name: string }[]
+  termsHref: string
+}) {
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -27,18 +36,19 @@ export function BookingForm() {
       setForm({ ...form, [field]: e.target.value })
 
   const composeMessage = () => {
-    const service = SERVICES.find((s) => s.id === form.service)
-    const lines = [
-      `Hi Guide, I'd like to book a companion.`,
+    const service = services.find((s) => s.id === form.service)
+    return [
+      t.messageIntro,
       ``,
-      `Name: ${form.name || "…"}`,
-      `Phone: ${form.phone || "…"}`,
-      `Service: ${service?.nameEn ?? "…"}`,
-      `Pickup area: ${form.area || "…"}`,
-      `Date: ${form.date || "…"}`,
-      form.notes ? `Details: ${form.notes}` : null,
-    ].filter((line): line is string => line !== null)
-    return lines.join("\n")
+      `${t.labels.name}: ${form.name || "…"}`,
+      `${t.labels.phone}: ${form.phone || "…"}`,
+      `${t.labels.service}: ${service?.name ?? "…"}`,
+      `${t.labels.area}: ${form.area || "…"}`,
+      `${t.labels.date}: ${form.date || "…"}`,
+      form.notes ? `${t.labels.notes}: ${form.notes}` : null,
+    ]
+      .filter((line): line is string => line !== null)
+      .join("\n")
   }
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -48,35 +58,41 @@ export function BookingForm() {
     window.setTimeout(() => setSent(false), 2500)
   }
 
-  const touched = form.name || form.phone || form.service || form.area || form.date || form.notes
+  const touched = Object.values(form).some(Boolean)
+  const required = (
+    <span aria-hidden="true" className="text-destructive">
+      *
+    </span>
+  )
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid gap-6 sm:grid-cols-2">
         <div className="space-y-2">
-          <label htmlFor="name" className="font-display text-[0.95rem] font-semibold text-foreground">
-            Your name <span aria-hidden="true" className="text-destructive">*</span>
+          <label htmlFor="name" className="form-label">
+            {t.name} {required}
           </label>
           <input
             id="name"
             required
             autoComplete="name"
-            placeholder="Who should we ask for?"
+            placeholder={t.namePlaceholder}
             value={form.name}
             onChange={set("name")}
             className={inputClass}
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="phone" className="font-display text-[0.95rem] font-semibold text-foreground">
-            Phone / WhatsApp <span aria-hidden="true" className="text-destructive">*</span>
+          <label htmlFor="phone" className="form-label">
+            {t.phone} {required}
           </label>
           <input
             id="phone"
             type="tel"
             required
             autoComplete="tel"
-            placeholder="+880 1XXX XXXXXX"
+            dir="ltr"
+            placeholder={t.phonePlaceholder}
             value={form.phone}
             onChange={set("phone")}
             className={inputClass}
@@ -85,22 +101,22 @@ export function BookingForm() {
       </div>
 
       <div className="space-y-2">
-        <label htmlFor="service" className="font-display text-[0.95rem] font-semibold text-foreground">
-          Service <span aria-hidden="true" className="text-destructive">*</span>
+        <label htmlFor="service" className="form-label">
+          {t.service} {required}
         </label>
         <select
           id="service"
           required
           value={form.service}
           onChange={set("service")}
-          className={`${inputClass} appearance-none bg-[url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23617871' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")] bg-no-repeat bg-[right_0.9rem_center] pr-10 ${form.service === "" ? "text-muted-foreground/70" : ""}`}
+          className={`${inputClass} select-chevron ${form.service === "" ? "text-muted-foreground/85" : ""}`}
         >
           <option value="" disabled>
-            What does your family need?
+            {t.servicePlaceholder}
           </option>
-          {SERVICES.map((s) => (
+          {services.map((s) => (
             <option key={s.id} value={s.id}>
-              {s.nameEn}
+              {s.name}
             </option>
           ))}
         </select>
@@ -108,21 +124,21 @@ export function BookingForm() {
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div className="space-y-2">
-          <label htmlFor="area" className="font-display text-[0.95rem] font-semibold text-foreground">
-            Pickup area <span aria-hidden="true" className="text-destructive">*</span>
+          <label htmlFor="area" className="form-label">
+            {t.area} {required}
           </label>
           <input
             id="area"
             required
-            placeholder="e.g. Dhanmondi, Uttara"
+            placeholder={t.areaPlaceholder}
             value={form.area}
             onChange={set("area")}
             className={inputClass}
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="date" className="font-display text-[0.95rem] font-semibold text-foreground">
-            Service date <span aria-hidden="true" className="text-destructive">*</span>
+          <label htmlFor="date" className="form-label">
+            {t.date} {required}
           </label>
           <input
             id="date"
@@ -136,47 +152,50 @@ export function BookingForm() {
       </div>
 
       <div className="space-y-2">
-        <label htmlFor="notes" className="font-display text-[0.95rem] font-semibold text-foreground">
-          Anything we should know?
+        <label htmlFor="notes" className="form-label">
+          {t.notes}
         </label>
         <textarea
           id="notes"
           rows={5}
-          placeholder="The patient's condition, hospital name, appointment time, special needs…"
+          placeholder={t.notesPlaceholder}
           value={form.notes}
           onChange={set("notes")}
           className={`${inputClass} h-auto py-3 leading-relaxed`}
         />
-        <p className="text-sm text-muted-foreground">
-          Please mention the patient&apos;s exact condition — including any infectious illness.
-          It&apos;s required by our{" "}
-          <Link href="/terms" className="text-primary hover:underline underline-offset-4">
-            terms
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          {t.notesHelpBefore}{" "}
+          <Link href={termsHref} className="text-primary underline-offset-4 hover:underline">
+            {t.notesHelpLink}
           </Link>{" "}
-          and it keeps everyone safe.
+          {t.notesHelpAfter}
         </p>
       </div>
 
-      {touched && (
+      {touched ? (
         <div aria-hidden="true">
-          <p className="font-display text-[0.95rem] font-semibold text-foreground mb-2">
-            Your WhatsApp message, as we&apos;ll receive it
+          <p className="mb-2 font-display text-[0.95rem] font-semibold text-foreground">
+            {t.previewLabel}
           </p>
           <div className="wa-preview">{composeMessage()}</div>
         </div>
-      )}
+      ) : null}
 
-      <label className="flex items-start gap-3 cursor-pointer">
+      <label className="flex cursor-pointer items-start gap-3">
         <input
           type="checkbox"
           required
           className="mt-1 h-4 w-4 rounded border-input accent-[oklch(0.4_0.09_165)]"
         />
-        <span className="text-sm leading-relaxed text-muted-foreground font-display">
-          I have read and agree to the{" "}
-          <Link href="/terms" className="text-primary font-medium hover:underline underline-offset-4">
-            Terms &amp; Conditions
-          </Link>
+        <span className="font-display text-sm leading-relaxed text-muted-foreground">
+          {t.consentBefore}{" "}
+          <Link
+            href={termsHref}
+            className="font-medium text-primary underline-offset-4 hover:underline"
+          >
+            {t.consentLink}
+          </Link>{" "}
+          {t.consentAfter}
         </span>
       </label>
 
@@ -184,12 +203,10 @@ export function BookingForm() {
         type="submit"
         className={`btn w-full !min-h-[3.5rem] text-[1.05rem] ${sent ? "btn-primary" : "btn-accent"}`}
       >
-        <WhatsAppIcon className="w-5 h-5" />
-        {sent ? "Opening WhatsApp — press send there ✓" : "Send booking request on WhatsApp"}
+        <WhatsAppIcon className="h-5 w-5" />
+        {sent ? t.submitting : t.submit}
       </button>
-      <p className="text-center font-display text-sm text-muted-foreground">
-        Opens WhatsApp with your details pre-filled — you press send.
-      </p>
+      <p className="text-center font-display text-sm text-muted-foreground">{t.submitNote}</p>
     </form>
   )
 }
