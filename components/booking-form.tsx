@@ -6,16 +6,20 @@ import { useState } from "react"
 
 import { WhatsAppIcon } from "@/components/whatsapp-icon"
 import type { Dict } from "@/lib/content/bn"
+import { localeDate } from "@/lib/format"
+import type { Locale } from "@/lib/locale"
 import { waLink } from "@/lib/site"
 
 const inputClass =
   "w-full h-12 rounded-lg border border-input bg-card px-3.5 font-display text-[0.98rem] text-foreground placeholder:text-muted-foreground/85 focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/30"
 
 export function BookingForm({
+  locale,
   t,
   services,
   termsHref,
 }: {
+  locale: Locale
   t: Dict["form"]
   services: { id: string; name: string }[]
   termsHref: string
@@ -44,7 +48,7 @@ export function BookingForm({
       `${t.labels.phone}: ${form.phone || "…"}`,
       `${t.labels.service}: ${service?.name ?? "…"}`,
       `${t.labels.area}: ${form.area || "…"}`,
-      `${t.labels.date}: ${form.date || "…"}`,
+      `${t.labels.date}: ${form.date ? localeDate(form.date, locale) : "…"}`,
       form.notes ? `${t.labels.notes}: ${form.notes}` : null,
     ]
       .filter((line): line is string => line !== null)

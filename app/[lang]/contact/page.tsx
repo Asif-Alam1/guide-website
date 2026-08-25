@@ -83,6 +83,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
           <div className="grid max-w-6xl gap-12 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
             <div className="enter" style={{ "--enter": 3 } as React.CSSProperties}>
               <BookingForm
+                locale={locale}
                 t={d.form}
                 termsHref={`/${locale}/terms`}
                 services={SERVICE_IDS.map((id) => ({ id, name: d.services[id].name }))}
