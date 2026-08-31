@@ -78,12 +78,12 @@ export const en: Dict = {
       "Every Hospital Companion booking follows these six steps. No steps skipped, no tensiond — and you can watch it happen live.",
     routeSteps: [
       {
-        title: "We arrive at their door",
+        title: "Our guide arrives at your door",
         body:
           "A uniformed, ID-verified Guide — whose photo you received in advance — arrives at your family member's home, on time.",
       },
       {
-        title: "They travel together",
+        title: "Start travelling with patient",
         body:
           "Uber, CNG, or ambulance arranged to your preference. Live location is shared on WhatsApp from the first minute.",
       },
@@ -200,7 +200,7 @@ export const en: Dict = {
     ],
 
     faqWaymark: "প্রশ্ন",
-    faqTitle: "Families usually ask",
+    faqTitle: "Clients usually ask",
     faqLeadBefore: "Anything else on your mind?",
     faqLeadLink: "Ask us directly on WhatsApp",
     faqLeadAfter: "— no question is too small when it's about family.",
@@ -371,7 +371,7 @@ export const en: Dict = {
     afterSteps: [
       {
         title: "We reply on WhatsApp",
-        body: "Usually within 30 minutes (9am–9pm Dhaka time; within ~2 hours overnight).",
+        body: "Usually within 30 minutes (9am–12am Dhaka time; within ~2 hours overnight).",
       },
       {
         title: "We confirm the details & price",
@@ -385,7 +385,7 @@ export const en: Dict = {
     ],
     directHeading: "Direct lines",
     directWhatsApp: "WhatsApp — fastest",
-    hours: "Available 24/7 for booked services. New inquiries answered 9am–9pm Dhaka time.",
+    hours: "Available 24/7 for booked services. New inquiries answered 9am–12am Dhaka time.",
     address: ADDRESS_EN,
     areasHeading: "Service areas",
     areasNote: "Not on the list? Ask — we're expanding across Dhaka.",
@@ -531,14 +531,14 @@ export const en: Dict = {
       "A medical companion and escort service in Dhaka. Background-checked, uniformed Guides for hospital visits, report collection, and safe journeys — with live WhatsApp updates to family anywhere in the world.",
     pages: "Pages",
     contact: "Contact",
-    whatsappLine: "WhatsApp — replies within ~30 min, 9am–9pm",
+    whatsappLine: "WhatsApp — replies within ~30 min, 9am–12am",
     address: ADDRESS_EN,
     servingPrefix: "Serving",
     servingSuffix: "& more across Dhaka",
     rights: "All rights reserved.",
   },
 
-  areas: ["Gulshan", "Banani", "Dhanmondi", "Uttara", "Mirpur", "Mohammadpur", "Shahbagh"],
+  areas: ["Gulshan", "Banani", "Dhanmondi", "Uttara", "Mirpur", "Mohammadpur", "Jatrabari", "Tongi", "Shahbagh"],
 
   prefill: {
     hero: "Hi Guide, I need a companion for a family member in Dhaka. Can you tell me how it works?",
