@@ -72,10 +72,10 @@ export const en: Dict = {
       "A uniformed Guide holding the hand of an elderly woman with a walking frame in a Dhaka lane",
     heroPhotoCaption: "9:12 AM — the Guide is at the door",
 
-    routeWaymark: "যাত্রা",
-    routeTitle: "One hospital visit, door to door",
+    routeWaymark: "হাসপাতাল ভিজিট",
+    routeTitle: "Hospital visit, door to door",
     routeLead:
-      "Every Hospital Companion booking follows these six steps. No steps skipped, no surprises — and you can watch it happen live.",
+      "Every Hospital Companion booking follows these six steps. No steps skipped, no tensiond — and you can watch it happen live.",
     routeSteps: [
       {
         title: "We arrive at their door",
@@ -117,7 +117,7 @@ export const en: Dict = {
     routeCta: "Book a hospital companion",
 
     servicesWaymark: "সেবা",
-    servicesTitle: "What we can take off your plate",
+    servicesTitle: "Our Services",
     servicesLead:
       "Hospital Companion is the core service. Beyond it, we take on the errands that are hardest to do from far away.",
     areasLine: "Serving",
