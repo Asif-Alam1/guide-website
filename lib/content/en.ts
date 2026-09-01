@@ -292,36 +292,36 @@ export const en: Dict = {
     title: "About",
     metaDescription:
       "Why Guide exists: a medical companion service built for families who can't always be there — in Dhaka or abroad. How we vet, train, and hold ourselves accountable.",
-    waymark: "আমাদের কথা",
+    waymark: "Why Guide!",
     heading: "Built for the family member who can't be there",
     story: [
       "Every family in Dhaka knows the phone call. Ma has a doctor's appointment on Thursday. Someone has to take the day off work, brave the traffic, sit in the waiting room, remember what the doctor said, find the pharmacy, queue for the reports. And if the family is abroad — as millions of Bangladeshi families now are — the call ends with the hardest sentence: “we'll manage somehow.”",
       "Guide exists so that nobody has to manage somehow. We send a background-checked, uniformed companion who walks the entire route with your family member — door to door — and writes everything down, so that being far away no longer means being in the dark.",
       "We are a new, small team in Dhaka, and we'd rather be honest about that than invent a track record: no fake testimonials, no inflated numbers. What we offer instead is published terms, verified people, and a live window into every visit — so trust can be earned one journey at a time.",
     ],
-    valuesWaymark: "মূল্যবোধ",
+    valuesWaymark: "Our Values",
     valuesHeading: "What we hold ourselves to",
     values: [
       {
-        word: "নিরাপত্তা",
+        word: "Full Security",
         name: "Safety before schedule",
         body:
           "A visit that runs late but ends safely is a success. A rushed one that cuts corners is not. Every protocol — verification, uniforms, live tracking — exists so that the safest option is also the default one.",
       },
       {
-        word: "মমতা",
+        word: "Care",
         name: "Care like family",
         body:
           "The people we accompany are somebody's mother, father, grandmother. Our Guides are trained to slow down, hold a hand at the stairs, and wait without checking the clock.",
       },
       {
-        word: "স্বচ্ছতা",
+        word: "Transparency",
         name: "Nothing to hide",
         body:
           "Our terms are published in full, our prices are quoted before you commit, and the doctor's words reach you exactly as they were said — in writing.",
       },
       {
-        word: "পেশাদারিত্ব",
+        word: "Professionalism",
         name: "Professional, every visit",
         body:
           "Uniform, ID badge, punctuality, and a written record. The same standard whether it's a routine checkup in Dhanmondi or a 3am emergency.",
@@ -348,7 +348,7 @@ export const en: Dict = {
           "No gig workers, no strangers from an app pool. Every Guide is vetted, trained, and accountable to us — and we are accountable to you.",
       },
     ],
-    coverageWaymark: "এলাকা",
+    coverageWaymark: "Areas",
     coverageHeading: "Where we serve",
     coverageLead:
       "We currently serve families across Dhaka and are expanding area by area — carefully, so the standard never slips.",
@@ -361,7 +361,7 @@ export const en: Dict = {
     title: "Book a Companion",
     metaDescription:
       "Book a medical companion in Dhaka — the form composes a WhatsApp message with your details. Or message and call us directly. Replies within ~30 minutes, 9am–9pm Dhaka time.",
-    waymark: "যোগাযোগ",
+    waymark: "Contacts",
     heading: "Book a companion",
     leadBefore:
       "The form below composes a WhatsApp message with your booking details — nothing is stored on this website. Prefer to talk first?",
@@ -431,7 +431,7 @@ export const en: Dict = {
     title: "Terms & Conditions",
     metaDescription:
       "The full terms and conditions for Guide's medical companion and escort services in Dhaka, Bangladesh — published in plain sight.",
-    waymark: "শর্তাবলী",
+    waymark: "Conditions",
     heading: "Terms & Conditions",
     lead:
       "Fourteen clauses, published in full. Please read them before booking — they define exactly what we do, what we don't, and what we ask of you.",
