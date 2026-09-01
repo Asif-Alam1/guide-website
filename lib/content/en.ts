@@ -73,9 +73,9 @@ export const en: Dict = {
     heroPhotoCaption: "9:12 AM — the Guide is at the door",
 
     routeWaymark: "Hospital Visit",
-    routeTitle: "Home to Hospital, Hospital to Home",
+    routeTitle: "Home to Hospital and return to Home",
     routeLead:
-      "Every Hospital Companion booking follows these six steps. No steps skipped, no tensions — and you can watch it happen live.",
+      "Every Hospital Companion booking follows these six steps. You can watch it happen live.",
     routeSteps: [
       {
         title: "Our guide arrives at your door",
@@ -285,6 +285,12 @@ export const en: Dict = {
       description:
         "A trusted companion for journeys beyond Dhaka — intercity trips or full-day village visits — and for the reverse: bringing a family member from outside Dhaka into the city to see a doctor.",
       includes: ["Full-day accompaniment", "Ideal for elderly travelers"],
+    },
+     "School or College Pickup": {
+      name: "School or College pickup",
+      description:
+        "A trusted companion for your child when you're stuck at work and can't pick them up from school or college.",
+      includes: ["Ideal for Students"],
     },
   },
 
@@ -538,7 +544,7 @@ export const en: Dict = {
     rights: "All rights reserved.",
   },
 
-  areas: ["Gulshan", "Banani", "Dhanmondi", "Uttara", "Mirpur", "Mohammadpur", "Jatrabari", "Tongi", "Shahbagh"],
+  areas: ["Gulshan", "Banani", "Dhanmondi", "Uttara", "Mirpur", "Mohammadpur", "Jatrabari", "Tongi", "Banasree"],
 
   prefill: {
     hero: "Hi Guide, I need a companion for a family member in Dhaka. Can you tell me how it works?",
