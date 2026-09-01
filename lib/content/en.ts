@@ -47,7 +47,7 @@ export const en: Dict = {
     whatsappAsk: "Ask us on WhatsApp",
     call: "Call",
     phone: PHONE_DISPLAY,
-    replyWindow: "Replies within ~30 min, 9am–9pm Dhaka time",
+    replyWindow: "Replies within ~30 min, 9am–11pm Dhaka time",
     bookAhead: "Book at least 3–4 hours ahead",
     seeTerms: "see all terms",
     bookService: "Book this service",
@@ -72,10 +72,10 @@ export const en: Dict = {
       "A uniformed Guide holding the hand of an elderly woman with a walking frame in a Dhaka lane",
     heroPhotoCaption: "9:12 AM — the Guide is at the door",
 
-    routeWaymark: "হাসপাতাল ভিজিট",
-    routeTitle: "Hospital visit, door to door",
+    routeWaymark: "Hospital Visit",
+    routeTitle: "Home to Hospital, Hospital to Home",
     routeLead:
-      "Every Hospital Companion booking follows these six steps. No steps skipped, no tensiond — and you can watch it happen live.",
+      "Every Hospital Companion booking follows these six steps. No steps skipped, no tensions — and you can watch it happen live.",
     routeSteps: [
       {
         title: "Our guide arrives at your door",
@@ -116,14 +116,14 @@ export const en: Dict = {
     routePhoto2Caption: "To the door — the service ends when they are home",
     routeCta: "Book a hospital companion",
 
-    servicesWaymark: "সেবা",
+    servicesWaymark: "Services",
     servicesTitle: "Our Services",
     servicesLead:
       "Hospital Companion is the core service. Beyond it, we take on the errands that are hardest to do from far away.",
     areasLine: "Serving",
     areasExpanding: "+ expanding across Dhaka",
 
-    safetyWaymark: "নিরাপত্তা",
+    safetyWaymark: "Security",
     safetyTitle: "Know exactly who is with them",
     safetyLead:
       "Trust shouldn't be asked for — it should be shown, message by message. Before and during every visit, this is what arrives on your WhatsApp.",
@@ -165,15 +165,15 @@ export const en: Dict = {
       caption: "An illustration of the updates a family receives during one visit.",
     },
 
-    termsWaymark: "শর্ত",
-    termsTitle: "The fine print, in plain sight",
+    termsWaymark: "Conditions",
+    termsTitle: "Be Clear about the Terms and Conditions",
     termsLead:
       "A service you trust with your family shouldn't bury its conditions. Here are the ones that matter most, before you book.",
     termsCta: "Read the full terms & conditions",
     keyTerms: [
       {
         term: "50% advance",
-        detail: "Half the service fee is paid upfront; the balance after the visit is complete.",
+        detail: "Half the service fee is paid upfront; the balance is paid after the visit is complete.",
       },
       {
         term: "Book 3–4 hours ahead",
@@ -199,7 +199,7 @@ export const en: Dict = {
       },
     ],
 
-    faqWaymark: "প্রশ্ন",
+    faqWaymark: "FAQ",
     faqTitle: "Clients usually ask",
     faqLeadBefore: "Anything else on your mind?",
     faqLeadLink: "Ask us directly on WhatsApp",
