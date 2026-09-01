@@ -303,7 +303,7 @@ export const en: Dict = {
     story: [
       "Every family in Dhaka knows the phone call. Ma has a doctor's appointment on Thursday. Someone has to take the day off work, brave the traffic, sit in the waiting room, remember what the doctor said, find the pharmacy, queue for the reports. And if the family is abroad — as millions of Bangladeshi families now are — the call ends with the hardest sentence: “we'll manage somehow.”",
       "Guide exists so that nobody has to manage somehow. We send a background-checked, uniformed companion who walks the entire route with your family member — door to door — and writes everything down, so that being far away no longer means being in the dark.",
-      "We are a new, small team in Dhaka, and we'd rather be honest about that than invent a track record: no fake testimonials, no inflated numbers. What we offer instead is published terms, verified people, and a live window into every visit — so trust can be earned one journey at a time.",
+      "The chairman of Guide studied at Dhaka University, along with his other successful businesses. This initiative is for the benefit of people, so you can believe it with your eyes closed.",
     ],
     valuesWaymark: "Our Values",
     valuesHeading: "What we hold ourselves to",
